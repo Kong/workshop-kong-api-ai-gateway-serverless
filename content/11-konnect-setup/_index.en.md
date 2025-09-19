@@ -5,9 +5,8 @@ weight : 110
 
 This chapter will walk you through
 
-* Konnect Control Plane and Data Plane creation using Kong Gateway Operator (KGO).
-* Scale Kong data plane nodes on Kubernetes using HPA - Horizontal Pod Autoscaler. 
-* Access Kong data plane through Minikube tunnel
+* Konnect Control Plane and Data Plane creation.
+* Access Kong Data Plane.
 
 Here's a Reference Architecture that will be implemented in this workshop:
 
@@ -27,7 +26,7 @@ After Konnect registration, you need to create your first Control Plane. There a
 * [RESTful Admin API](https://developer.konghq.com/api/), a fundamental mechanism for administration purposes.
 * [Kong Gateway Operator (KGO)](https://developer.konghq.com/gateway-operator/) and Kubernetes CRDs
 
-To get an easier and faster deployment, this workshop uses KGO. You may observe the output in Konnect UI.
+To get an easier and faster deployment, this workshop uses Konnect User Interface.
 
 This tutorial is intended to be used for labs and PoC only. There are many aspects and processes, typically implemented in production sites, not described here. For example: Digital Certificate issuing, Cluster monitoring, etc. For a production ready deployment, refer Kong on Terraform Constructs, available [here](https://developer.konghq.com/terraform/)
 

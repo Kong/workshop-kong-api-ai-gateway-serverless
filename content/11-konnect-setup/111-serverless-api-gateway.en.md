@@ -1,5 +1,5 @@
 ---
-title : "Kong Gateway Operator"
+title : "Serverless API Gateway"
 weight : 111
 ---
 

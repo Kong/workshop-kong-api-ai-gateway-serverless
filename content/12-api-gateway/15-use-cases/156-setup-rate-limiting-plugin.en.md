@@ -1,6 +1,6 @@
 ---
-title : "Set up Rate Limiting plugin"
-weight : 1563
+title : "Rate Limiting"
+weight : 156
 ---
 
 

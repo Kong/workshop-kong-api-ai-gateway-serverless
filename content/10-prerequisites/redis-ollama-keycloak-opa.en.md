@@ -1,5 +1,5 @@
 ---
-title: "Redis and Ollama"
+title: "Serverless API Gateway"
 weight: 105
 ---
 

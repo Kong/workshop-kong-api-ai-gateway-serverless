@@ -5,53 +5,53 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.150.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="Kong can rate-limit your traffic without any external dependency. In such a case, Kong stores the request counters in-memory and each Kong node applies the rate-limiting policy independently. There is no synchronization of information being done in this case. But if Redis is available in your cluster, Kong can take advantage of it and synchronize the rate-limit information across multiple Kong nodes and enforce a slightly different rate-limiting policy.
-This section walks through the steps of using Redis for rate-limiting in a multi-node Kong deployment.">
+    <meta name="description" content="Add Rate Limiting plugin Just like you did before, add the Rate Limiting plugin on the Route setting Minute as 5 requests per minute, and set the identifier to Service.
+cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: rate-limiting-route paths: - /rate-limiting-route plugins: - name: rate-limiting instance_name: rate-limiting1 config: minute: 5 EOF Submit the declaration:">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Rate Limiting Using Redis :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta name="twitter:description" content="Kong can rate-limit your traffic without any external dependency. In such a case, Kong stores the request counters in-memory and each Kong node applies the rate-limiting policy independently. There is no synchronization of information being done in this case. But if Redis is available in your cluster, Kong can take advantage of it and synchronize the rate-limit information across multiple Kong nodes and enforce a slightly different rate-limiting policy.
-This section walks through the steps of using Redis for rate-limiting in a multi-node Kong deployment.">
-    <meta property="og:url" content="http://localhost:1313/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html">
+    <meta name="twitter:title" content="Set up Rate Limiting plugin :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta name="twitter:description" content="Add Rate Limiting plugin Just like you did before, add the Rate Limiting plugin on the Route setting Minute as 5 requests per minute, and set the identifier to Service.
+cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: rate-limiting-route paths: - /rate-limiting-route plugins: - name: rate-limiting instance_name: rate-limiting1 config: minute: 5 EOF Submit the declaration:">
+    <meta property="og:url" content="http://localhost:1313/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/156-setup-rate-limiting-plugin/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
-    <meta property="og:title" content="Rate Limiting Using Redis :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta property="og:description" content="Kong can rate-limit your traffic without any external dependency. In such a case, Kong stores the request counters in-memory and each Kong node applies the rate-limiting policy independently. There is no synchronization of information being done in this case. But if Redis is available in your cluster, Kong can take advantage of it and synchronize the rate-limit information across multiple Kong nodes and enforce a slightly different rate-limiting policy.
-This section walks through the steps of using Redis for rate-limiting in a multi-node Kong deployment.">
+    <meta property="og:title" content="Set up Rate Limiting plugin :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta property="og:description" content="Add Rate Limiting plugin Just like you did before, add the Rate Limiting plugin on the Route setting Minute as 5 requests per minute, and set the identifier to Service.
+cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: rate-limiting-route paths: - /rate-limiting-route plugins: - name: rate-limiting instance_name: rate-limiting1 config: minute: 5 EOF Submit the declaration:">
     <meta property="og:locale" content="en_us">
-    <meta property="og:type" content="website">
-    <meta itemprop="name" content="Rate Limiting Using Redis :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta itemprop="description" content="Kong can rate-limit your traffic without any external dependency. In such a case, Kong stores the request counters in-memory and each Kong node applies the rate-limiting policy independently. There is no synchronization of information being done in this case. But if Redis is available in your cluster, Kong can take advantage of it and synchronize the rate-limit information across multiple Kong nodes and enforce a slightly different rate-limiting policy.
-This section walks through the steps of using Redis for rate-limiting in a multi-node Kong deployment.">
-    <meta itemprop="wordCount" content="116">
-    <title>Rate Limiting Using Redis :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.xml" rel="alternate" type="application/rss+xml" title="Rate Limiting Using Redis :: API Management with Kong Konnect and Serverless API Gateway">
-    <link href="/css/auto-complete/auto-complete.min.css?1758295569" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758295569" defer></script>
-    <script src="/js/search-lunr.js?1758295569" defer></script>
-    <script src="/js/search.js?1758295569" defer></script>
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Kong API Gateway">
+    <meta itemprop="name" content="Set up Rate Limiting plugin :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta itemprop="description" content="Add Rate Limiting plugin Just like you did before, add the Rate Limiting plugin on the Route setting Minute as 5 requests per minute, and set the identifier to Service.
+cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: rate-limiting-route paths: - /rate-limiting-route plugins: - name: rate-limiting instance_name: rate-limiting1 config: minute: 5 EOF Submit the declaration:">
+    <meta itemprop="wordCount" content="240">
+    <title>Set up Rate Limiting plugin :: API Management with Kong Konnect and Serverless API Gateway</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1758295563" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758295563" defer></script>
+    <script src="/js/search-lunr.js?1758295563" defer></script>
+    <script src="/js/search.js?1758295563" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758295569";
+      window.relearn.index_js_url="/searchindex.en.js?1758295563";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758295569" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758295569" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758295569" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758295569" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758295563" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758295563" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758295563" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758295563" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758295569" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758295569" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758295569" rel="stylesheet">
-    <link href="/css/theme.css?1758295569" rel="stylesheet">
-    <link href="/css/format-html.css?1758295569" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758295563" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758295563" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758295563" rel="stylesheet">
+    <link href="/css/theme.css?1758295563" rel="stylesheet">
+    <link href="/css/format-html.css?1758295563" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = ``;
-      window.relearn.path='\/12-api-gateway\/15-use-cases\/156-rate-limiting-using-redis\/index.html';
-      window.relearn.relBasePath='..\/..\/..';
-      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.path='\/12-api-gateway\/15-use-cases\/156-rate-limiting-using-redis\/156-setup-rate-limiting-plugin\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='http:\/\/localhost:1313';
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
@@ -99,7 +99,7 @@ This section walks through the steps of using Redis for rate-limiting in a multi
       window.relearn.markVariant();
     </script>
   </head>
-  <body class="mobile-support html" data-url="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html">
+  <body class="mobile-support html" data-url="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/156-setup-rate-limiting-plugin/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -110,15 +110,25 @@ This section walks through the steps of using Redis for rate-limiting in a multi
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#results">Results</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/index.html"><span itemprop="name">Kong API Gateway</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/15-use-cases/index.html"><span itemprop="name">Use Cases</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Rate Limiting Using Redis</span><meta itemprop="position" content="4"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/index.html"><span itemprop="name">Kong API Gateway</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/15-use-cases/index.html"><span itemprop="name">Use Cases</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html"><span itemprop="name">Rate Limiting Using Redis</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Set up Rate Limiting plugin</span><meta itemprop="position" content="5"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/154-request-callout/index.html" title="Request Callout (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html" title="Rate Limiting Using Redis (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1564-scale-kong-for-kubernetes-to-multiple-pods/index.html" title="Scale Kong for Kubernetes to multiple pods (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
@@ -140,18 +150,75 @@ This section walks through the steps of using Redis for rate-limiting in a multi
   <header class="headline">
   </header>
 
-<h1 id="rate-limiting-using-redis">Rate Limiting Using Redis</h1>
+<h1 id="set-up-rate-limiting-plugin">Set up Rate Limiting plugin</h1>
 
-<p>Kong can rate-limit your traffic without any external dependency. In such a case, Kong stores the request counters in-memory and each Kong node applies the rate-limiting policy independently. There is no synchronization of information being done in this case. But if Redis is available in your cluster, Kong can take advantage of it and synchronize the rate-limit information across multiple Kong nodes and enforce a slightly different rate-limiting policy.</p>
-<p>This section walks through the steps of using Redis for rate-limiting in a multi-node Kong deployment.</p>
-<h4 id="high-level-tasks">High Level Tasks</h4>
-<p>You will complete the following:</p>
-<ul>
-<li>Set up rate-limiting plugin</li>
-<li>Scale Kong for Kubernetes to multiple pods</li>
-<li>Verify rate-limiting across cluster</li>
-</ul>
-<p>You can now click <strong>Next</strong> to proceed further.</p>
+<h4 id="add-rate-limiting-plugin">Add Rate Limiting plugin</h4>
+<p>Just like you did before, add the <strong>Rate Limiting</strong> plugin on the Route setting <strong>Minute</strong> as 5 requests per minute, and set the identifier to <strong>Service</strong>.</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39;
+_format_version: &#34;3.0&#34;
+_konnect:
+  control_plane_name: kong-workshop
+_info:
+  select_tags:
+  - httpbin-service-route
+services:
+- name: httpbin-service
+  host: httpbin.kong.svc.cluster.local
+  port: 8000
+  routes:
+  - name: rate-limiting-route
+    paths:
+    - /rate-limiting-route
+    plugins:
+    - name: rate-limiting
+      instance_name: rate-limiting1
+      config:
+        minute: 5
+EOF</code></pre></div>
+
+<p>Submit the declaration:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT rate-limiting.yaml</code></pre></div>
+
+<h4 id="verify-traffic-control">Verify traffic control</h4>
+<p>Again, test the rate-limiting policy by executing the following command multiple times and observe the rate-limit headers in the response, specially, <code>X-RateLimit-Remaining-Minute</code>, <code>RateLimit-Reset</code> and <code>Retry-After</code> :</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -I $DATA_PLANE_LB/rate-limiting-route/get</code></pre></div>
+
+<p><strong>Response</strong></p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 389
+Connection: keep-alive
+X-RateLimit-Limit-Minute: 5
+X-RateLimit-Remaining-Minute: 4
+RateLimit-Reset: 44
+RateLimit-Remaining: 4
+RateLimit-Limit: 5
+Server: gunicorn
+Date: Mon, 11 Aug 2025 14:55:16 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+X-Kong-Upstream-Latency: 10
+X-Kong-Proxy-Latency: 5
+Via: 1.1 kong/3.11.0.2-enterprise-edition
+X-Kong-Request-Id: 7f13e52db83e4e673798120134496d03</code></pre></div>
+<p>As explected, after sending too many requests,once the rate limiting is reached, you will see <code>HTTP/1.1 429 Too Many Requests</code></p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code># curl -I $DATA_PLANE_LB/rate-limiting-route/get
+HTTP/1.1 429 Too Many Requests
+Date: Mon, 11 Aug 2025 14:55:20 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+X-RateLimit-Limit-Minute: 5
+X-RateLimit-Remaining-Minute: 0
+RateLimit-Reset: 40
+Retry-After: 40
+RateLimit-Remaining: 0
+RateLimit-Limit: 5
+Content-Length: 92
+X-Kong-Response-Latency: 2
+Server: kong/3.11.0.2-enterprise-edition
+X-Kong-Request-Id: c01dcb02ea13676ca5e49e7e1c40982b</code></pre></div>
+<h3 id="results">Results</h3>
+<p>As there is a single Kong Data Plane Runtime instance running, Kong correctly imposes the rate-limit and you can make only 5 requests in a minute.</p>
 
   <footer class="footline">
   </footer>
@@ -209,12 +276,12 @@ This section walks through the steps of using Redis for rate-limiting in a multi
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/151-key-authentication/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/151-key-authentication/index.html">API Key Authentication</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/153-response-transformer/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/153-response-transformer/index.html">Response Transformer</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/154-request-callout/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/154-request-callout/index.html">Request Callout</a></li>
-            <li class="active parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html">Rate Limiting Using Redis</a><ul id="R-subsections-6547d583843936d30f1b726eb5939c1a" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html">Rate Limiting Using Redis</a><ul id="R-subsections-6547d583843936d30f1b726eb5939c1a" class="collapsible-menu">
+            <li class="active " data-nav-id="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/156-setup-rate-limiting-plugin/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/156-setup-rate-limiting-plugin/index.html">Set up Rate Limiting plugin</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1564-scale-kong-for-kubernetes-to-multiple-pods/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1564-scale-kong-for-kubernetes-to-multiple-pods/index.html">Scale Kong for Kubernetes to multiple pods</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1565-update-rate-limiting-plugin/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1565-update-rate-limiting-plugin/index.html">Update the Rate Limiting Plugin</a></li></ul></li>
             <li class="alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/157-openidconnect/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/157-openidconnect/index.html">OpenID Connect</a><ul id="R-subsections-34875f368b35fa0fde449b57e732d3fb" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/158-opa-authorization/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/158-opa-authorization/index.html">OPA (Open Policy Agent)</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html">Set up Rate Limiting plugin</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/12-api-gateway/15-use-cases/158-opa-authorization/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/158-opa-authorization/index.html">OPA (Open Policy Agent)</a></li></ul></li></ul></li>
             <li class="" data-nav-id="/16-ai-gateway/index.html"><a class="padding" href="/16-ai-gateway/index.html">Kong AI Gateway</a><ul id="R-subsections-2f2bf218915a29de3a144cfa324a5fc4" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/20-observability/index.html"><a class="padding" href="/20-observability/index.html">Observability</a><ul id="R-subsections-3829b558aa20efb46efd7e331dc0c9e9" class="collapsible-menu"></ul></li>
           </ul>
@@ -234,8 +301,8 @@ This section walks through the steps of using Redis for rate-limiting in a multi
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758295569" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758295569" defer></script>
-    <script src="/js/theme.js?1758295569" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758295563" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758295563" defer></script>
+    <script src="/js/theme.js?1758295563" defer></script>
   </body>
 </html>

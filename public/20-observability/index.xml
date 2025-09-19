@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Observability :: API Management with Kong Konnect and Serverless API Gateway</title>
+    <title>Konnect Builtin Observability :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/20-observability/index.html</link>
-    <description>The third part of the workshop is dedicated to Observability, exploring:&#xA;Built-in capabilities provided by Konnect Kong Data Plane plugins to integrate with external Observability infrastructures such as Dynatrace or Honeycomb.</description>
+    <description>Basically Konnect provides two main Builtin Observability services:&#xA;Konnect Advanced Analytics: it is a real-time, contextual analytics platform that provides insights into API health, performance, and usage.&#xA;Konnect Debugger: it provides a connected debugging experience and real-time trace-level visibility into API traffic.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/20-observability/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Konnect Builtin Observability</title>
-      <link>http://localhost:1313/20-observability/21-builtin/index.html</link>
+      <title>Konnect Advanced Analytics</title>
+      <link>http://localhost:1313/20-observability/21-builtin/211-advanced_analytics/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/20-observability/21-builtin/index.html</guid>
-      <description>Basically Konnect provides two main Builtin Observability services:&#xA;Konnect Advanced Analytics: it is a real-time, contextual analytics platform that provides insights into API health, performance, and usage.&#xA;Konnect Debugger: it provides a connected debugging experience and real-time trace-level visibility into API traffic.</description>
+      <guid>http://localhost:1313/20-observability/21-builtin/211-advanced_analytics/index.html</guid>
+      <description>Konnect Advanced Analytics is a real-time, highly contextual analytics platform that provides deep insights into API health, performance, and usage. It helps businesses optimize their API strategies and improve operational efficiency. This feature is offered as a premium service within Konnect.&#xA;Key benefits:&#xA;Centralized visibility: Gain insights across all APIs, Services, and data planes. Contextual API analytics: Analyze API requests, Routes, Consumers, and Services. Democratized data insights: Generate reports based on your needs. Fast time to insight: Retrieve critical API metrics in less than a second. Reduced cost of ownership: A turn-key analytics solution without third-party dependencies. Enabling data ingestion Manage data ingestion from any Control Plane Dashboard using the Advanced Analytics toggle. This toggle lets you enable or disable data collection for your API traffic per control plane.</description>
     </item>
     <item>
-      <title>External Observability Stack</title>
-      <link>http://localhost:1313/20-observability/22-external/index.html</link>
+      <title>Konnect Debugger</title>
+      <link>http://localhost:1313/20-observability/21-builtin/212-debugger/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/20-observability/22-external/index.html</guid>
-      <description>The external Observability infrastructure we are going to use is based on the OpenTelemetry standard and it comprises:&#xA;OTel Collector: implements the component responsible for receiving, processing and exporting telemetry data. Loki: plays the log processing role and receiving all requests and responses processed by the Kong API and AI Gateway Data Plane. Prometheus: responsible for scraping and storing the metrics the Kong API and AI Gateway generate. Grafana: used to query and analyze logs and metrics. Jaeger: distributed tracing platform.</description>
+      <guid>http://localhost:1313/20-observability/21-builtin/212-debugger/index.html</guid>
+      <description>Konnect Debugger provides a connected debugging experience and real-time trace-level visibility into API traffic, enabling you to:&#xA;Troubleshoot issues: Investigate and resolve problems during deployments or incidents with targeted, on-demand traces. Understand request lifecycle: Visualize exactly what happened during a specific request, including order and duration plugin execution. See Debugger spans for a list of spans captured. Improve performance and reliability: Use deep insights to fine-tune configurations and resolve bottlenecks. Capture traces and logs Konnect Debugger allows you to capture traces and logs.</description>
     </item>
   </channel>
 </rss>

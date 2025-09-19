@@ -1,8 +1,11 @@
 ---
-title : "Observability"
-weight : 200
+title : "Konnect Builtin Observability"
+weight : 210
 ---
 
-The third part of the workshop is dedicated to Observability, exploring:
-* Built-in capabilities provided by Konnect
-* Kong Data Plane plugins to integrate with external Observability infrastructures such as Dynatrace or Honeycomb.
+Basically Konnect provides two main Builtin Observability services:
+
+* **[Konnect Advanced Analytics](https://developer.konghq.com/advanced-analytics/)**: it is a real-time, contextual analytics platform that provides insights into API health, performance, and usage.
+
+* **[Konnect Debugger](https://developer.konghq.com/gateway/debugger/)**: it provides a connected debugging experience and real-time trace-level visibility into API traffic.
+
