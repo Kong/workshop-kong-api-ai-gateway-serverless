@@ -5,26 +5,26 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.150.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.
-Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Transformer Request Callout OpenID Connect with Keycloak Access Control with Open Policy Agent (OPA) These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the Plugin Hub.">
+    <meta name="description" content="Module 06 Labs: Developer Portal &amp; API Products Back to Module 06 README
+Interactive Activities 1. Create a Dev Portal Navigate to Konnect and go to Dev Portal. Click Create Dev Portal and fill in the required details (name, authentication settings, visibility, etc.). Save and note your Dev Portal URL. 2. Publish an API to the Dev Portal Go to Dev Portal &gt; APIs. Click New API and provide the API name, version, and upload an OpenAPI spec or Markdown documentation. (Optional) Link the API to a Gateway Service to enable developer self-service and authentication. Publish the API to your Dev Portal and select an authentication strategy if required. ℹ️ You must have the Product Publisher role to publish APIs to the portal.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Use Cases :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta name="twitter:description" content="In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.
-Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Transformer Request Callout OpenID Connect with Keycloak Access Control with Open Policy Agent (OPA) These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the Plugin Hub.">
-    <meta property="og:url" content="http://localhost:1313/12-api-gateway/15-use-cases/index.html">
+    <meta name="twitter:title" content="Konnect Developer Portal :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta name="twitter:description" content="Module 06 Labs: Developer Portal &amp; API Products Back to Module 06 README
+Interactive Activities 1. Create a Dev Portal Navigate to Konnect and go to Dev Portal. Click Create Dev Portal and fill in the required details (name, authentication settings, visibility, etc.). Save and note your Dev Portal URL. 2. Publish an API to the Dev Portal Go to Dev Portal &gt; APIs. Click New API and provide the API name, version, and upload an OpenAPI spec or Markdown documentation. (Optional) Link the API to a Gateway Service to enable developer self-service and authentication. Publish the API to your Dev Portal and select an authentication strategy if required. ℹ️ You must have the Product Publisher role to publish APIs to the portal.">
+    <meta property="og:url" content="http://localhost:1313/15-developer-portal/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
-    <meta property="og:title" content="Use Cases :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta property="og:description" content="In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.
-Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Transformer Request Callout OpenID Connect with Keycloak Access Control with Open Policy Agent (OPA) These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the Plugin Hub.">
+    <meta property="og:title" content="Konnect Developer Portal :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta property="og:description" content="Module 06 Labs: Developer Portal &amp; API Products Back to Module 06 README
+Interactive Activities 1. Create a Dev Portal Navigate to Konnect and go to Dev Portal. Click Create Dev Portal and fill in the required details (name, authentication settings, visibility, etc.). Save and note your Dev Portal URL. 2. Publish an API to the Dev Portal Go to Dev Portal &gt; APIs. Click New API and provide the API name, version, and upload an OpenAPI spec or Markdown documentation. (Optional) Link the API to a Gateway Service to enable developer self-service and authentication. Publish the API to your Dev Portal and select an authentication strategy if required. ℹ️ You must have the Product Publisher role to publish APIs to the portal.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Use Cases :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta itemprop="description" content="In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.
-Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Transformer Request Callout OpenID Connect with Keycloak Access Control with Open Policy Agent (OPA) These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the Plugin Hub.">
-    <meta itemprop="wordCount" content="80">
-    <title>Use Cases :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/12-api-gateway/15-use-cases/index.xml" rel="alternate" type="application/rss+xml" title="Use Cases :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta itemprop="name" content="Konnect Developer Portal :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta itemprop="description" content="Module 06 Labs: Developer Portal &amp; API Products Back to Module 06 README
+Interactive Activities 1. Create a Dev Portal Navigate to Konnect and go to Dev Portal. Click Create Dev Portal and fill in the required details (name, authentication settings, visibility, etc.). Save and note your Dev Portal URL. 2. Publish an API to the Dev Portal Go to Dev Portal &gt; APIs. Click New API and provide the API name, version, and upload an OpenAPI spec or Markdown documentation. (Optional) Link the API to a Gateway Service to enable developer self-service and authentication. Publish the API to your Dev Portal and select an authentication strategy if required. ℹ️ You must have the Product Publisher role to publish APIs to the portal.">
+    <meta itemprop="wordCount" content="417">
+    <title>Konnect Developer Portal :: API Management with Kong Konnect and Serverless API Gateway</title>
+    <link href="/15-developer-portal/index.xml" rel="alternate" type="application/rss+xml" title="Konnect Developer Portal :: API Management with Kong Konnect and Serverless API Gateway">
     <link href="/css/auto-complete/auto-complete.min.css?1758319304" rel="stylesheet">
     <script src="/js/auto-complete/auto-complete.min.js?1758319304" defer></script>
     <script src="/js/search-lunr.js?1758319304" defer></script>
@@ -49,9 +49,9 @@ Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Tran
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = ``;
-      window.relearn.path='\/12-api-gateway\/15-use-cases\/index.html';
-      window.relearn.relBasePath='..\/..';
-      window.relearn.relBaseUri='..\/..';
+      window.relearn.path='\/15-developer-portal\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
       window.relearn.absBaseUri='http:\/\/localhost:1313';
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
@@ -99,7 +99,7 @@ Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Tran
       window.relearn.markVariant();
     </script>
   </head>
-  <body class="mobile-support html" data-url="/12-api-gateway/15-use-cases/index.html">
+  <body class="mobile-support html" data-url="/15-developer-portal/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -110,17 +110,31 @@ Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Tran
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#interactive-activities">Interactive Activities</a>
+      <ul>
+        <li><a href="#1-create-a-dev-portal">1. Create a Dev Portal</a></li>
+        <li><a href="#2-publish-an-api-to-the-dev-portal">2. Publish an API to the Dev Portal</a></li>
+        <li><a href="#3-register-as-a-developer-and-create-an-application">3. Register as a Developer and Create an Application</a></li>
+        <li><a href="#4-explore-api-products-classic-dev-portal-v2">4. Explore API Products (Classic Dev Portal v2)</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-takeaways">Key Takeaways</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/index.html"><span itemprop="name">Kong API Gateway</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Use Cases</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Konnect Developer Portal</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/122-kong-service-route/index.html" title="Kong Gateway Service and Kong Route (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/14-apiops-deck/index.html" title="APIOps and decK (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html" title="Proxy Caching (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/16-ai-gateway/index.html" title="Kong AI Gateway (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -134,26 +148,75 @@ Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Tran
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable 12-api-gateway" tabindex="-1">
+      <main id="R-body-inner" class="highlightable 15-developer-portal" tabindex="-1">
         <div class="flex-block-wrapper">
 <article class="default">
   <header class="headline">
   </header>
 
-<h1 id="use-cases">Use Cases</h1>
+<h1 id="konnect-developer-portal">Konnect Developer Portal</h1>
 
-<p>In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.</p>
+<h1 id="module-06-labs-developer-portal--api-products">Module 06 Labs: Developer Portal &amp; API Products</h1>
+<p><a href="./README.md">Back to Module 06 README</a></p>
+<hr>
+<h2 id="interactive-activities">Interactive Activities</h2>
+<h3 id="1-create-a-dev-portal">1. Create a Dev Portal</h3>
 <ul>
-<li>Proxy caching</li>
-<li>API Key with Kong Consumers</li>
-<li>Rate Limiting using Redis</li>
-<li>Request Transformer</li>
-<li>Request Callout</li>
-<li>OpenID Connect with Keycloak</li>
-<li>Access Control with Open Policy Agent (OPA)</li>
+<li>Navigate to <strong>Konnect</strong> and go to <strong>Dev Portal</strong>.</li>
+<li>Click <strong>Create Dev Portal</strong> and fill in the required details (name, authentication settings, visibility, etc.).</li>
+<li>Save and note your Dev Portal URL.</li>
 </ul>
-<p>These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the <a href="https://docs.konghq.com/hub/" rel="external" target="_blank">Plugin Hub</a>.</p>
-<p>You can now click <strong>Next</strong> to begin the module.</p>
+<h3 id="2-publish-an-api-to-the-dev-portal">2. Publish an API to the Dev Portal</h3>
+<ul>
+<li>Go to <strong>Dev Portal &gt; APIs</strong>.</li>
+<li>Click <strong>New API</strong> and provide the API name, version, and upload an OpenAPI spec or Markdown documentation.</li>
+<li>(Optional) Link the API to a Gateway Service to enable developer self-service and authentication.</li>
+<li>Publish the API to your Dev Portal and select an authentication strategy if required.
+<blockquote>
+<p>ℹ️ You must have the <code>Product Publisher</code> role to publish APIs to the portal.</p></blockquote>
+</li>
+</ul>
+<h3 id="3-register-as-a-developer-and-create-an-application">3. Register as a Developer and Create an Application</h3>
+<ul>
+<li>Open your Dev Portal URL in a new browser window.</li>
+<li>Sign up as a new developer (or sign in if you already have an account).</li>
+<li>Once approved, go to <strong>My Apps</strong> and create a new application.</li>
+<li>Register your application for one or more APIs and generate credentials (API key or OIDC, depending on the authentication strategy).</li>
+</ul>
+<h3 id="4-explore-api-products-classic-dev-portal-v2">4. Explore API Products (Classic Dev Portal v2)</h3>
+<ul>
+<li>In <strong>Konnect</strong>, navigate to <strong>API Products</strong>.</li>
+<li>Create a new API Product, add a version, and link it to a Gateway Service.</li>
+<li>Add documentation (OpenAPI spec and/or Markdown).</li>
+<li>Publish the API Product to a classic Dev Portal (v2) by selecting the portal and confirming publication.</li>
+</ul>
+<hr>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>The Konnect Dev Portal enables you to publish, document, and manage APIs for internal, partner, or public consumption.</li>
+<li>APIs can be published to the Dev Portal with OpenAPI/AsyncAPI specs and Markdown documentation, and linked to Gateway Services for authentication and self-service.</li>
+<li>Developers can self-register, create applications, and generate credentials directly from the Dev Portal.</li>
+<li>API Products (v2) allow you to bundle multiple services and versions, manage documentation, and publish to classic Dev Portals for broader consumption.</li>
+<li>All of these actions can be performed via the Konnect UI, providing a user-friendly, centralized management experience for your API ecosystem.</li>
+</ul>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Explore advanced Dev Portal customization options (branding, custom pages, and layouts).</li>
+<li>Review analytics for your APIs and API Products in Konnect.</li>
+<li>Learn about automating API and Dev Portal management using Konnect APIs or Terraform.</li>
+</ul>
+<hr>
+<p><a href="./README.md">Back to Module 06 README</a></p>
+<hr>
+<p><strong>References:</strong></p>
+<ul>
+<li><a href="https://developer.konghq.com/dev-portal/#dev-portal" rel="external" target="_blank">Konnect Dev Portal Overview</a></li>
+<li><a href="https://developer.konghq.com/dev-portal/apis/#publish-your-api-to-dev-portal" rel="external" target="_blank">Publish your API to Dev Portal</a></li>
+<li><a href="https://developer.konghq.com/api-products/" rel="external" target="_blank">API Products and Classic Dev Portal</a></li>
+<li><a href="https://developer.konghq.com/dev-portal/self-service/" rel="external" target="_blank">Developer Self-Service and App Registration</a></li>
+</ul>
+<p><em>All steps above are achievable via the Konnect UI as described in the official documentation.</em></p>
 
   <footer class="footline">
   </footer>
@@ -204,17 +267,9 @@ Proxy caching API Key with Kong Consumers Rate Limiting using Redis Request Tran
             <li class="" data-nav-id="/10-prerequisites/index.html"><a class="padding" href="/10-prerequisites/index.html">Prerequisites</a><ul id="R-subsections-cdc0df3ea972ffd3a9c45dea986dc8ab" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/architecture/index.html"><a class="padding" href="/architecture/index.html">Kong Konnect Architectural Overview</a></li>
             <li class="" data-nav-id="/11-konnect-setup/index.html"><a class="padding" href="/11-konnect-setup/index.html">Konnect Setup</a><ul id="R-subsections-fd457d3a7fac9b2f9cefa5c6c0dae1e7" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/12-api-gateway/index.html"><a class="padding" href="/12-api-gateway/index.html">Kong API Gateway</a><ul id="R-subsections-edeba57bcdf65a92672ecb9c5ed9177f" class="collapsible-menu">
-            <li class="" data-nav-id="/12-api-gateway/122-kong-service-route/index.html"><a class="padding" href="/12-api-gateway/122-kong-service-route/index.html">Kong Gateway Service and Kong Route</a></li>
-            <li class="active parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/index.html">Use Cases</a><ul id="R-subsections-d072a953a914cdb4c69798f4d5bdaaed" class="collapsible-menu">
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html">Proxy Caching</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/151-key-authentication/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/151-key-authentication/index.html">API Key Authentication</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/153-response-transformer/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/153-response-transformer/index.html">Response Transformer</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/154-request-callout/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/154-request-callout/index.html">Request Callout</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html">Rate Limiting</a></li>
-            <li class="alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/157-openidconnect/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/157-openidconnect/index.html">OpenID Connect</a><ul id="R-subsections-34875f368b35fa0fde449b57e732d3fb" class="collapsible-menu"></ul></li></ul></li></ul></li>
+            <li class="" data-nav-id="/12-api-gateway/index.html"><a class="padding" href="/12-api-gateway/index.html">Kong API Gateway</a><ul id="R-subsections-edeba57bcdf65a92672ecb9c5ed9177f" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/14-apiops-deck/index.html"><a class="padding" href="/14-apiops-deck/index.html">APIOps and decK</a></li>
-            <li class="" data-nav-id="/15-developer-portal/index.html"><a class="padding" href="/15-developer-portal/index.html">Konnect Developer Portal</a></li>
+            <li class="active " data-nav-id="/15-developer-portal/index.html"><a class="padding" href="/15-developer-portal/index.html">Konnect Developer Portal</a></li>
             <li class="" data-nav-id="/16-ai-gateway/index.html"><a class="padding" href="/16-ai-gateway/index.html">Kong AI Gateway</a><ul id="R-subsections-2f2bf218915a29de3a144cfa324a5fc4" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/20-observability/index.html"><a class="padding" href="/20-observability/index.html">Konnect Builtin Observability</a><ul id="R-subsections-3829b558aa20efb46efd7e331dc0c9e9" class="collapsible-menu"></ul></li>
           </ul>

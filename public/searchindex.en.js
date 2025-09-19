@@ -312,6 +312,22 @@ var relearn_searchindex = [
     "uri": "/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html"
   },
   {
+    "breadcrumb": "API Management with Kong Konnect and Serverless API Gateway",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "14-Apiops-Decks",
+    "uri": "/14-apiops-deck/index.html"
+  },
+  {
+    "breadcrumb": "API Management with Kong Konnect and Serverless API Gateway",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "15-Developer-Portals",
+    "uri": "/15-developer-portal/index.html"
+  },
+  {
     "breadcrumb": "",
     "content": "Introduction Kong Konnect is an API lifecycle management platform delivered as a service. The management plane is hosted in the cloud by Kong. The management plane enables customers to securely execute API management activities such as create API routes, define services etc. Runtime environments connect with the management plane using mutual transport layer authentication (mTLS), receive the updates and take customer facing API traffic.\nThe runtime environments can be:\nSelf-managed and deployed in your personal environment Managed by Kong in two options: Dedicated Cloud Gateway: it runs on isolated infrastructure within Kong-managed environments in AWS, Azure, or GCP offering the performance and security of dedicated infrastructure with the operational ease of SaaS. Serverless Gateway: it is a lightweight API gateways, ideal for developers who want to test or experiment in a pre-production environment. Learning Objectives In this workshop, you will:\nGet an architectural overview of Kong Konnect platform.\nSet up Konnect runtime as a Serverless Gateway.\nLearn what are services, routes and plugin.\nDeploy a sample microservice and access the application using the defined route.\nUse the platform to address the following API Gateway use cases\nProxy caching Authentication and Authorization Response Transformer Request Callout Rate limiting Observability And the following AI Gateway use cases\nPrompt Engineering LLM-based Request and Reponse transformation Semantic Caching Token-based Rate Limiting Semantic Routing RAG - Retrieval-Augmented Generation Expected Duration Workshop Introduction (15 minutes) Architectural Walkthrough (10 minutes) Sample Application and initial use case (15 minutes) Addressing API and AI Gateway use cases (90 minutes) Observability (30 minutes) Next Steps and Cleanup (5 min)",
     "description": "Introduction Kong Konnect is an API lifecycle management platform delivered as a service. The management plane is hosted in the cloud by Kong. The management plane enables customers to securely execute API management activities such as create API routes, define services etc. Runtime environments connect with the management plane using mutual transport layer authentication (mTLS), receive the updates and take customer facing API traffic.\nThe runtime environments can be:\nSelf-managed and deployed in your personal environment Managed by Kong in two options: Dedicated Cloud Gateway: it runs on isolated infrastructure within Kong-managed environments in AWS, Azure, or GCP offering the performance and security of dedicated infrastructure with the operational ease of SaaS. Serverless Gateway: it is a lightweight API gateways, ideal for developers who want to test or experiment in a pre-production environment. Learning Objectives In this workshop, you will:",
