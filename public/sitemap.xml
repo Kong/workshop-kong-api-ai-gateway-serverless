@@ -28,9 +28,6 @@
     <loc>http://localhost:1313/10-prerequisites/konnect-subscription/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/10-prerequisites/minikube/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/architecture/index.html</loc>
   </url>
   <url>
@@ -40,16 +37,13 @@
     <loc>http://localhost:1313/11-konnect-setup/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/11-konnect-setup/111-kgo-installation/index.html</loc>
+    <loc>http://localhost:1313/11-konnect-setup/111-serverless-api-gateway/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/11-konnect-setup/112-personal-access-token/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/11-konnect-setup/113-cp-dp/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/11-konnect-setup/114-elasticity/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/index.html</loc>
@@ -85,7 +79,7 @@
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/156-semantic-cache/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/index.html</loc>
+    <loc>http://localhost:1313/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/157-apikey/index.html</loc>
@@ -95,9 +89,6 @@
   </url>
   <url>
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/158-rate-limiting/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/158-opa-authorization/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/159-ai-proxy-advanced/index.html</loc>
@@ -118,58 +109,13 @@
     <loc>http://localhost:1313/20-observability/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/20-observability/21-builtin/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/20-observability/21-builtin/211-advanced_analytics/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/20-observability/21-builtin/212-debugger/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/20-observability/22-external/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/220-reference_architecture/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/222-introduction/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/223-otel_collector_operator_installation/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/224-observability_stack_installation/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/225-otel_collector_tracing/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/226-otel_collector_metrics/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/20-observability/22-external/227-otel_collector_logs/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1563-setup-rate-limiting-plugin/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1564-scale-kong-for-kubernetes-to-multiple-pods/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/156-rate-limiting-using-redis/1565-update-rate-limiting-plugin/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1573-keycloak/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1574-oidc_authorizationcode/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1575-oidc_clientcredentials/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1576-oidc_accesscontrol/index.html</loc>
+    <loc>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/index.html</loc>

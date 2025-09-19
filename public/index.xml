@@ -33,7 +33,7 @@
       <link>http://localhost:1313/12-api-gateway/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/12-api-gateway/index.html</guid>
-      <description>With our Control Plane created and Data Plane layer deployed it’s time to create an API and expose an application. In this module, we will:&#xA;Deploy an application to get protected by the Data Plane Use decK to define a Kong Service based on an endpoint provided by the application and a Kong Route on top of the Kong Service to expose the application. Enable Kong Plugins to the Kong Route or Kong Service. Define Kong Consumers to represent the entities sending request to the Gateway and enable Kong Plugin to them. With decK (declarations for Kong) you can manage Kong Konnect configuration in a declaratively way.</description>
+      <description>With our Control Plane created and Data Plane layer deployed it’s time to create an API and expose an application. In this module, we will:&#xA;Use decK to define a Kong Service based on an endpoint provided by the application and a Kong Route on top of the Kong Service to expose the application. Enable Kong Plugins to the Kong Route or Kong Service. Define Kong Consumers to represent the entities sending request to the Gateway and enable Kong Plugin to them. With decK (declarations for Kong) you can manage Kong Konnect configuration in a declaratively way.</description>
     </item>
     <item>
       <title>Kong AI Gateway</title>
@@ -43,11 +43,11 @@
       <description>In this second part of the workshop we are going to explore the AI capabilities provides by Kong AI Gateway and the specific collection of plugins.&#xA;You can now click Next to begin the module.&#xA;Optional Reading Learn more about Kong AI Gateway</description>
     </item>
     <item>
-      <title>Observability</title>
+      <title>Konnect Builtin Observability</title>
       <link>http://localhost:1313/20-observability/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/20-observability/index.html</guid>
-      <description>The third part of the workshop is dedicated to Observability, exploring:&#xA;Built-in capabilities provided by Konnect Kong Data Plane plugins to integrate with external Observability infrastructures such as Dynatrace or Honeycomb.</description>
+      <description>Basically Konnect provides two main Builtin Observability services:&#xA;Konnect Advanced Analytics: it is a real-time, contextual analytics platform that provides insights into API health, performance, and usage.&#xA;Konnect Debugger: it provides a connected debugging experience and real-time trace-level visibility into API traffic.</description>
     </item>
   </channel>
 </rss>

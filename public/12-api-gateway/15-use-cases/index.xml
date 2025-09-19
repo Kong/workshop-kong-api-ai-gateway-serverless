@@ -42,5 +42,12 @@
       <guid>http://localhost:1313/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html</guid>
       <description>Add Rate Limiting plugin Just like you did before, add the Rate Limiting plugin on the Route setting Minute as 5 requests per minute, and set the identifier to Service.&#xA;cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: rate-limiting-route paths: - /rate-limiting-route plugins: - name: rate-limiting instance_name: rate-limiting1 config: minute: 5 EOF Submit the declaration:</description>
     </item>
+    <item>
+      <title>OpenID Connect</title>
+      <link>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/index.html</guid>
+      <description>For advanced and enterprise class requirements, OpenID Connect (OIDC) is the preferred option to implement API consumer Authentication. OIDC also provides mechanisms to implement Authorization. In fact, when applying OIDC to secure the APIs, we’re delegating the Authentication process to the external Identity Provider entity.&#xA;OpenID Connect is an authentication protocol built on top of OAuth 2.0 and JWT - JSON Web Token to add login and profile information about the identity who is logged in.</description>
+    </item>
   </channel>
 </rss>
