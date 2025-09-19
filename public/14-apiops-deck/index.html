@@ -5,8 +5,7 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.150.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="Back to Module 05 README
-Interactive Activities Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
+    <meta name="description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
 Exercise Clone/Open your lab repo where specs and configs are stored.
 Review the Bash script below. It demonstrates:
@@ -14,8 +13,7 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta name="twitter:description" content="Back to Module 05 README
-Interactive Activities Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
+    <meta name="twitter:description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
 Exercise Clone/Open your lab repo where specs and configs are stored.
 Review the Bash script below. It demonstrates:
@@ -23,8 +21,7 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
     <meta property="og:url" content="http://localhost:1313/14-apiops-deck/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta property="og:description" content="Back to Module 05 README
-Interactive Activities Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
+    <meta property="og:description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
 Exercise Clone/Open your lab repo where specs and configs are stored.
 Review the Bash script below. It demonstrates:
@@ -32,35 +29,34 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta itemprop="description" content="Back to Module 05 README
-Interactive Activities Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
+    <meta itemprop="description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
 Exercise Clone/Open your lab repo where specs and configs are stored.
 Review the Bash script below. It demonstrates:
 Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes for traceability Merging platform defaults, plugins, and upstreams Syncing the configuration with Konnect #!/bin/sh set -e INPUT_SPEC=&#34;./spec/kong-air-apis.yaml&#34; OUTPUT_SPEC=&#34;./decks/kong.yaml&#34; echo &#34;Step 1: Convert OpenAPI → Kong decK format&#34; deck file openapi2kong --spec &#34;$INPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 2: Add tags&#34; deck file add-tags kong-konnect-bootcamp -s &#34;$OUTPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 3: Merge platform configs&#34; deck file merge &#34;$OUTPUT_SPEC&#34; ./platform/*.yaml -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 4: Sync with Konnect&#34; deck gateway sync &#34;$OUTPUT_SPEC&#34; \ --konnect-addr &#34;https://eu.api.konghq.com&#34; \ --konnect-control-plane-name &#34;bootcamp-2025&#34; \ --konnect-token &#34;$DECK_KONNECT_TOKEN&#34; \ --select-tag kong-konnect-bootcamp Refer to ./scripts/apiops.sh for the full Bash script. Run the script locally to simulate a pipeline execution.">
-    <meta itemprop="wordCount" content="289">
+    <meta itemprop="wordCount" content="277">
     <title>APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link href="/14-apiops-deck/index.xml" rel="alternate" type="application/rss+xml" title="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
-    <link href="/css/auto-complete/auto-complete.min.css?1758319304" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758319304" defer></script>
-    <script src="/js/search-lunr.js?1758319304" defer></script>
-    <script src="/js/search.js?1758319304" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758319653" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758319653" defer></script>
+    <script src="/js/search-lunr.js?1758319653" defer></script>
+    <script src="/js/search.js?1758319653" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758319304";
+      window.relearn.index_js_url="/searchindex.en.js?1758319653";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758319304" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758319304" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758319304" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758319304" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758319653" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758319653" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758319653" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758319653" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758319304" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758319304" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758319304" rel="stylesheet">
-    <link href="/css/theme.css?1758319304" rel="stylesheet">
-    <link href="/css/format-html.css?1758319304" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758319653" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758319653" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758319653" rel="stylesheet">
+    <link href="/css/theme.css?1758319653" rel="stylesheet">
+    <link href="/css/format-html.css?1758319653" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -129,7 +125,7 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#interactive-activities">Interactive Activities</a>
+    <li>
       <ul>
         <li><a href="#concept">Concept</a></li>
         <li><a href="#exercise">Exercise</a></li>
@@ -170,9 +166,6 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
 
 <h1 id="apiops-and-deck">APIOps and decK</h1>
 
-<p><a href="./README.md">Back to Module 05 README</a></p>
-<hr>
-<h2 id="interactive-activities">Interactive Activities</h2>
 <h3 id="concept">Concept</h3>
 <p>APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.<br>
 With Kong Konnect and <strong>decK</strong>, APIs can be treated as code — versioned, tested, and deployed through pipelines.</p>
@@ -242,7 +235,6 @@ With Kong Konnect and <strong>decK</strong>, APIs can be treated as code — ver
 <li>Move towards full GitOps by integrating declarative API configs with source control workflows.</li>
 </ul>
 <hr>
-<p><a href="./README.md">Back to Module 05 README</a></p>
 
   <footer class="footline">
   </footer>
@@ -315,8 +307,8 @@ With Kong Konnect and <strong>decK</strong>, APIs can be treated as code — ver
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758319304" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758319304" defer></script>
-    <script src="/js/theme.js?1758319304" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758319653" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758319653" defer></script>
+    <script src="/js/theme.js?1758319653" defer></script>
   </body>
 </html>

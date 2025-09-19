@@ -4,14 +4,6 @@ weight : 150
 ---
 
 
-# Module 06 Labs: Developer Portal & API Products
-
-[Back to Module 06 README](./README.md)
-
----
-
-## Interactive Activities
-
 ### 1. Create a Dev Portal
 - Navigate to **Konnect** and go to **Dev Portal**.
 - Click **Create Dev Portal** and fill in the required details (name, authentication settings, visibility, etc.).
@@ -55,9 +47,6 @@ weight : 150
 - Learn about automating API and Dev Portal management using Konnect APIs or Terraform.
 ---
 
-[Back to Module 06 README](./README.md)
-
----
 
 **References:**  
 - [Konnect Dev Portal Overview](https://developer.konghq.com/dev-portal/#dev-portal)  

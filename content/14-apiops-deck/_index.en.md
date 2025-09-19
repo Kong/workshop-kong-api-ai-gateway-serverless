@@ -3,13 +3,6 @@ title : "APIOps and decK"
 weight : 140
 ---
 
-
-[Back to Module 05 README](./README.md)
-
----
-
-## Interactive Activities
-
 ### Concept
 
 APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.  
@@ -72,5 +65,3 @@ With Kong Konnect and **decK**, APIs can be treated as code — versioned, teste
 - Move towards full GitOps by integrating declarative API configs with source control workflows.
 
 ---
-
-[Back to Module 05 README](./README.md)

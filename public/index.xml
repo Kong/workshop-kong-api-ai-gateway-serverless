@@ -36,6 +36,20 @@
       <description>With our Control Plane created and Data Plane layer deployed it’s time to create an API and expose an application. In this module, we will:&#xA;Use decK to define a Kong Service based on an endpoint provided by the application and a Kong Route on top of the Kong Service to expose the application. Enable Kong Plugins to the Kong Route or Kong Service. Define Kong Consumers to represent the entities sending request to the Gateway and enable Kong Plugin to them. With decK (declarations for Kong) you can manage Kong Konnect configuration in a declaratively way.</description>
     </item>
     <item>
+      <title>APIOps and decK</title>
+      <link>http://localhost:1313/14-apiops-deck/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/14-apiops-deck/index.html</guid>
+      <description>Back to Module 05 README&#xA;Interactive Activities Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.&#xA;With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.&#xA;Exercise Clone/Open your lab repo where specs and configs are stored.&#xA;Review the Bash script below. It demonstrates:&#xA;Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes for traceability Merging platform defaults, plugins, and upstreams Syncing the configuration with Konnect #!/bin/sh set -e INPUT_SPEC=&#34;./spec/kong-air-apis.yaml&#34; OUTPUT_SPEC=&#34;./decks/kong.yaml&#34; echo &#34;Step 1: Convert OpenAPI → Kong decK format&#34; deck file openapi2kong --spec &#34;$INPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 2: Add tags&#34; deck file add-tags kong-konnect-bootcamp -s &#34;$OUTPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 3: Merge platform configs&#34; deck file merge &#34;$OUTPUT_SPEC&#34; ./platform/*.yaml -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 4: Sync with Konnect&#34; deck gateway sync &#34;$OUTPUT_SPEC&#34; \ --konnect-addr &#34;https://eu.api.konghq.com&#34; \ --konnect-control-plane-name &#34;bootcamp-2025&#34; \ --konnect-token &#34;$DECK_KONNECT_TOKEN&#34; \ --select-tag kong-konnect-bootcamp Refer to ./scripts/apiops.sh for the full Bash script. Run the script locally to simulate a pipeline execution.</description>
+    </item>
+    <item>
+      <title>Konnect Developer Portal</title>
+      <link>http://localhost:1313/15-developer-portal/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/15-developer-portal/index.html</guid>
+      <description>1. Create a Dev Portal Navigate to Konnect and go to Dev Portal. Click Create Dev Portal and fill in the required details (name, authentication settings, visibility, etc.). Save and note your Dev Portal URL. 2. Publish an API to the Dev Portal Go to Dev Portal &gt; APIs. Click New API and provide the API name, version, and upload an OpenAPI spec or Markdown documentation. (Optional) Link the API to a Gateway Service to enable developer self-service and authentication. Publish the API to your Dev Portal and select an authentication strategy if required. ℹ️ You must have the Product Publisher role to publish APIs to the portal.</description>
+    </item>
+    <item>
       <title>Kong AI Gateway</title>
       <link>http://localhost:1313/16-ai-gateway/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -48,20 +62,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/20-observability/index.html</guid>
       <description>Basically Konnect provides two main Builtin Observability services:&#xA;Konnect Advanced Analytics: it is a real-time, contextual analytics platform that provides insights into API health, performance, and usage.&#xA;Konnect Debugger: it provides a connected debugging experience and real-time trace-level visibility into API traffic.</description>
-    </item>
-    <item>
-      <title>14-Apiops-Decks</title>
-      <link>http://localhost:1313/14-apiops-deck/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/14-apiops-deck/index.html</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>15-Developer-Portals</title>
-      <link>http://localhost:1313/15-developer-portal/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/15-developer-portal/index.html</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
