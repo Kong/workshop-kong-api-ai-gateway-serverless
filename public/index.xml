@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>API Management with Kong Konnect :: API Management with Kong Konnect - Serverless</title>
+    <title>API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/index.html</link>
-    <description>Introduction Kong Konnect is an API lifecycle management platform delivered as a service. The management plane is hosted in the cloud by Kong, while the runtime environments are deployed in your personal environment. Management plane enables customers to securely execute API management activities such as create API routes, define services etc. Runtime environments connect with the management plane using mutual transport layer authentication (mTLS), receive the updates and take customer facing API traffic.</description>
+    <description>Introduction Kong Konnect is an API lifecycle management platform delivered as a service. The management plane is hosted in the cloud by Kong. The management plane enables customers to securely execute API management activities such as create API routes, define services etc. Runtime environments connect with the management plane using mutual transport layer authentication (mTLS), receive the updates and take customer facing API traffic.&#xA;The runtime environments can be:&#xA;Self-managed and deployed in your personal environment Managed by Kong in two options: Dedicated Cloud Gateway: it runs on isolated infrastructure within Kong-managed environments in AWS, Azure, or GCP offering the performance and security of dedicated infrastructure with the operational ease of SaaS. Serverless Gateway: it is a lightweight API gateways, ideal for developers who want to test or experiment in a pre-production environment. Learning Objectives In this workshop, you will:</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
@@ -12,7 +12,7 @@
       <link>http://localhost:1313/10-prerequisites/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/10-prerequisites/index.html</guid>
-      <description>Knowledge Attendees should have intermediate knowledge of Kubernetes and Docker for installations of Konnect Data Plane and other products like Keycloak, Redis, Prometheus etc.&#xA;Attendees should have basic knowledge of GenAI models, specially LLMs and Embedding models as well as providers like OpenAI, Mistral, Anthropic, AWS, GCP, Azure.&#xA;Kong Academy Complete two badges via Kong Academy: Kong Gateway Foundations and Kong Gateway Operations&#xA;Kong Konnect Subscription You will need a Kong Konnect Subscription to execute this workshop.</description>
+      <description>Knowledge Attendees should have basic knowledge of containers and other products like Keycloak, Redis, Prometheus etc.&#xA;Attendees should have basic knowledge of GenAI models, specially LLMs and Embedding models as well as providers like OpenAI, Mistral, Anthropic, AWS, GCP, Azure.&#xA;Kong Academy Complete two badges via Kong Academy: Kong Gateway Foundations and Kong Gateway Operations&#xA;Kong Konnect Subscription You will need a Kong Konnect Subscription to execute this workshop.&#xA;Environment Please, make sure you have decK installed in your local environment.</description>
     </item>
     <item>
       <title>Kong Konnect Architectural Overview</title>

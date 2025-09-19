@@ -1,7 +1,7 @@
 theme = 'hugo-theme-relearn'
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'API Management with Kong Konnect - Serverless'
+title = 'API Management with Kong Konnect and Serverless API Gateway'
 [module]
   [[module.imports]]
     path = 'github.com/McShelby/hugo-theme-relearn'

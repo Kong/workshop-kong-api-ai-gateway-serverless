@@ -1,18 +1,24 @@
 ---
-title: "API Management with Kong Konnect"
+title: "API Management with Kong Konnect and Serverless API Gateway"
 weight: 0
 ---
 
 # Introduction
 
-Kong Konnect is an API lifecycle management platform delivered as a service. The management plane is hosted in the cloud by Kong, while the runtime environments are deployed in your personal environment. Management plane enables customers to securely execute API management activities such as create API routes, define services etc. Runtime environments connect with the management plane using mutual transport layer authentication (mTLS), receive the updates and take customer facing API traffic.
+Kong Konnect is an API lifecycle management platform delivered as a service. The management plane is hosted in the cloud by Kong. The management plane enables customers to securely execute API management activities such as create API routes, define services etc. Runtime environments connect with the management plane using mutual transport layer authentication (mTLS), receive the updates and take customer facing API traffic.
+
+The runtime environments can be:
+* Self-managed and deployed in your personal environment
+* Managed by Kong in two options:
+    * Dedicated Cloud Gateway: it runs on isolated infrastructure within Kong-managed environments in AWS, Azure, or GCP offering the performance and security of dedicated infrastructure with the operational ease of SaaS.
+    * Serverless Gateway: it is a lightweight API gateways, ideal for developers who want to test or experiment in a pre-production environment.
 
 # Learning Objectives
 
 In this workshop, you will:
 
 * Get an architectural overview of Kong Konnect platform.
-* Set up Konnect runtime on Kubernetes Cluster.
+* Set up Konnect runtime as a Serverless Gateway.
 * Learn what are services, routes and plugin.
 * Deploy a sample microservice and access the application using the defined route.
 * Use the platform to address the following API Gateway use cases

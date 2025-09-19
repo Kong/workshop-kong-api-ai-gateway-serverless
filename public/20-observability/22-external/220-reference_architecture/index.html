@@ -10,45 +10,45 @@ The main components here are:
 Konnect Control Plane: responsible for administration tasks including APIs and Policies definition Konnect Data Plane: handles the requests sent by the API consumers Kong Gateway Plugins: components running inside the Data Plane to produce OpenTelemetry signals Upstream Service: services or microservices protected by the Konnnect Data Plane OpenTelemetry Collector: handles and processes the signals sent by the OTel plugin and sends them to the Dynatrace tenant Observability Stack: formed by Loki, Prometheus, Jaeger and Grafana, provides a single pane of glass with dashboards, reports, etc.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Reference Architecture :: API Management with Kong Konnect - Serverless">
+    <meta name="twitter:title" content="Reference Architecture :: API Management with Kong Konnect and Serverless API Gateway">
     <meta name="twitter:description" content="The Kong Konnect and Observability Stack topology is quite simple in this example:
 The main components here are:
 Konnect Control Plane: responsible for administration tasks including APIs and Policies definition Konnect Data Plane: handles the requests sent by the API consumers Kong Gateway Plugins: components running inside the Data Plane to produce OpenTelemetry signals Upstream Service: services or microservices protected by the Konnnect Data Plane OpenTelemetry Collector: handles and processes the signals sent by the OTel plugin and sends them to the Dynatrace tenant Observability Stack: formed by Loki, Prometheus, Jaeger and Grafana, provides a single pane of glass with dashboards, reports, etc.">
     <meta property="og:url" content="http://localhost:1313/20-observability/22-external/220-reference_architecture/index.html">
-    <meta property="og:site_name" content="API Management with Kong Konnect - Serverless">
-    <meta property="og:title" content="Reference Architecture :: API Management with Kong Konnect - Serverless">
+    <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
+    <meta property="og:title" content="Reference Architecture :: API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:description" content="The Kong Konnect and Observability Stack topology is quite simple in this example:
 The main components here are:
 Konnect Control Plane: responsible for administration tasks including APIs and Policies definition Konnect Data Plane: handles the requests sent by the API consumers Kong Gateway Plugins: components running inside the Data Plane to produce OpenTelemetry signals Upstream Service: services or microservices protected by the Konnnect Data Plane OpenTelemetry Collector: handles and processes the signals sent by the OTel plugin and sends them to the Dynatrace tenant Observability Stack: formed by Loki, Prometheus, Jaeger and Grafana, provides a single pane of glass with dashboards, reports, etc.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Observability">
-    <meta itemprop="name" content="Reference Architecture :: API Management with Kong Konnect - Serverless">
+    <meta itemprop="name" content="Reference Architecture :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="The Kong Konnect and Observability Stack topology is quite simple in this example:
 The main components here are:
 Konnect Control Plane: responsible for administration tasks including APIs and Policies definition Konnect Data Plane: handles the requests sent by the API consumers Kong Gateway Plugins: components running inside the Data Plane to produce OpenTelemetry signals Upstream Service: services or microservices protected by the Konnnect Data Plane OpenTelemetry Collector: handles and processes the signals sent by the OTel plugin and sends them to the Dynatrace tenant Observability Stack: formed by Loki, Prometheus, Jaeger and Grafana, provides a single pane of glass with dashboards, reports, etc.">
     <meta itemprop="wordCount" content="103">
-    <title>Reference Architecture :: API Management with Kong Konnect - Serverless</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758292573" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758292573" defer></script>
-    <script src="/js/search-lunr.js?1758292573" defer></script>
-    <script src="/js/search.js?1758292573" defer></script>
+    <title>Reference Architecture :: API Management with Kong Konnect and Serverless API Gateway</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1758293222" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758293222" defer></script>
+    <script src="/js/search-lunr.js?1758293222" defer></script>
+    <script src="/js/search.js?1758293222" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758292573";
+      window.relearn.index_js_url="/searchindex.en.js?1758293222";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758292573" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758292573" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758292573" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758292573" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758293222" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758293222" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758293222" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758293222" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758292573" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758292573" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758292573" rel="stylesheet">
-    <link href="/css/theme.css?1758292573" rel="stylesheet">
-    <link href="/css/format-html.css?1758292573" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758293222" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758293222" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758293222" rel="stylesheet">
+    <link href="/css/theme.css?1758293222" rel="stylesheet">
+    <link href="/css/format-html.css?1758293222" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -119,7 +119,7 @@ Konnect Control Plane: responsible for administration tasks including APIs and P
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/20-observability/index.html"><span itemprop="name">Observability</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/20-observability/22-external/index.html"><span itemprop="name">External Observability Stack</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Reference Architecture</span><meta itemprop="position" content="4"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/20-observability/index.html"><span itemprop="name">Observability</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/20-observability/22-external/index.html"><span itemprop="name">External Observability Stack</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Reference Architecture</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/20-observability/22-external/index.html" title="External Observability Stack (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -147,8 +147,8 @@ Konnect Control Plane: responsible for administration tasks including APIs and P
 <h1 id="reference-architecture">Reference Architecture</h1>
 
 <p>The Kong Konnect and Observability Stack topology is quite simple in this example:</p>
-<p><a href="#R-image-d30de1b76cc1714b784c82319467195b" class="lightbox-link"><img alt="otel_collector" class="lazy lightbox figure-image" loading="lazy" src="/static/images/otel_reference_architeture.jpg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d30de1b76cc1714b784c82319467195b"><img alt="otel_collector" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/otel_reference_architeture.jpg"></a></p>
+<p><a href="#R-image-95007f07908d7900d36bb1353c92104e" class="lightbox-link"><img alt="otel_collector" class="lazy lightbox figure-image" loading="lazy" src="/static/images/otel_reference_architeture.jpg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-95007f07908d7900d36bb1353c92104e"><img alt="otel_collector" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/otel_reference_architeture.jpg"></a></p>
 <p>The main components here are:</p>
 <ul>
 <li>Konnect Control Plane: responsible for administration tasks including APIs and Policies definition</li>
@@ -170,7 +170,7 @@ Konnect Control Plane: responsible for administration tasks including APIs and P
       <div id="R-header-wrapper" class="default-animation">
         <div id="R-header" class="default-animation">
           <a id="R-logo" class="R-default" href="/index.html">
-            <div class="logo-title">API Management with Kong Konnect - Serverless</div>
+            <div class="logo-title">API Management with Kong Konnect and Serverless API Gateway</div>
           </a>
         </div>
         <search><form action="/search/index.html" method="get">
@@ -237,8 +237,8 @@ Konnect Control Plane: responsible for administration tasks including APIs and P
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758292573" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758292573" defer></script>
-    <script src="/js/theme.js?1758292573" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758293222" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758293222" defer></script>
+    <script src="/js/theme.js?1758293222" defer></script>
   </body>
 </html>
