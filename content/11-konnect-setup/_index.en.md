@@ -21,12 +21,26 @@ Here's a Reference Architecture that will be implemented in this workshop:
 * Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services.
 
 
+### Konnect Control Planes
+
+Kong Konnect is the main Kong offering for hybrid deployments, including:
+
+* Self-managed Data Planes
+* Dedicated Cloud Gateways - Data Plane nodes that are fully managed by Kong
+* Serverless gateways - lightweight API gateways, also managed by Kong
+* Kong Ingress Controller which allows you to run Kong Gateway as a Kubernetes Ingress.
+
+To check all these options, click ``+ New Gateway`` inside the ``API Gateway`` menu option:
+
+![Control Planes](/static/images/konnect_control_planes.png)
+
 
 ### Serverless Proxy URL
 
-Log in to the Kong Konnect UI. Click "API Gateway" and choose the ``serverless-default`` Control Plane. You should see the following landing page:
+Konnect trial creates, by default, a Serverless API Gateway, naming it ``serverless-default``
+Log in to the Kong Konnect UI. Inside the "API Gateway" page you should see your your Serverless Control Plane:
 
-![Serverless Control Page](/static/images/serverless_control_plane.png)
+![Serverless Control Plane](/static/images/serverless_control_plane.png)
 
 Copy the value of your Control Plane ``Proxy URL`` and keep it handy. That's the URL you Data Plane is located.
 
