@@ -28,13 +28,13 @@ For the purpose of this workshop, you’ll create and expose a service to the HT
 Before start using decK, you should ping Konnect to check if the connecting is up. Note we assume you have the PAT environment variable set. Please, refer to the previous section to learn how to issue a PAT.
 
 {{<highlight>}}
-deck gateway ping --konnect-control-plane-name kong-workshop --konnect-token $PAT
+deck gateway ping --konnect-control-plane-name serverless-default --konnect-token $PAT
 {{</highlight>}}
 
 
 **Expected Output**
 ```
-Successfully Konnected to the Example-Name organization!
+Successfully Konnected to the AcquaOrg organization!
 ```
 
 
@@ -48,14 +48,14 @@ Create the following declaration first. Remarks:
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -98,35 +98,78 @@ deck gateway reset --konnect-control-plane-name kong-aws --konnect-token $PAT -f
 We are to use the same ELB provisioned during the Data Plane deployment:
 
 {{<highlight>}}
-curl -v $DATA_PLANE_LB/httpbin-route/get
+curl -v $DATA_PLANE_URL/httpbin-route/get
 {{</highlight>}}
 
 If successful, you should see the **httpbin** output:
 
 ```
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-> GET /httpbin-route/get HTTP/1.1
-> Host: 127.0.0.1
+* Host kong-cceb6a93c9usmc2hk.kongcloud.dev:443 was resolved.
+* IPv6: (none)
+* IPv4: 66.51.127.198
+*   Trying 66.51.127.198:443...
+* Connected to kong-cceb6a93c9usmc2hk.kongcloud.dev (66.51.127.198) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+* (304) (IN), TLS handshake, Unknown (8):
+* (304) (IN), TLS handshake, Certificate (11):
+* (304) (IN), TLS handshake, CERT verify (15):
+* (304) (IN), TLS handshake, Finished (20):
+* (304) (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.kongcloud.dev
+*  start date: Aug 15 23:28:00 2025 GMT
+*  expire date: Nov 13 23:27:59 2025 GMT
+*  subjectAltName: host "kong-cceb6a93c9usmc2hk.kongcloud.dev" matched cert's "*.kongcloud.dev"
+*  issuer: C=US; O=Let's Encrypt; CN=E6
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://kong-cceb6a93c9usmc2hk.kongcloud.dev/httpbin-route/get
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: kong-cceb6a93c9usmc2hk.kongcloud.dev]
+* [HTTP/2] [1] [:path: /httpbin-route/get]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET /httpbin-route/get HTTP/2
+> Host: kong-cceb6a93c9usmc2hk.kongcloud.dev
 > User-Agent: curl/8.7.1
 > Accept: */*
 > 
 * Request completely sent off
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-< Content-Length: 377
-< Connection: keep-alive
-< Server: gunicorn
-< Date: Wed, 06 Aug 2025 16:19:15 GMT
-< Access-Control-Allow-Origin: *
-< Access-Control-Allow-Credentials: true
-< X-Kong-Upstream-Latency: 6
-< X-Kong-Proxy-Latency: 3
-< Via: 1.1 kong/3.11.0.2-enterprise-edition
-< X-Kong-Request-Id: 0cbe555eefb4f14bb43f9b511435bd5c
+< HTTP/2 200 
+< content-type: application/json
+< content-length: 500
+< x-kong-request-id: b3517f65a230d3091265e724d7d3ba14
+< server: gunicorn/19.9.0
+< date: Mon, 22 Sep 2025 19:59:58 GMT
+< access-control-allow-origin: *
+< access-control-allow-credentials: true
+< x-kong-upstream-latency: 10
+< x-kong-proxy-latency: 131
+< via: 1.1 kong/3.11.0.0-enterprise-edition
 < 
-{"args":{},"headers":{"Accept":"*/*","Connection":"keep-alive","Host":"httpbin.kong.svc.cluster.local:8000","User-Agent":"curl/8.7.1","X-Forwarded-Host":"127.0.0.1","X-Forwarded-Path":"/httpbin-route/get","X-Forwarded-Prefix":"/httpbin-route","X-Kong-Request-Id":"0cbe555eefb4f14bb43f9b511435bd5c"},"origin":"10.244.0.1","url":"http://httpbin.kong.svc.cluster.local:8000/get"}
-* Connection #0 to host 127.0.0.1 left intact
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Connection": "keep-alive", 
+    "Host": "httpbin.konghq.com", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Forwarded-Host": "kong-cceb6a93c9usmc2hk.kongcloud.dev", 
+    "X-Forwarded-Path": "/httpbin-route/get", 
+    "X-Forwarded-Prefix": "/httpbin-route", 
+    "X-Kong-Request-Id": "b3517f65a230d3091265e724d7d3ba14"
+  }, 
+  "origin": "186.204.54.49, 66.51.127.198, 172.16.12.194", 
+  "url": "https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get"
+}
+* Connection #0 to host kong-cceb6a93c9usmc2hk.kongcloud.dev left intact
 ```
 
 

@@ -5,7 +5,7 @@ weight : 110
 
 This chapter will walk you through
 
-* Konnect Control Plane and Data Plane creation.
+* Konnect Control Plane and Data Plane.
 * Access Kong Data Plane.
 
 Here's a Reference Architecture that will be implemented in this workshop:
@@ -20,8 +20,45 @@ Here's a Reference Architecture that will be implemented in this workshop:
 * Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases.
 * Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services.
 
-### Konnect Control Plane
-After Konnect registration, you need to create your first Control Plane. There are multiple ways to do it:
+
+
+### Serverless Proxy URL
+
+Log in to the Kong Konnect UI. Click "API Gateway" and choose the ``serverless-default`` Control Plane. You should see the following landing page:
+
+![Serverless Control Page](/static/images/serverless_control_plane.png)
+
+Copy the value of your Control Plane ``Proxy URL`` and keep it handy. That's the URL you Data Plane is located.
+
+### Send a request to your Serverless Data Plane
+
+Save your URL in an enviroment variable:
+
+```
+export DATA_PLANE_URL=<YOUR_DATA_PLANE_URL>
+```
+
+You can use ``curl`` to send the first request to the Data Plane
+
+```
+curl $DATA_PLANE_URL
+```
+
+Expected result
+```
+{
+  "message":"no Route matched with those values",
+  "request_id":"84fac2649eb6ae01f4d920115a4df70d"
+}
+```
+
+
+
+
+
+
+### Konnect Control Plane and Kong Objects
+There are multiple ways to create new Kong Objects in your Control Plane:
 * Konnect User Interface.
 * [RESTful Admin API](https://developer.konghq.com/api/), a fundamental mechanism for administration purposes.
 * [Kong Gateway Operator (KGO)](https://developer.konghq.com/gateway-operator/) and Kubernetes CRDs

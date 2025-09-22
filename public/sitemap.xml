@@ -31,19 +31,10 @@
     <loc>http://localhost:1313/architecture/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/10-prerequisites/redis-ollama-keycloak-opa/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/11-konnect-setup/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/11-konnect-setup/111-serverless-api-gateway/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/11-konnect-setup/112-personal-access-token/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/11-konnect-setup/113-cp-dp/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/index.html</loc>

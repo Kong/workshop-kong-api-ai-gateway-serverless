@@ -3,7 +3,7 @@
   <channel>
     <title>Prerequisites :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/10-prerequisites/index.html</link>
-    <description>Knowledge Attendees should have basic knowledge of containers and other products like Keycloak, Redis, Prometheus etc.&#xA;Attendees should have basic knowledge of GenAI models, specially LLMs and Embedding models as well as providers like OpenAI, Mistral, Anthropic, AWS, GCP, Azure.&#xA;Kong Academy Complete two badges via Kong Academy: Kong Gateway Foundations and Kong Gateway Operations&#xA;Kong Konnect Subscription You will need a Kong Konnect Subscription to execute this workshop.&#xA;Environment Please, make sure you have decK installed in your local environment.</description>
+    <description>Knowledge Attendees should have basic knowledge of containers and other products like Keycloak, Redis, Prometheus etc.&#xA;Attendees should have basic knowledge of GenAI models, specially LLMs and Embedding models as well as providers like OpenAI, Mistral, Anthropic, AWS, GCP, Azure.&#xA;Kong Academy Complete two badges via Kong Academy: Kong Gateway Foundations and Kong Gateway Operations&#xA;Environment 1. Kong Konnect Subscription You will need a Kong Konnect Subscription to execute this workshop.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/10-prerequisites/index.xml" rel="self" type="application/rss+xml" />
@@ -13,13 +13,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/10-prerequisites/konnect-subscription/index.html</guid>
       <description>Konnect Plus Subscription You will need a Konnect subscription. Follow the steps below to obtain a Konnect Plus subscription. Initially $500 of credits are provided for up to 30 days, after the credits have expired or the time has finished Konnect Plus will charge based on Konnect Plus pricing. Following the workshop instructions will use less than $500 credits. After the workshop has finished the Konnect Plus environment can be deleted.</description>
-    </item>
-    <item>
-      <title>Serverless API Gateway</title>
-      <link>http://localhost:1313/10-prerequisites/redis-ollama-keycloak-opa/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/10-prerequisites/redis-ollama-keycloak-opa/index.html</guid>
-      <description>Install Redis Use the redis-stack Helm Charts to install Redis as our vector database.&#xA;helm repo add redis-stack https://redis-stack.github.io/helm-redis-stack helm repo update helm install redis-stack redis-stack/redis-stack -n redis --create-namespace Check the installation:&#xA;$ kubectl exec $(kubectl get pod -n redis -o json | jq -r &#39;.items[].metadata.name&#39;) -n redis -- redis-server --version Redis server v=7.4.5 sha=00000000:0 malloc=libc bits=64 build=d2e5921793838dd If you want to uninstall it:&#xA;helm uninstall redis-stack -n redis kubectl delete namespace redis Install Ollama As our Embedding model, we’re going to consume the “mxbai-embed-large:latest” model handled locally by Ollama. Use the Ollama Helm Charts to install it.</description>
     </item>
   </channel>
 </rss>
