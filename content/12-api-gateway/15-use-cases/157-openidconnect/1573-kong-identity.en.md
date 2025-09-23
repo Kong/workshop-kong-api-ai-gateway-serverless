@@ -12,16 +12,44 @@ Kong Identity enables you to use Konnect to generate, authenticate, and authoriz
 * Integrate secure authentication into your Kong Gateway APIs
 
 
-### OAuth Grants
+### Create a Kong Service and Route
 
-The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and [Kong Identity](https://developer.konghq.com/kong-identity/) as the Identity Provider. Let's start instantiating an Authentication Service in Kong Identity.
+```
+cat > httpbin.yaml << 'EOF'
+_format_version: "3.0"
+_konnect:
+  control_plane_name: serverless-default
+_info:
+  select_tags:
+  - httpbin-service-route
+services:
+- name: httpbin-service
+  host: httpbin.konghq.com
+  port: 80
+  routes:
+  - name: httpbin-route
+    paths:
+    - /httpbin-route
+EOF
+```
+
+Submit the declaration
+
+```
+deck gateway sync --konnect-token $PAT httpbin.yaml
+```
 
 
-### Authentication Server in Kong Identity
+### Client Credentials Grant
+
+This next section describe the OAuth Client Credentials grants implemented by Kong Konnect and [Kong Identity](https://developer.konghq.com/kong-identity/) as the Identity Provider. Let's start instantiating an Authentication Service in Kong Identity.
+
+
+### Create the Authentication Server in Kong Identity
 
 Before you can configure any authentication plugin, you must first create an auth server in Kong Identity. The auth server name is unique per each organization and each Konnect region.
 
-Create an auth server using the /v1/auth-servers endpoint:
+Create an auth server using the ``/v1/auth-servers`` endpoint:
 
 ```
 curl -sX POST "https://us.api.konghq.com/v1/auth-servers" \
@@ -39,15 +67,15 @@ You should get a response like this:
 ```
 {
   "audience": "http://myhttpbin.dev",
-  "created_at": "2025-09-19T20:59:43.302149Z",
+  "created_at": "2025-09-23T13:04:47.789958Z",
   "description": "AuthN Server 1",
-  "id": "6ddf6bee-6cc0-417f-89ad-8375eead428b",
-  "issuer": "https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth",
+  "id": "836fda4d-612c-4faf-9c45-284a0ecd637a",
+  "issuer": "https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth",
   "labels": {},
-  "metadata_uri": "https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth/.well-known/openid-configuration",
+  "metadata_uri": "https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth/.well-known/openid-configuration",
   "name": "AuthN_Server_1",
   "signing_algorithm": "RS256",
-  "updated_at": "2025-09-19T20:59:43.302149Z"
+  "updated_at": "2025-09-23T13:04:47.789958Z"
 }
 ```
 
@@ -73,19 +101,9 @@ export ISSUER_URL=$(curl -sX GET "https://us.api.konghq.com/v1/auth-servers" -H 
 
 
 
-
-##### Delete the AuthN Server
-If you want to delete it run:
-
-```
-curl -sX DELETE "https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID" \
-  -H "Authorization: Bearer $PAT" | jq
-```
-
-
 ### Configure the auth server with scopes
 
-Configure a scope in your auth server using the /v1/auth-servers/$AUTHN_SERVER_ID/scopes endpoint:
+Configure a scope in your auth server using the ``/v1/auth-servers/$AUTHN_SERVER_ID/scopes`` endpoint:
 
 ```
 curl -sX POST "https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID/scopes" \
@@ -104,14 +122,14 @@ Expected response
 
 ```
 {
-  "created_at": "2025-09-19T21:05:34.604098Z",
+  "created_at": "2025-09-23T13:06:24.252827Z",
   "default": false,
   "description": "scope1",
   "enabled": true,
-  "id": "897f7a59-b6e0-4dca-b0d7-b896c681d50b",
+  "id": "b71c1192-6416-4933-b913-5358904dd234",
   "include_in_metadata": false,
   "name": "scope1",
-  "updated_at": "2025-09-19T21:05:34.604098Z"
+  "updated_at": "2025-09-23T13:06:24.252827Z"
 }
 ```
 
@@ -147,16 +165,16 @@ Expected output:
 
 ```
 {
-  "created_at": "2025-09-19T21:08:28.258487Z",
+  "created_at": "2025-09-23T13:06:56.096243Z",
   "enabled": true,
-  "id": "9be4da8d-6a0e-404c-86bd-df11b6c74e32",
+  "id": "9b149436-ce85-4fb9-9105-b887546e7b21",
   "include_in_all_scopes": false,
   "include_in_scopes": [
-    "897f7a59-b6e0-4dca-b0d7-b896c681d50b"
+    "b71c1192-6416-4933-b913-5358904dd234"
   ],
   "include_in_token": true,
   "name": "claim1",
-  "updated_at": "2025-09-19T21:08:28.258487Z",
+  "updated_at": "2025-09-23T13:06:56.096243Z",
   "value": "claim1"
 }
 ```
@@ -196,14 +214,14 @@ Expected output:
   "access_token_duration": 3600,
   "allow_all_scopes": false,
   "allow_scopes": [
-    "897f7a59-b6e0-4dca-b0d7-b896c681d50b"
+    "b71c1192-6416-4933-b913-5358904dd234"
   ],
-  "client_secret": "50e6onbo97p3v8oxq1dlz0me",
-  "created_at": "2025-09-19T21:10:46.583789Z",
+  "client_secret": "8vbywkjyj1zxcgsujljnuge1",
+  "created_at": "2025-09-23T13:07:23.691662Z",
   "grant_types": [
     "client_credentials"
   ],
-  "id": "324939us3jgatrdc",
+  "id": "fxsn74prsnrcyskm",
   "id_token_duration": 3600,
   "labels": {},
   "login_uri": null,
@@ -214,7 +232,7 @@ Expected output:
     "token"
   ],
   "token_endpoint_auth_method": "client_secret_post",
-  "updated_at": "2025-09-19T21:10:46.583789Z"
+  "updated_at": "2025-09-23T13:07:23.691662Z"
 }
 ```
 
@@ -229,10 +247,10 @@ export CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 
 You can configure the OIDC plugin to use Kong Identity as the identity provider for your Gateway Services. In this example, you’ll apply the plugin to the control plane globally, but you can alternatively apply it to the Gateway Service.
 
-First, get the ID of the ```serverless-cp1``` control plane you configured in the prerequisites:
+First, get the ID of the ```serverless-default``` control plane you configured in the prerequisites:
 
 ```
-export CONTROL_PLANE_ID=$(curl -sX GET "https://us.api.konghq.com/v2/control-planes?filter%5Bname%5D%5Bcontains%5D=serverless-cp1" \
+export CONTROL_PLANE_ID=$(curl -sX GET "https://us.api.konghq.com/v2/control-planes?filter%5Bname%5D%5Bcontains%5D=serverless-default" \
     -H "Authorization: Bearer $PAT" | jq -r '.data[0].id')
 ```
 
@@ -268,17 +286,6 @@ In this example:
 The Gateway Service requires an access token from the client to access the Service. Generate a token for the client by making a call to the issuer URL:
 
 ```
-curl -sX POST "$ISSUER_URL/oauth/token" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=client_credentials" \
-  -d "client_id=$CLIENT_ID" \
-  -d "client_secret=$CLIENT_SECRET" \
-  -d "scope=scope1" | jq
-```
-
-Export your access token:
-
-```
 export ACCESS_TOKEN=$(curl -sX POST "$ISSUER_URL/oauth/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials" \
@@ -299,21 +306,21 @@ Expected result
   "header": {
     "typ": "JWT",
     "alg": "RS256",
-    "kid": "b79c88f4-564d-4aea-9be7-3377e95ff758"
+    "kid": "a01feebd-5bed-45d7-9244-582010807705"
   },
   "payload": {
     "aud": [
       "http://myhttpbin.dev"
     ],
     "claim1": "claim1",
-    "client_id": "324939us3jgatrdc",
-    "exp": 1758321135,
-    "iat": 1758317535,
-    "iss": "https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth",
-    "jti": "a449f513-4c2d-41d6-85d7-685feb758e64",
-    "nbf": 1758317535,
+    "client_id": "fxsn74prsnrcyskm",
+    "exp": 1758636665,
+    "iat": 1758633065,
+    "iss": "https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth",
+    "jti": "370cab31-31f4-44da-b0dc-74577b8a5a81",
+    "nbf": 1758633065,
     "scope": "scope1",
-    "sub": "324939us3jgatrdc"
+    "sub": "fxsn74prsnrcyskm"
   }
 }
 ```
@@ -324,34 +331,54 @@ Expected result
 Access the ```httpbin``` Gateway Service using the short-lived token generated by the authorization server from Kong Identity:
 
 ```
-curl -i -X GET "$DATA_PLANE_URL/oidc-route/get" \
+curl -i -X GET "$DATA_PLANE_URL/httpbin-route/get" \
   -H "Authorization: Bearer $ACCESS_TOKEN"
 ```
 
 Check the token with:
 ```
-curl -sX GET "$DATA_PLANE_URL/oidc-route/get" \
+curl -sX GET "$DATA_PLANE_URL/httpbin-route/get" \
   -H "Authorization: Bearer $ACCESS_TOKEN" | jq -r '.headers.Authorization' | cut -d ' ' -f 2 | jwt decode -j -
+```
+
+Expected output
+```
 {
   "header": {
     "typ": "JWT",
     "alg": "RS256",
-    "kid": "b79c88f4-564d-4aea-9be7-3377e95ff758"
+    "kid": "a01feebd-5bed-45d7-9244-582010807705"
   },
   "payload": {
     "aud": [
       "http://myhttpbin.dev"
     ],
     "claim1": "claim1",
-    "client_id": "324939us3jgatrdc",
-    "exp": 1758321135,
-    "iat": 1758317535,
-    "iss": "https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth",
-    "jti": "a449f513-4c2d-41d6-85d7-685feb758e64",
-    "nbf": 1758317535,
+    "client_id": "fxsn74prsnrcyskm",
+    "exp": 1758636665,
+    "iat": 1758633065,
+    "iss": "https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth",
+    "jti": "370cab31-31f4-44da-b0dc-74577b8a5a81",
+    "nbf": 1758633065,
     "scope": "scope1",
-    "sub": "324939us3jgatrdc"
+    "sub": "fxsn74prsnrcyskm"
   }
 }
 ```
 
+
+### Cleaning Up
+
+After testing the configuration, reset the Control Plane:
+
+```
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+```
+
+
+Delete the AuthN Server:
+
+```
+curl -sX DELETE "https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID" \
+  -H "Authorization: Bearer $PAT"
+```

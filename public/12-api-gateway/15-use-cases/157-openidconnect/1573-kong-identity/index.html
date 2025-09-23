@@ -6,45 +6,45 @@
     <meta name="generator" content="Hugo 0.150.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
     <meta name="description" content="Kong Identity Kong Identity enables you to use Konnect to generate, authenticate, and authorize API access. You can use Kong Identity to:
-Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs OAuth Grants The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and Kong Identity as the Identity Provider. Let’s start instantiating an Authentication Service in Kong Identity.">
+Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs Create a Kong Service and Route cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.konghq.com port: 80 routes: - name: httpbin-route paths: - /httpbin-route EOF Submit the declaration">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kong Identity :: API Management with Kong Konnect and Serverless API Gateway">
     <meta name="twitter:description" content="Kong Identity Kong Identity enables you to use Konnect to generate, authenticate, and authorize API access. You can use Kong Identity to:
-Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs OAuth Grants The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and Kong Identity as the Identity Provider. Let’s start instantiating an Authentication Service in Kong Identity.">
+Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs Create a Kong Service and Route cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.konghq.com port: 80 routes: - name: httpbin-route paths: - /httpbin-route EOF Submit the declaration">
     <meta property="og:url" content="http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="Kong Identity :: API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:description" content="Kong Identity Kong Identity enables you to use Konnect to generate, authenticate, and authorize API access. You can use Kong Identity to:
-Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs OAuth Grants The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and Kong Identity as the Identity Provider. Let’s start instantiating an Authentication Service in Kong Identity.">
+Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs Create a Kong Service and Route cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.konghq.com port: 80 routes: - name: httpbin-route paths: - /httpbin-route EOF Submit the declaration">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Kong API Gateway">
     <meta itemprop="name" content="Kong Identity :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="Kong Identity Kong Identity enables you to use Konnect to generate, authenticate, and authorize API access. You can use Kong Identity to:
-Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs OAuth Grants The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and Kong Identity as the Identity Provider. Let’s start instantiating an Authentication Service in Kong Identity.">
-    <meta itemprop="wordCount" content="905">
+Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs Create a Kong Service and Route cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.konghq.com port: 80 routes: - name: httpbin-route paths: - /httpbin-route EOF Submit the declaration">
+    <meta itemprop="wordCount" content="935">
     <title>Kong Identity :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758631220" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758631220" defer></script>
-    <script src="/js/search-lunr.js?1758631220" defer></script>
-    <script src="/js/search.js?1758631220" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758635848" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758635848" defer></script>
+    <script src="/js/search-lunr.js?1758635848" defer></script>
+    <script src="/js/search.js?1758635848" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758631220";
+      window.relearn.index_js_url="/searchindex.en.js?1758635848";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758631220" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758631220" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758631220" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758631220" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758635848" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758635848" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758635848" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758635848" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758631220" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758631220" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758631220" rel="stylesheet">
-    <link href="/css/theme.css?1758631220" rel="stylesheet">
-    <link href="/css/format-html.css?1758631220" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758635848" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758635848" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758635848" rel="stylesheet">
+    <link href="/css/theme.css?1758635848" rel="stylesheet">
+    <link href="/css/format-html.css?1758635848" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -116,14 +116,16 @@ Create authorization servers per region Issue and validate access tokens Integra
     <li>
       <ul>
         <li><a href="#kong-identity">Kong Identity</a></li>
-        <li><a href="#oauth-grants">OAuth Grants</a></li>
-        <li><a href="#authentication-server-in-kong-identity">Authentication Server in Kong Identity</a></li>
+        <li><a href="#create-a-kong-service-and-route">Create a Kong Service and Route</a></li>
+        <li><a href="#client-credentials-grant">Client Credentials Grant</a></li>
+        <li><a href="#create-the-authentication-server-in-kong-identity">Create the Authentication Server in Kong Identity</a></li>
         <li><a href="#configure-the-auth-server-with-scopes">Configure the auth server with scopes</a></li>
         <li><a href="#configure-the-auth-server-with-custom-claims">Configure the auth server with custom claims</a></li>
         <li><a href="#create-a-client-in-the-authn-server">Create a client in the AuthN Server</a></li>
         <li><a href="#configure-the-oidc-plugin">Configure the OIDC plugin</a></li>
         <li><a href="#generate-a-token-for-the-client">Generate a token for the client</a></li>
         <li><a href="#access-the-gateway-service-using-the-token">Access the Gateway service using the token</a></li>
+        <li><a href="#cleaning-up">Cleaning Up</a></li>
       </ul>
     </li>
   </ul>
@@ -166,11 +168,30 @@ Create authorization servers per region Issue and validate access tokens Integra
 <li>Issue and validate access tokens</li>
 <li>Integrate secure authentication into your Kong Gateway APIs</li>
 </ul>
-<h3 id="oauth-grants">OAuth Grants</h3>
-<p>The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and <a href="https://developer.konghq.com/kong-identity/" rel="external" target="_blank">Kong Identity</a> as the Identity Provider. Let&rsquo;s start instantiating an Authentication Service in Kong Identity.</p>
-<h3 id="authentication-server-in-kong-identity">Authentication Server in Kong Identity</h3>
+<h3 id="create-a-kong-service-and-route">Create a Kong Service and Route</h3>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39;
+_format_version: &#34;3.0&#34;
+_konnect:
+  control_plane_name: serverless-default
+_info:
+  select_tags:
+  - httpbin-service-route
+services:
+- name: httpbin-service
+  host: httpbin.konghq.com
+  port: 80
+  routes:
+  - name: httpbin-route
+    paths:
+    - /httpbin-route
+EOF</code></pre></div>
+<p>Submit the declaration</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT httpbin.yaml</code></pre></div>
+<h3 id="client-credentials-grant">Client Credentials Grant</h3>
+<p>This next section describe the OAuth Client Credentials grants implemented by Kong Konnect and <a href="https://developer.konghq.com/kong-identity/" rel="external" target="_blank">Kong Identity</a> as the Identity Provider. Let&rsquo;s start instantiating an Authentication Service in Kong Identity.</p>
+<h3 id="create-the-authentication-server-in-kong-identity">Create the Authentication Server in Kong Identity</h3>
 <p>Before you can configure any authentication plugin, you must first create an auth server in Kong Identity. The auth server name is unique per each organization and each Konnect region.</p>
-<p>Create an auth server using the /v1/auth-servers endpoint:</p>
+<p>Create an auth server using the <code>/v1/auth-servers</code> endpoint:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX POST &#34;https://us.api.konghq.com/v1/auth-servers&#34; \
   -H &#34;Authorization: Bearer $PAT&#34;\
   -H &#34;Content-Type: application/json&#34; \
@@ -182,15 +203,15 @@ Create authorization servers per region Issue and validate access tokens Integra
 <p>You should get a response like this:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>{
   &#34;audience&#34;: &#34;http://myhttpbin.dev&#34;,
-  &#34;created_at&#34;: &#34;2025-09-19T20:59:43.302149Z&#34;,
+  &#34;created_at&#34;: &#34;2025-09-23T13:04:47.789958Z&#34;,
   &#34;description&#34;: &#34;AuthN Server 1&#34;,
-  &#34;id&#34;: &#34;6ddf6bee-6cc0-417f-89ad-8375eead428b&#34;,
-  &#34;issuer&#34;: &#34;https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth&#34;,
+  &#34;id&#34;: &#34;836fda4d-612c-4faf-9c45-284a0ecd637a&#34;,
+  &#34;issuer&#34;: &#34;https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth&#34;,
   &#34;labels&#34;: {},
-  &#34;metadata_uri&#34;: &#34;https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth/.well-known/openid-configuration&#34;,
+  &#34;metadata_uri&#34;: &#34;https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth/.well-known/openid-configuration&#34;,
   &#34;name&#34;: &#34;AuthN_Server_1&#34;,
   &#34;signing_algorithm&#34;: &#34;RS256&#34;,
-  &#34;updated_at&#34;: &#34;2025-09-19T20:59:43.302149Z&#34;
+  &#34;updated_at&#34;: &#34;2025-09-23T13:04:47.789958Z&#34;
 }</code></pre></div>
 <h5 id="check-your-authn-server">Check your AuthN Server</h5>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX GET &#34;https://us.api.konghq.com/v1/auth-servers&#34; \
@@ -199,12 +220,8 @@ Create authorization servers per region Issue and validate access tokens Integra
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export AUTHN_SERVER_ID=$(curl -sX GET &#34;https://us.api.konghq.com/v1/auth-servers&#34; -H &#34;Authorization: Bearer $PAT&#34; | jq -r &#39;.data[0].id&#39;)</code></pre></div>
 <p>Get the Issuer URL:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export ISSUER_URL=$(curl -sX GET &#34;https://us.api.konghq.com/v1/auth-servers&#34; -H &#34;Authorization: Bearer $PAT&#34; | jq -r &#39;.data[0].issuer&#39;)</code></pre></div>
-<h5 id="delete-the-authn-server">Delete the AuthN Server</h5>
-<p>If you want to delete it run:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX DELETE &#34;https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID&#34; \
-  -H &#34;Authorization: Bearer $PAT&#34; | jq</code></pre></div>
 <h3 id="configure-the-auth-server-with-scopes">Configure the auth server with scopes</h3>
-<p>Configure a scope in your auth server using the /v1/auth-servers/$AUTHN_SERVER_ID/scopes endpoint:</p>
+<p>Configure a scope in your auth server using the <code>/v1/auth-servers/$AUTHN_SERVER_ID/scopes</code> endpoint:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX POST &#34;https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID/scopes&#34; \
   -H &#34;Authorization: Bearer $PAT&#34;\
   -H &#34;Content-Type: application/json&#34; \
@@ -217,14 +234,14 @@ Create authorization servers per region Issue and validate access tokens Integra
   }&#39; | jq</code></pre></div>
 <p>Expected response</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>{
-  &#34;created_at&#34;: &#34;2025-09-19T21:05:34.604098Z&#34;,
+  &#34;created_at&#34;: &#34;2025-09-23T13:06:24.252827Z&#34;,
   &#34;default&#34;: false,
   &#34;description&#34;: &#34;scope1&#34;,
   &#34;enabled&#34;: true,
-  &#34;id&#34;: &#34;897f7a59-b6e0-4dca-b0d7-b896c681d50b&#34;,
+  &#34;id&#34;: &#34;b71c1192-6416-4933-b913-5358904dd234&#34;,
   &#34;include_in_metadata&#34;: false,
   &#34;name&#34;: &#34;scope1&#34;,
-  &#34;updated_at&#34;: &#34;2025-09-19T21:05:34.604098Z&#34;
+  &#34;updated_at&#34;: &#34;2025-09-23T13:06:24.252827Z&#34;
 }</code></pre></div>
 <p>Export your scope ID:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export SCOPE_ID=$(curl -sX GET &#34;https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID/scopes&#34; -H &#34;Authorization: Bearer $PAT&#34; | jq -r &#39;.data[0].id&#39;)</code></pre></div>
@@ -245,16 +262,16 @@ Create authorization servers per region Issue and validate access tokens Integra
   }&#39; | jq</code></pre></div>
 <p>Expected output:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>{
-  &#34;created_at&#34;: &#34;2025-09-19T21:08:28.258487Z&#34;,
+  &#34;created_at&#34;: &#34;2025-09-23T13:06:56.096243Z&#34;,
   &#34;enabled&#34;: true,
-  &#34;id&#34;: &#34;9be4da8d-6a0e-404c-86bd-df11b6c74e32&#34;,
+  &#34;id&#34;: &#34;9b149436-ce85-4fb9-9105-b887546e7b21&#34;,
   &#34;include_in_all_scopes&#34;: false,
   &#34;include_in_scopes&#34;: [
-    &#34;897f7a59-b6e0-4dca-b0d7-b896c681d50b&#34;
+    &#34;b71c1192-6416-4933-b913-5358904dd234&#34;
   ],
   &#34;include_in_token&#34;: true,
   &#34;name&#34;: &#34;claim1&#34;,
-  &#34;updated_at&#34;: &#34;2025-09-19T21:08:28.258487Z&#34;,
+  &#34;updated_at&#34;: &#34;2025-09-23T13:06:56.096243Z&#34;,
   &#34;value&#34;: &#34;claim1&#34;
 }</code></pre></div>
 <h3 id="create-a-client-in-the-authn-server">Create a client in the AuthN Server</h3>
@@ -284,14 +301,14 @@ Create authorization servers per region Issue and validate access tokens Integra
   &#34;access_token_duration&#34;: 3600,
   &#34;allow_all_scopes&#34;: false,
   &#34;allow_scopes&#34;: [
-    &#34;897f7a59-b6e0-4dca-b0d7-b896c681d50b&#34;
+    &#34;b71c1192-6416-4933-b913-5358904dd234&#34;
   ],
-  &#34;client_secret&#34;: &#34;50e6onbo97p3v8oxq1dlz0me&#34;,
-  &#34;created_at&#34;: &#34;2025-09-19T21:10:46.583789Z&#34;,
+  &#34;client_secret&#34;: &#34;8vbywkjyj1zxcgsujljnuge1&#34;,
+  &#34;created_at&#34;: &#34;2025-09-23T13:07:23.691662Z&#34;,
   &#34;grant_types&#34;: [
     &#34;client_credentials&#34;
   ],
-  &#34;id&#34;: &#34;324939us3jgatrdc&#34;,
+  &#34;id&#34;: &#34;fxsn74prsnrcyskm&#34;,
   &#34;id_token_duration&#34;: 3600,
   &#34;labels&#34;: {},
   &#34;login_uri&#34;: null,
@@ -302,15 +319,15 @@ Create authorization servers per region Issue and validate access tokens Integra
     &#34;token&#34;
   ],
   &#34;token_endpoint_auth_method&#34;: &#34;client_secret_post&#34;,
-  &#34;updated_at&#34;: &#34;2025-09-19T21:10:46.583789Z&#34;
+  &#34;updated_at&#34;: &#34;2025-09-23T13:07:23.691662Z&#34;
 }</code></pre></div>
 <p>The Client Secret will not be shown again, so copy both ID and Secret:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export CLIENT_ID=&lt;YOUR_CLIENT_ID&gt;
 export CLIENT_SECRET=&lt;YOUR_CLIENT_SECRET&gt;</code></pre></div>
 <h3 id="configure-the-oidc-plugin">Configure the OIDC plugin</h3>
 <p>You can configure the OIDC plugin to use Kong Identity as the identity provider for your Gateway Services. In this example, you’ll apply the plugin to the control plane globally, but you can alternatively apply it to the Gateway Service.</p>
-<p>First, get the ID of the <code>serverless-cp1</code> control plane you configured in the prerequisites:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export CONTROL_PLANE_ID=$(curl -sX GET &#34;https://us.api.konghq.com/v2/control-planes?filter%5Bname%5D%5Bcontains%5D=serverless-cp1&#34; \
+<p>First, get the ID of the <code>serverless-default</code> control plane you configured in the prerequisites:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export CONTROL_PLANE_ID=$(curl -sX GET &#34;https://us.api.konghq.com/v2/control-planes?filter%5Bname%5D%5Bcontains%5D=serverless-default&#34; \
     -H &#34;Authorization: Bearer $PAT&#34; | jq -r &#39;.data[0].id&#39;)</code></pre></div>
 <p>Enable the OIDC plugin globally:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX POST &#34;https://us.api.konghq.com/v2/control-planes/$CONTROL_PLANE_ID/core-entities/plugins/&#34; \
@@ -335,13 +352,6 @@ export CLIENT_SECRET=&lt;YOUR_CLIENT_SECRET&gt;</code></pre></div>
 </ul>
 <h3 id="generate-a-token-for-the-client">Generate a token for the client</h3>
 <p>The Gateway Service requires an access token from the client to access the Service. Generate a token for the client by making a call to the issuer URL:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX POST &#34;$ISSUER_URL/oauth/token&#34; \
-  -H &#34;Content-Type: application/x-www-form-urlencoded&#34; \
-  -d &#34;grant_type=client_credentials&#34; \
-  -d &#34;client_id=$CLIENT_ID&#34; \
-  -d &#34;client_secret=$CLIENT_SECRET&#34; \
-  -d &#34;scope=scope1&#34; | jq</code></pre></div>
-<p>Export your access token:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>export ACCESS_TOKEN=$(curl -sX POST &#34;$ISSUER_URL/oauth/token&#34; \
   -H &#34;Content-Type: application/x-www-form-urlencoded&#34; \
   -d &#34;grant_type=client_credentials&#34; \
@@ -355,51 +365,58 @@ export CLIENT_SECRET=&lt;YOUR_CLIENT_SECRET&gt;</code></pre></div>
   &#34;header&#34;: {
     &#34;typ&#34;: &#34;JWT&#34;,
     &#34;alg&#34;: &#34;RS256&#34;,
-    &#34;kid&#34;: &#34;b79c88f4-564d-4aea-9be7-3377e95ff758&#34;
+    &#34;kid&#34;: &#34;a01feebd-5bed-45d7-9244-582010807705&#34;
   },
   &#34;payload&#34;: {
     &#34;aud&#34;: [
       &#34;http://myhttpbin.dev&#34;
     ],
     &#34;claim1&#34;: &#34;claim1&#34;,
-    &#34;client_id&#34;: &#34;324939us3jgatrdc&#34;,
-    &#34;exp&#34;: 1758321135,
-    &#34;iat&#34;: 1758317535,
-    &#34;iss&#34;: &#34;https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth&#34;,
-    &#34;jti&#34;: &#34;a449f513-4c2d-41d6-85d7-685feb758e64&#34;,
-    &#34;nbf&#34;: 1758317535,
+    &#34;client_id&#34;: &#34;fxsn74prsnrcyskm&#34;,
+    &#34;exp&#34;: 1758636665,
+    &#34;iat&#34;: 1758633065,
+    &#34;iss&#34;: &#34;https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth&#34;,
+    &#34;jti&#34;: &#34;370cab31-31f4-44da-b0dc-74577b8a5a81&#34;,
+    &#34;nbf&#34;: 1758633065,
     &#34;scope&#34;: &#34;scope1&#34;,
-    &#34;sub&#34;: &#34;324939us3jgatrdc&#34;
+    &#34;sub&#34;: &#34;fxsn74prsnrcyskm&#34;
   }
 }</code></pre></div>
 <h3 id="access-the-gateway-service-using-the-token">Access the Gateway service using the token</h3>
 <p>Access the <code>httpbin</code> Gateway Service using the short-lived token generated by the authorization server from Kong Identity:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X GET &#34;$DATA_PLANE_URL/oidc-route/get&#34; \
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X GET &#34;$DATA_PLANE_URL/httpbin-route/get&#34; \
   -H &#34;Authorization: Bearer $ACCESS_TOKEN&#34;</code></pre></div>
 <p>Check the token with:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX GET &#34;$DATA_PLANE_URL/oidc-route/get&#34; \
-  -H &#34;Authorization: Bearer $ACCESS_TOKEN&#34; | jq -r &#39;.headers.Authorization&#39; | cut -d &#39; &#39; -f 2 | jwt decode -j -
-{
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX GET &#34;$DATA_PLANE_URL/httpbin-route/get&#34; \
+  -H &#34;Authorization: Bearer $ACCESS_TOKEN&#34; | jq -r &#39;.headers.Authorization&#39; | cut -d &#39; &#39; -f 2 | jwt decode -j -</code></pre></div>
+<p>Expected output</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>{
   &#34;header&#34;: {
     &#34;typ&#34;: &#34;JWT&#34;,
     &#34;alg&#34;: &#34;RS256&#34;,
-    &#34;kid&#34;: &#34;b79c88f4-564d-4aea-9be7-3377e95ff758&#34;
+    &#34;kid&#34;: &#34;a01feebd-5bed-45d7-9244-582010807705&#34;
   },
   &#34;payload&#34;: {
     &#34;aud&#34;: [
       &#34;http://myhttpbin.dev&#34;
     ],
     &#34;claim1&#34;: &#34;claim1&#34;,
-    &#34;client_id&#34;: &#34;324939us3jgatrdc&#34;,
-    &#34;exp&#34;: 1758321135,
-    &#34;iat&#34;: 1758317535,
-    &#34;iss&#34;: &#34;https://dhafxmmgz56rlw6b.us.identity.konghq.com/auth&#34;,
-    &#34;jti&#34;: &#34;a449f513-4c2d-41d6-85d7-685feb758e64&#34;,
-    &#34;nbf&#34;: 1758317535,
+    &#34;client_id&#34;: &#34;fxsn74prsnrcyskm&#34;,
+    &#34;exp&#34;: 1758636665,
+    &#34;iat&#34;: 1758633065,
+    &#34;iss&#34;: &#34;https://wt3fgfqb8r7fktwe.us.identity.konghq.com/auth&#34;,
+    &#34;jti&#34;: &#34;370cab31-31f4-44da-b0dc-74577b8a5a81&#34;,
+    &#34;nbf&#34;: 1758633065,
     &#34;scope&#34;: &#34;scope1&#34;,
-    &#34;sub&#34;: &#34;324939us3jgatrdc&#34;
+    &#34;sub&#34;: &#34;fxsn74prsnrcyskm&#34;
   }
 }</code></pre></div>
+<h3 id="cleaning-up">Cleaning Up</h3>
+<p>After testing the configuration, reset the Control Plane:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f</code></pre></div>
+<p>Delete the AuthN Server:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -sX DELETE &#34;https://us.api.konghq.com/v1/auth-servers/$AUTHN_SERVER_ID&#34; \
+  -H &#34;Authorization: Bearer $PAT&#34;</code></pre></div>
 
   <footer class="footline">
   </footer>
@@ -455,11 +472,10 @@ export CLIENT_SECRET=&lt;YOUR_CLIENT_SECRET&gt;</code></pre></div>
             <li class="" data-nav-id="/12-api-gateway/122-oas-import/index.html"><a class="padding" href="/12-api-gateway/122-oas-import/index.html">Import an OpenAPI specification</a></li>
             <li class="" data-nav-id="/12-api-gateway/123-kong-service-route-deck/index.html"><a class="padding" href="/12-api-gateway/123-kong-service-route-deck/index.html">Use decK to create Kong Objects</a></li>
             <li class="parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/index.html">Use Cases</a><ul id="R-subsections-d072a953a914cdb4c69798f4d5bdaaed" class="collapsible-menu">
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html">Proxy Caching</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/151-key-authentication/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/151-key-authentication/index.html">API Key Authentication</a></li>
+            <li class="" data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html">Proxy Caching and Rate Limiting</a></li>
+            <li class="" data-nav-id="/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html">API Key Authentication and Rate Limiting</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/153-response-transformer/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/153-response-transformer/index.html">Response Transformer</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/154-request-callout/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/154-request-callout/index.html">Request Callout</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html">Rate Limiting</a></li>
             <li class="parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/157-openidconnect/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/157-openidconnect/index.html">OpenID Connect</a><ul id="R-subsections-34875f368b35fa0fde449b57e732d3fb" class="collapsible-menu">
             <li class="active " data-nav-id="/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html">Kong Identity</a></li></ul></li></ul></li></ul></li>
             <li class="" data-nav-id="/14-apiops-deck/index.html"><a class="padding" href="/14-apiops-deck/index.html">APIOps and decK</a></li>
@@ -483,8 +499,8 @@ export CLIENT_SECRET=&lt;YOUR_CLIENT_SECRET&gt;</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758631220" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758631220" defer></script>
-    <script src="/js/theme.js?1758631220" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758635848" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758635848" defer></script>
+    <script src="/js/theme.js?1758635848" defer></script>
   </body>
 </html>

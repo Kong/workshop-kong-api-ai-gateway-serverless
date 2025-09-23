@@ -12,7 +12,7 @@
       <link>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html</guid>
-      <description>Kong Identity Kong Identity enables you to use Konnect to generate, authenticate, and authorize API access. You can use Kong Identity to:&#xA;Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs OAuth Grants The two next topics describe Authorization Code OAuth and Client Credentials grants implemented by Kong Konnect and Kong Identity as the Identity Provider. Let’s start instantiating an Authentication Service in Kong Identity.</description>
+      <description>Kong Identity Kong Identity enables you to use Konnect to generate, authenticate, and authorize API access. You can use Kong Identity to:&#xA;Create authorization servers per region Issue and validate access tokens Integrate secure authentication into your Kong Gateway APIs Create a Kong Service and Route cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.konghq.com port: 80 routes: - name: httpbin-route paths: - /httpbin-route EOF Submit the declaration</description>
     </item>
   </channel>
 </rss>
