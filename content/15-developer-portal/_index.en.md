@@ -3,41 +3,144 @@ title : "Konnect Developer Portal"
 weight : 150
 ---
 
+The Konnect Developer Portal is a customizable website for developers to locate, access, and consume API services. It enables developers to browse and search API documentation, try API operations, and manage their own credentials. The Portal supports both internal and external APIs through flexible deployment options.
+
+Dev Portal APIs allow you to publish APIs using OpenAPI or AsyncAPI specifications and Markdown documentation. You can provide highly customizable content at both the site and API level to offer additional context to developers.
+
+Konnect Developer Portal provides an extensive list of benefits to **Developers** as well as **Organizations**:
+
+**Developers**
+* Accelerates Onboarding:
+  * Self-service and instant access to documentation of APIs and testing tools
+* Empowers Innovation through discovery of APIs and usage instructions
+  * Build applications faster
+  * Foster culture of innovation
+* Improve Developer Experience
+  * Discovery of APIs
+  * In browser testing and troubleshooting tools
 
 
-Kong Service and Route
-1. Create a Kong Service based on http://httpbin.org
-2. Create a Kong Route with path “/“
+**Organizations**
+* Drives API Adoption
+  * Public or Partner facing portal markets APIs, fueling innovation and new revenue streams
+* Reduces Support Overhead
+  * Comprehensive and searchable documentation and self-service tools shifts the burden of support
+* Ensures Governance and Security
+  * Portal acts as single source of truth
+  * Ensures developers are using the correct, approved versions of APIs and adhering to policies
+* Enhances Collaboration
 
 
 
-CORS
-1. Globally enable the CORS plugin to your Control Plane
+## Basic Developer Portal implementation
+
+In this section we are going to cover the basic steps to get a Developer Portal deployed
+
+### Kong Service and Route
+
+1. Create a Kong Service based on ``http://httpbin.konghq.com``
+2. Create a Kong Route with path ``/``
+3. Globally enable the CORS plugin to your Control Plane. That's needed to solve the relationship between the Dev Portal and the Upstream Service.
+
+
+### Dev Portal creation
+
+1. Choose the **Dev Portal** menu option and click **+ Create a new portal**.
+2. Create a **Private Portal** named ``portal1``. In the **New Portal** page accept the default values and click **Save**
+![portal1](/static/images/portal1.png)
+3. Click **Go to overview**. You should see the **Overview** page of your portal
+![portal1_overview](/static/images/portal1_overview.png)
+4. Check the Portal configuration:
+* **User authentication**: ``Konnect built-in`` - That defines the default mechanism the Dev Portal uses for the user authentication. Besides the **build-in** option, it can be configured as **OIDC** or **SAML**.
+* **Default authentication strategy**: ``key-auth`` - That defines the mechanism to control the API consumption inside the Dev Portal.
+
+### Test your Dev Portal
+
+1. Sign Up
+
+If you click on the Dev Portal URL, you will play the Developer role and see your new portal home page. Since there's no developer created, click **Sing up** and register to the Portal. Type your name and use a real email since the Dev Portal will send a confirmation request to it.
+
+![portal1_signup](/static/images/portal1_signup.png)
+
+Check your email and click the **Confirm your email address**. Still playing the developer role, you should get redirected to the Dev Portal to define your password.
+
+After creating the password, if you try to login, you'll receive an error message saying "Your account is disabled or pending approval". That's because, by default, the Dev Portal was created with the **Auto approved developers** option disabled, meaning the administrator has to manually approve the new developers registrations.
+
+2. Approve the Developer registration
+
+Getting back to the Dev Portal Administrator role, return to the **Dev Portal** menu option and choose **Access and approvals**. You can approve the new developer registration in the page:
+
+![portal1_developer_approval](/static/images/portal1_developer_approval.png)
+
+3. Login to the Dev Portal
+
+Playing the Developer role again, try to login to the Dev Portal one more time. You should get redirected to the Dev Portal home page. Click the **API** tab. You are supposed to get an empty page since we don't have any API published.
+
+![portal1_no_apis](/static/images/portal1_no_apis.png)
 
 
 
-API
-1. Create an API
-Use httpbin-orig.yaml. Show the two sections: security & securitySchemes
 
-2. Check Spec and send a “try it!” the “Returns Origin IP”
+### API creation
 
-3. Add a documentation
+1. Prepare your OpenAPI specification
+
+Download the [httpbin_spec.yaml](/code/httpbin_spec.yaml) OpenAPI specification. From the Konnect Dev Portal perspective, the spec has two main configurations:
+* The ``servers`` section. Make sure the ``url`` parameters has your Proxy URL:
+```  
+  - url: <YOUR_PROXY_URL>
+```
+
+* Note the spec has added specific DevPortal elements in the ``security`` & ``securitySchemes`` sections. That means the DevPortal will use the Key Auth plugin to control the API Consumption inside the Portal.
+```
+#################################
+# Kong DevPortal Security mechanism
+#################################
+security:
+  - ApiKeyAuth: []
+#################################
+```
+
+```
+components:
+  securitySchemes:
+#################################
+# Kong Gateway Key-Auth
+#################################
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+#################################
+```
+
+
+2. Create your API
+
+Choose the **APIs** menu option inside **Dev Portal** and click **+ New API**. Upload your ``httpbin_orig.yaml`` and click **Create**. You should see your ``httpbin`` API page:
+
+![httpbin_api](/static/images/httpbin_api.png)
 
 
 
-Portal
-1. Create a portal
+3. Test your API
 
-2. Check
-User authn: Konnect built-in
-RBAC: disabled
-Default authentication strategy: key-auth
+Click the **API Specification** tab. Click **try it!** in the **Returns Origin IP**
 
-3. Check Settings -> Security tab
-User authN: on with build-in
-RBAC: off
-AuthN strategy: key-auth
+![tryit](/static/images/tryit.png)
+
+
+4. Add a documentation
+
+Click the **Documentation** tab. Create a new and empty document page with both name and slug as ``doc1``. Click **edit** and type some documentation. Click **save** and switch the **Published** toggle on.
+
+
+![api_documentation](/static/images/api_documentation.png)
+
+
+
+
+
 
 4. Play the developer role. Click on the portal link and sign up
 

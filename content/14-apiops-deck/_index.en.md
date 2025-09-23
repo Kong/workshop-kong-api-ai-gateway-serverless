@@ -110,7 +110,6 @@ curl -s $DATA_PLANE_URL/routes | jq
 ```
 
 
-
 ## CI tool integration
 
 As a best practice, for a CI tool integration, these steps should be included in a script and integrated into a CI tool of your choice (e.g., Jenkins, GitHub Actions, GitLab CI).
@@ -143,3 +142,10 @@ Besides decK, Kong offers other options to implement APIOps automation:
 
 
 ![apiops_automation](/static/images/apiops_automation.png)
+
+
+## Reset your Control Plane
+
+```
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+```
