@@ -4,6 +4,91 @@ weight : 150
 ---
 
 
+
+Kong Service and Route
+1. Create a Kong Service based on http://httpbin.org
+2. Create a Kong Route with path “/“
+
+
+
+CORS
+1. Globally enable the CORS plugin to your Control Plane
+
+
+
+API
+1. Create an API
+Use httpbin-orig.yaml. Show the two sections: security & securitySchemes
+
+2. Check Spec and send a “try it!” the “Returns Origin IP”
+
+3. Add a documentation
+
+
+
+Portal
+1. Create a portal
+
+2. Check
+User authn: Konnect built-in
+RBAC: disabled
+Default authentication strategy: key-auth
+
+3. Check Settings -> Security tab
+User authN: on with build-in
+RBAC: off
+AuthN strategy: key-auth
+
+4. Play the developer role. Click on the portal link and sign up
+
+5. Approve the developer
+
+6. Play the developer role. Sign in and show there’s no API available
+
+7. Go to APIs -> Portals tab and publish the API to the Portal with Private visibility
+
+8. Play the developer role. Reload the Portal and see the new API available 
+
+9. You should be able to consume the API, e.g. “Returns Origin IP”.
+
+
+
+RBAC
+
+1. Go to APIs -> Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service.
+You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later.
+
+When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. While you can’t directly modify the KAA plugin as it’s managed by Konnect, you can modify the plugin’s behavior by adding JSON to the advanced configuration of your application auth strategy.
+
+2. Play the developer role. If you try to consume the API will get a 401
+
+3. Portal -> Settings -> Security -> turn RBAC on to your Portal
+
+4. Portal -> Access and approvals -> create a Team
+
+5. Add the developer to the team
+
+6. Inside your team -> APIs -> Add a new role with the existing API and “API Consumer” role
+
+7. Play the developer role. If you try to consume the API you still get a 401
+
+
+
+App
+
+1. Play the developer role. Click “Use this API” and create an application (the Auth strategy is the default - api key auth)
+
+2. Copy the Credential (API Key - 3cI5F8xFj7DAkeAEfFA5vpHnQJjByYmx)
+
+3. Approve the Application
+
+4. Play the developer role. Add your API Key in the Authentication box. You should be able to consume the API (e.g. Returns Origin IP)
+
+5. Choose your app and navigate to the Credentials tab.
+
+
+
+
 ### 1. Create a Dev Portal
 - Navigate to **Konnect** and go to **Dev Portal**.
 - Click **Create Dev Portal** and fill in the required details (name, authentication settings, visibility, etc.).

@@ -3,7 +3,7 @@
   <channel>
     <title>Konnect Developer Portal :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/15-developer-portal/index.html</link>
-    <description>1. Create a Dev Portal Navigate to Konnect and go to Dev Portal. Click Create Dev Portal and fill in the required details (name, authentication settings, visibility, etc.). Save and note your Dev Portal URL. 2. Publish an API to the Dev Portal Go to Dev Portal &gt; APIs. Click New API and provide the API name, version, and upload an OpenAPI spec or Markdown documentation. (Optional) Link the API to a Gateway Service to enable developer self-service and authentication. Publish the API to your Dev Portal and select an authentication strategy if required. ℹ️ You must have the Product Publisher role to publish APIs to the portal.</description>
+    <description>Kong Service and Route&#xA;Create a Kong Service based on http://httpbin.org Create a Kong Route with path “/“ CORS&#xA;Globally enable the CORS plugin to your Control Plane API&#xA;Create an API Use httpbin-orig.yaml. Show the two sections: security &amp; securitySchemes&#xA;Check Spec and send a “try it!” the “Returns Origin IP”&#xA;Add a documentation&#xA;Portal&#xA;Create a portal&#xA;Check User authn: Konnect built-in RBAC: disabled Default authentication strategy: key-auth&#xA;Check Settings -&gt; Security tab User authN: on with build-in RBAC: off AuthN strategy: key-auth</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/15-developer-portal/index.xml" rel="self" type="application/rss+xml" />
