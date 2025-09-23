@@ -7,18 +7,18 @@ weight : 150
 
 ### Kong Gateway Plugin list
 
-Before enabling the **Proxy Caching**, let's check the list of plugins Konnect provides. Inside the ``kong-workshop`` Control Plane, click on **Plugins** menu option and **+ New plugin**. You should the following page with all plugins available:
+Before enabling the **Proxy Caching**, let's check the list of plugins Konnect provides. Inside the ``serverless-default`` Control Plane, click on **Plugins** menu option and **+ New plugin**. You should the following page with all plugins available:
 
 ![proxy_cache](/static/images/plugins.png)
 
 ### Enabling a Kong Plugin on a Kong Service
 Create another declaration with ``plugins`` option. With this option you can enable and configure the plugin on your Kong Service.
 
-{{<highlight>}}
+```
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
@@ -26,8 +26,8 @@ services:
 - name: httpbin-service
   tags:
   - httpbin-service-route
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   plugins:
   - name: proxy-cache
     instance_name: proxy-cache1
@@ -41,7 +41,7 @@ services:
     paths:
     - /httpbin-route
 EOF
-{{</highlight>}}
+```
 
 
 For the plugin configuration we used the following settings:
@@ -51,9 +51,9 @@ For the plugin configuration we used the following settings:
 All plugin configuration paramenters are described inside **[Kong Plugin Hub](https://docs.konghq.com/hub/)** portal, in its specific [documentation page](https://docs.konghq.com/hub/kong-inc/proxy-cache/).
 
 #### Submit the new declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT httpbin.yaml
-{{</highlight>}}
+```
 
 **Expected Output**
 ```
@@ -69,36 +69,40 @@ Summary:
 
 If you consume the service again, you'll see some new headers describing the caching status:
 
-{{<highlight>}}
-curl -v $DATA_PLANE_LB/httpbin-route/get
-{{</highlight>}}
+```
+curl -i $DATA_PLANE_URL/httpbin-route/get
+```
 
 ```
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-> GET /httpbin-route/get HTTP/1.1
-> Host: 127.0.0.1
-> User-Agent: curl/8.7.1
-> Accept: */*
-> 
-* Request completely sent off
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-< Content-Length: 377
-< Connection: keep-alive
-< X-Cache-Key: a00008105a989fd0fa8a1eeeee08924b7205d24ed1adee71698926c12a31f2b7
-< X-Cache-Status: Miss
-< Server: gunicorn
-< Date: Mon, 11 Aug 2025 14:39:46 GMT
-< Access-Control-Allow-Origin: *
-< Access-Control-Allow-Credentials: true
-< X-Kong-Upstream-Latency: 8
-< X-Kong-Proxy-Latency: 6
-< Via: 1.1 kong/3.11.0.2-enterprise-edition
-< X-Kong-Request-Id: 4501cc0fa798cf08435edc01bb2b1a40
-< 
-{"args":{},"headers":{"Accept":"*/*","Connection":"keep-alive","Host":"httpbin.kong.svc.cluster.local:8000","User-Agent":"curl/8.7.1","X-Forwarded-Host":"127.0.0.1","X-Forwarded-Path":"/httpbin-route/get","X-Forwarded-Prefix":"/httpbin-route","X-Kong-Request-Id":"4501cc0fa798cf08435edc01bb2b1a40"},"origin":"10.244.0.1","url":"http://httpbin.kong.svc.cluster.local:8000/get"}
-* Connection #0 to host 127.0.0.1 left intact
+HTTP/2 200 
+content-type: application/json
+content-length: 500
+x-kong-request-id: abd3f90c6ecbbb0a0939fb2edab2b40d
+x-cache-key: f44e43eff1a09eeb35e0436a117f95f9363267d79089b8bdd950f85ca6247e97
+x-cache-status: Miss
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:16:15 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 13
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Connection": "keep-alive", 
+    "Host": "httpbin.konghq.com", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Forwarded-Host": "kong-cceb6a93c9usmc2hk.kongcloud.dev", 
+    "X-Forwarded-Path": "/httpbin-route/get", 
+    "X-Forwarded-Prefix": "/httpbin-route", 
+    "X-Kong-Request-Id": "abd3f90c6ecbbb0a0939fb2edab2b40d"
+  }, 
+  "origin": "186.204.54.49, 66.51.127.198, 172.16.12.194", 
+  "url": "https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get"
+}
 ```
 
 Notice that, for the first request we get **Miss** for the **X-Cache-Status** header, meaning that the Runtime Instance didn't have any data avaialble in the cache and had to connect to the Upstream Service, ``httpbin.org``.
@@ -106,44 +110,48 @@ Notice that, for the first request we get **Miss** for the **X-Cache-Status** he
 If we send a new request, the Runtime Instance has all it needs to satify the request, therefore the status is **Hit**. Note that the latency time has dropped considerably.
 
 ```
-# curl -v $DATA_PLANE_LB/httpbin-route/get
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-> GET /httpbin-route/get HTTP/1.1
-> Host: 127.0.0.1
-> User-Agent: curl/8.7.1
-> Accept: */*
-> 
-* Request completely sent off
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-< Connection: keep-alive
-< X-Cache-Key: a00008105a989fd0fa8a1eeeee08924b7205d24ed1adee71698926c12a31f2b7
-< Access-Control-Allow-Credentials: true
-< X-Cache-Status: Hit
-< Access-Control-Allow-Origin: *
-< Date: Mon, 11 Aug 2025 14:40:17 GMT
-< age: 3
-< Server: gunicorn
-< Content-Length: 377
-< X-Kong-Upstream-Latency: 0
-< X-Kong-Proxy-Latency: 1
-< Via: 1.1 kong/3.11.0.2-enterprise-edition
-< X-Kong-Request-Id: 97cc6027e33f240a67d8930161b44e57
-< 
-{"args":{},"headers":{"Accept":"*/*","Connection":"keep-alive","Host":"httpbin.kong.svc.cluster.local:8000","User-Agent":"curl/8.7.1","X-Forwarded-Host":"127.0.0.1","X-Forwarded-Path":"/httpbin-route/get","X-Forwarded-Prefix":"/httpbin-route","X-Kong-Request-Id":"2228de44dadd2e6126d82c4fb2e43961"},"origin":"10.244.0.1","url":"http://httpbin.kong.svc.cluster.local:8000/get"}
-* Connection #0 to host 127.0.0.1 left intact
+% curl -i $DATA_PLANE_URL/httpbin-route/get
+HTTP/2 200 
+content-type: application/json
+x-kong-request-id: 4ad5c907f84c167c3eb3f716200ae17c
+x-cache-key: f44e43eff1a09eeb35e0436a117f95f9363267d79089b8bdd950f85ca6247e97
+date: Tue, 23 Sep 2025 12:16:46 GMT
+server: gunicorn/19.9.0
+age: 3
+x-cache-status: Hit
+access-control-allow-origin: *
+access-control-allow-credentials: true
+content-length: 500
+x-kong-upstream-latency: 0
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Connection": "keep-alive", 
+    "Host": "httpbin.konghq.com", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Forwarded-Host": "kong-cceb6a93c9usmc2hk.kongcloud.dev", 
+    "X-Forwarded-Path": "/httpbin-route/get", 
+    "X-Forwarded-Prefix": "/httpbin-route", 
+    "X-Kong-Request-Id": "70184e54f9235642a310362396089529"
+  }, 
+  "origin": "186.204.54.49, 66.51.127.198, 172.16.12.194", 
+  "url": "https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get"
+}
 ```
 
 ### Enabling a Kong Plugin on a Kong Route
 
 Now, we are going to define a Rate Limiting policy for our Service. This time, you are going to enable the **Rate Limiting** plugin to the Kong Route, not to the Kong Gateway Service. In this sense, new Routes defined for the Service will not have the Rate Limiting plugin enabled, only the Proxy Caching.
 
-{{<highlight>}}
+```
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
@@ -151,8 +159,8 @@ services:
 - name: httpbin-service
   tags:
   - httpbin-service-route
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   plugins:
   - name: proxy-cache
     config:
@@ -170,7 +178,7 @@ services:
       config:
         minute: 3
 EOF
-{{</highlight>}}
+```
 
 The configuration includes:
 * **minute** as ``3``, which means the Route can be consumed only 3 times a given minute.
@@ -178,84 +186,78 @@ The configuration includes:
 
 
 #### Submit the declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT httpbin.yaml
-{{</highlight>}}
+```
 
 
 #### Consume the Service
 
 If you consume the service again, you'll see, besides the caching related headers, new ones describing the status of current rate limiting policy:
 
-{{<highlight>}}
-curl -v $DATA_PLANE_LB/httpbin-route/get
-{{</highlight>}}
+```
+curl -i $DATA_PLANE_URL/httpbin-route/get
+```
 
 ```
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-> GET /httpbin-route/get HTTP/1.1
-> Host: 127.0.0.1
-> User-Agent: curl/8.7.1
-> Accept: */*
-> 
-* Request completely sent off
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-< Content-Length: 377
-< Connection: keep-alive
-< X-RateLimit-Limit-Minute: 3
-< RateLimit-Remaining: 2
-< RateLimit-Reset: 32
-< RateLimit-Limit: 3
-< X-RateLimit-Remaining-Minute: 2
-< X-Cache-Key: a00008105a989fd0fa8a1eeeee08924b7205d24ed1adee71698926c12a31f2b7
-< X-Cache-Status: Miss
-< Server: gunicorn
-< Date: Mon, 11 Aug 2025 14:41:28 GMT
-< Access-Control-Allow-Origin: *
-< Access-Control-Allow-Credentials: true
-< X-Kong-Upstream-Latency: 1
-< X-Kong-Proxy-Latency: 5
-< Via: 1.1 kong/3.11.0.2-enterprise-edition
-< X-Kong-Request-Id: 882b11008e7ddd2eff471a433576524d
-< 
-{"args":{},"headers":{"Accept":"*/*","Connection":"keep-alive","Host":"httpbin.kong.svc.cluster.local:8000","User-Agent":"curl/8.7.1","X-Forwarded-Host":"127.0.0.1","X-Forwarded-Path":"/httpbin-route/get","X-Forwarded-Prefix":"/httpbin-route","X-Kong-Request-Id":"882b11008e7ddd2eff471a433576524d"},"origin":"10.244.0.1","url":"http://httpbin.kong.svc.cluster.local:8000/get"}
-* Connection #0 to host 127.0.0.1 left intact
+HTTP/2 200 
+content-type: application/json
+content-length: 500
+x-kong-request-id: dc73a70617cde444eada947550425656
+ratelimit-limit: 3
+ratelimit-remaining: 2
+x-ratelimit-limit-minute: 3
+x-ratelimit-remaining-minute: 2
+ratelimit-reset: 29
+x-cache-key: f44e43eff1a09eeb35e0436a117f95f9363267d79089b8bdd950f85ca6247e97
+x-cache-status: Miss
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:19:31 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 8
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Connection": "keep-alive", 
+    "Host": "httpbin.konghq.com", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Forwarded-Host": "kong-cceb6a93c9usmc2hk.kongcloud.dev", 
+    "X-Forwarded-Path": "/httpbin-route/get", 
+    "X-Forwarded-Prefix": "/httpbin-route", 
+    "X-Kong-Request-Id": "dc73a70617cde444eada947550425656"
+  }, 
+  "origin": "186.204.54.49, 66.51.127.198, 172.16.12.194", 
+  "url": "https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get"
+}
 ```
 
 
 If you keep sending new requests to the Runtime Instance, eventually, you'll get a **429** error code, meaning you have reached the consumption rate limiting policy for this Route.
 
 ```
-curl -v $DATA_PLANE_LB/httpbin-route/get
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-> GET /httpbin-route/get HTTP/1.1
-> Host: 127.0.0.1
-> User-Agent: curl/8.7.1
-> Accept: */*
-> 
-* Request completely sent off
-< HTTP/1.1 429 Too Many Requests
-< Date: Mon, 11 Aug 2025 14:41:58 GMT
-< Content-Type: application/json; charset=utf-8
-< Connection: keep-alive
-< X-RateLimit-Limit-Minute: 3
-< X-RateLimit-Remaining-Minute: 0
-< RateLimit-Reset: 2
-< Retry-After: 2
-< RateLimit-Remaining: 0
-< RateLimit-Limit: 3
-< Content-Length: 92
-< X-Kong-Response-Latency: 1
-< Server: kong/3.11.0.2-enterprise-edition
-< X-Kong-Request-Id: ce56eb67161a85678126a00ef59e6159
-< 
+% curl -i $DATA_PLANE_URL/httpbin-route/get
+HTTP/2 429 
+date: Tue, 23 Sep 2025 12:19:37 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: bf61f204c78bc7404721310d6a35ec11
+retry-after: 23
+ratelimit-limit: 3
+ratelimit-remaining: 0
+x-ratelimit-limit-minute: 3
+x-ratelimit-remaining-minute: 0
+ratelimit-reset: 23
+content-length: 92
+x-kong-response-latency: 0
+server: kong/3.11.0.0-enterprise-edition
+
 {
   "message":"API rate limit exceeded",
-  "request_id":"ce56eb67161a85678126a00ef59e6159"
-* Connection #0 to host 127.0.0.1 left intact
+  "request_id":"bf61f204c78bc7404721310d6a35ec11"
 }
 ```
 
@@ -265,11 +267,11 @@ Besides scoping a plugin to a Kong Service or Route, we can apply it globally al
 
 For example, let's apply the Proxy Caching plugin globally.
 
-{{<highlight>}}
+```
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
@@ -282,8 +284,8 @@ services:
 - name: httpbin-service
   tags:
   - httpbin-service-route
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     tags:
@@ -296,21 +298,31 @@ services:
       config:
         minute: 3
 EOF
-{{</highlight>}}
+```
 
 
 #### Submit the declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT httpbin.yaml
-{{</highlight>}}
+```
 
-After testing the configuration reset the Control Plane:
+* Expected output
 
-{{<highlight>}}
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
-{{</highlight>}}
+Note the first Proxy Cache instance is deleted to get the Control Plane state synced with the declaratio:
+
+```
+creating plugin proxy-cache (global)
+deleting plugin proxy-cache for service httpbin-service
+Summary:
+  Created: 1
+  Updated: 0
+  Deleted: 1
+```
+
+After testing the configuration, reset the Control Plane:
+
+```
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+```
 
 
-
-
-Kong-gratulations! have now reached the end of this module by caching API responses. You can now click **Next** to proceed with the next module.

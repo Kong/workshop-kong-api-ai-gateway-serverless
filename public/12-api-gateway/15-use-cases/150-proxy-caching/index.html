@@ -19,28 +19,28 @@
     <meta property="article:section" content="Kong API Gateway">
     <meta itemprop="name" content="Proxy Caching :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="Proxy Caching provides a reverse proxy cache implementation for Kong. It caches response entities based on configurable response code and content type, as well as request method. It can cache per-Consumer or per-API. Cache entities are stored for a configurable period of time, after which subsequent requests to the same resource will re-fetch and re-store the resource. Cache entities can also be forcefully purged via the Admin API prior to their expiration time.">
-    <meta itemprop="wordCount" content="1093">
+    <meta itemprop="wordCount" content="963">
     <title>Proxy Caching :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758622740" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758622740" defer></script>
-    <script src="/js/search-lunr.js?1758622740" defer></script>
-    <script src="/js/search.js?1758622740" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758630910" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758630910" defer></script>
+    <script src="/js/search-lunr.js?1758630910" defer></script>
+    <script src="/js/search.js?1758630910" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758622740";
+      window.relearn.index_js_url="/searchindex.en.js?1758630910";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758622740" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758622740" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758622740" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758622740" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758630910" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758630910" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758630910" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758630910" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758622740" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758622740" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758622740" rel="stylesheet">
-    <link href="/css/theme.css?1758622740" rel="stylesheet">
-    <link href="/css/format-html.css?1758622740" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758630910" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758630910" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758630910" rel="stylesheet">
+    <link href="/css/theme.css?1758630910" rel="stylesheet">
+    <link href="/css/format-html.css?1758630910" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -152,15 +152,15 @@
 
 <p><a href="https://docs.konghq.com/hub/kong-inc/proxy-cache/" rel="external" target="_blank">Proxy Caching</a> provides a reverse proxy cache implementation for Kong. It caches response entities based on configurable response code and content type, as well as request method. It can cache per-Consumer or per-API. Cache entities are stored for a configurable period of time, after which subsequent requests to the same resource will re-fetch and re-store the resource. Cache entities can also be forcefully purged via the Admin API prior to their expiration time.</p>
 <h3 id="kong-gateway-plugin-list">Kong Gateway Plugin list</h3>
-<p>Before enabling the <strong>Proxy Caching</strong>, let&rsquo;s check the list of plugins Konnect provides. Inside the <code>kong-workshop</code> Control Plane, click on <strong>Plugins</strong> menu option and <strong>+ New plugin</strong>. You should the following page with all plugins available:</p>
-<p><a href="#R-image-3b841883b1d1b58ae4293729e3e2b33f" class="lightbox-link"><img alt="proxy_cache" class="lazy lightbox figure-image" loading="lazy" src="/static/images/plugins.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-3b841883b1d1b58ae4293729e3e2b33f"><img alt="proxy_cache" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/plugins.png"></a></p>
+<p>Before enabling the <strong>Proxy Caching</strong>, let&rsquo;s check the list of plugins Konnect provides. Inside the <code>serverless-default</code> Control Plane, click on <strong>Plugins</strong> menu option and <strong>+ New plugin</strong>. You should the following page with all plugins available:</p>
+<p><a href="#R-image-5cce8762f0456c04a8f6a19fc66ddd95" class="lightbox-link"><img alt="proxy_cache" class="lazy lightbox figure-image" loading="lazy" src="/static/images/plugins.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5cce8762f0456c04a8f6a19fc66ddd95"><img alt="proxy_cache" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/plugins.png"></a></p>
 <h3 id="enabling-a-kong-plugin-on-a-kong-service">Enabling a Kong Plugin on a Kong Service</h3>
 <p>Create another declaration with <code>plugins</code> option. With this option you can enable and configure the plugin on your Kong Service.</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
@@ -168,8 +168,8 @@ services:
 - name: httpbin-service
   tags:
   - httpbin-service-route
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   plugins:
   - name: proxy-cache
     instance_name: proxy-cache1
@@ -183,7 +183,6 @@ services:
     paths:
     - /httpbin-route
 EOF</code></pre></div>
-
 <p>For the plugin configuration we used the following settings:</p>
 <ul>
 <li><strong>strategy</strong> with <code>memory</code>. The plugin will use the Runtime Instance&rsquo;s memory to implement to cache.</li>
@@ -192,7 +191,6 @@ EOF</code></pre></div>
 <p>All plugin configuration paramenters are described inside <strong><a href="https://docs.konghq.com/hub/" rel="external" target="_blank">Kong Plugin Hub</a></strong> portal, in its specific <a href="https://docs.konghq.com/hub/kong-inc/proxy-cache/" rel="external" target="_blank">documentation page</a>.</p>
 <h4 id="submit-the-new-declaration">Submit the new declaration</h4>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT httpbin.yaml</code></pre></div>
-
 <p><strong>Expected Output</strong></p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>creating plugin proxy-cache for service httpbin-service
 Summary:
@@ -201,68 +199,75 @@ Summary:
   Deleted: 0</code></pre></div>
 <h4 id="consume-the-service">Consume the Service</h4>
 <p>If you consume the service again, you&rsquo;ll see some new headers describing the caching status:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -v $DATA_PLANE_LB/httpbin-route/get</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i $DATA_PLANE_URL/httpbin-route/get</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+content-length: 500
+x-kong-request-id: abd3f90c6ecbbb0a0939fb2edab2b40d
+x-cache-key: f44e43eff1a09eeb35e0436a117f95f9363267d79089b8bdd950f85ca6247e97
+x-cache-status: Miss
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:16:15 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 13
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-&gt; GET /httpbin-route/get HTTP/1.1
-&gt; Host: 127.0.0.1
-&gt; User-Agent: curl/8.7.1
-&gt; Accept: */*
-&gt; 
-* Request completely sent off
-&lt; HTTP/1.1 200 OK
-&lt; Content-Type: application/json
-&lt; Content-Length: 377
-&lt; Connection: keep-alive
-&lt; X-Cache-Key: a00008105a989fd0fa8a1eeeee08924b7205d24ed1adee71698926c12a31f2b7
-&lt; X-Cache-Status: Miss
-&lt; Server: gunicorn
-&lt; Date: Mon, 11 Aug 2025 14:39:46 GMT
-&lt; Access-Control-Allow-Origin: *
-&lt; Access-Control-Allow-Credentials: true
-&lt; X-Kong-Upstream-Latency: 8
-&lt; X-Kong-Proxy-Latency: 6
-&lt; Via: 1.1 kong/3.11.0.2-enterprise-edition
-&lt; X-Kong-Request-Id: 4501cc0fa798cf08435edc01bb2b1a40
-&lt; 
-{&#34;args&#34;:{},&#34;headers&#34;:{&#34;Accept&#34;:&#34;*/*&#34;,&#34;Connection&#34;:&#34;keep-alive&#34;,&#34;Host&#34;:&#34;httpbin.kong.svc.cluster.local:8000&#34;,&#34;User-Agent&#34;:&#34;curl/8.7.1&#34;,&#34;X-Forwarded-Host&#34;:&#34;127.0.0.1&#34;,&#34;X-Forwarded-Path&#34;:&#34;/httpbin-route/get&#34;,&#34;X-Forwarded-Prefix&#34;:&#34;/httpbin-route&#34;,&#34;X-Kong-Request-Id&#34;:&#34;4501cc0fa798cf08435edc01bb2b1a40&#34;},&#34;origin&#34;:&#34;10.244.0.1&#34;,&#34;url&#34;:&#34;http://httpbin.kong.svc.cluster.local:8000/get&#34;}
-* Connection #0 to host 127.0.0.1 left intact</code></pre></div>
+{
+  &#34;args&#34;: {}, 
+  &#34;headers&#34;: {
+    &#34;Accept&#34;: &#34;*/*&#34;, 
+    &#34;Connection&#34;: &#34;keep-alive&#34;, 
+    &#34;Host&#34;: &#34;httpbin.konghq.com&#34;, 
+    &#34;User-Agent&#34;: &#34;curl/8.7.1&#34;, 
+    &#34;X-Forwarded-Host&#34;: &#34;kong-cceb6a93c9usmc2hk.kongcloud.dev&#34;, 
+    &#34;X-Forwarded-Path&#34;: &#34;/httpbin-route/get&#34;, 
+    &#34;X-Forwarded-Prefix&#34;: &#34;/httpbin-route&#34;, 
+    &#34;X-Kong-Request-Id&#34;: &#34;abd3f90c6ecbbb0a0939fb2edab2b40d&#34;
+  }, 
+  &#34;origin&#34;: &#34;186.204.54.49, 66.51.127.198, 172.16.12.194&#34;, 
+  &#34;url&#34;: &#34;https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get&#34;
+}</code></pre></div>
 <p>Notice that, for the first request we get <strong>Miss</strong> for the <strong>X-Cache-Status</strong> header, meaning that the Runtime Instance didn&rsquo;t have any data avaialble in the cache and had to connect to the Upstream Service, <code>httpbin.org</code>.</p>
 <p>If we send a new request, the Runtime Instance has all it needs to satify the request, therefore the status is <strong>Hit</strong>. Note that the latency time has dropped considerably.</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code># curl -v $DATA_PLANE_LB/httpbin-route/get
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-&gt; GET /httpbin-route/get HTTP/1.1
-&gt; Host: 127.0.0.1
-&gt; User-Agent: curl/8.7.1
-&gt; Accept: */*
-&gt; 
-* Request completely sent off
-&lt; HTTP/1.1 200 OK
-&lt; Content-Type: application/json
-&lt; Connection: keep-alive
-&lt; X-Cache-Key: a00008105a989fd0fa8a1eeeee08924b7205d24ed1adee71698926c12a31f2b7
-&lt; Access-Control-Allow-Credentials: true
-&lt; X-Cache-Status: Hit
-&lt; Access-Control-Allow-Origin: *
-&lt; Date: Mon, 11 Aug 2025 14:40:17 GMT
-&lt; age: 3
-&lt; Server: gunicorn
-&lt; Content-Length: 377
-&lt; X-Kong-Upstream-Latency: 0
-&lt; X-Kong-Proxy-Latency: 1
-&lt; Via: 1.1 kong/3.11.0.2-enterprise-edition
-&lt; X-Kong-Request-Id: 97cc6027e33f240a67d8930161b44e57
-&lt; 
-{&#34;args&#34;:{},&#34;headers&#34;:{&#34;Accept&#34;:&#34;*/*&#34;,&#34;Connection&#34;:&#34;keep-alive&#34;,&#34;Host&#34;:&#34;httpbin.kong.svc.cluster.local:8000&#34;,&#34;User-Agent&#34;:&#34;curl/8.7.1&#34;,&#34;X-Forwarded-Host&#34;:&#34;127.0.0.1&#34;,&#34;X-Forwarded-Path&#34;:&#34;/httpbin-route/get&#34;,&#34;X-Forwarded-Prefix&#34;:&#34;/httpbin-route&#34;,&#34;X-Kong-Request-Id&#34;:&#34;2228de44dadd2e6126d82c4fb2e43961&#34;},&#34;origin&#34;:&#34;10.244.0.1&#34;,&#34;url&#34;:&#34;http://httpbin.kong.svc.cluster.local:8000/get&#34;}
-* Connection #0 to host 127.0.0.1 left intact</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>% curl -i $DATA_PLANE_URL/httpbin-route/get
+HTTP/2 200 
+content-type: application/json
+x-kong-request-id: 4ad5c907f84c167c3eb3f716200ae17c
+x-cache-key: f44e43eff1a09eeb35e0436a117f95f9363267d79089b8bdd950f85ca6247e97
+date: Tue, 23 Sep 2025 12:16:46 GMT
+server: gunicorn/19.9.0
+age: 3
+x-cache-status: Hit
+access-control-allow-origin: *
+access-control-allow-credentials: true
+content-length: 500
+x-kong-upstream-latency: 0
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  &#34;args&#34;: {}, 
+  &#34;headers&#34;: {
+    &#34;Accept&#34;: &#34;*/*&#34;, 
+    &#34;Connection&#34;: &#34;keep-alive&#34;, 
+    &#34;Host&#34;: &#34;httpbin.konghq.com&#34;, 
+    &#34;User-Agent&#34;: &#34;curl/8.7.1&#34;, 
+    &#34;X-Forwarded-Host&#34;: &#34;kong-cceb6a93c9usmc2hk.kongcloud.dev&#34;, 
+    &#34;X-Forwarded-Path&#34;: &#34;/httpbin-route/get&#34;, 
+    &#34;X-Forwarded-Prefix&#34;: &#34;/httpbin-route&#34;, 
+    &#34;X-Kong-Request-Id&#34;: &#34;70184e54f9235642a310362396089529&#34;
+  }, 
+  &#34;origin&#34;: &#34;186.204.54.49, 66.51.127.198, 172.16.12.194&#34;, 
+  &#34;url&#34;: &#34;https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get&#34;
+}</code></pre></div>
 <h3 id="enabling-a-kong-plugin-on-a-kong-route">Enabling a Kong Plugin on a Kong Route</h3>
 <p>Now, we are going to define a Rate Limiting policy for our Service. This time, you are going to enable the <strong>Rate Limiting</strong> plugin to the Kong Route, not to the Kong Gateway Service. In this sense, new Routes defined for the Service will not have the Rate Limiting plugin enabled, only the Proxy Caching.</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
@@ -270,8 +275,8 @@ services:
 - name: httpbin-service
   tags:
   - httpbin-service-route
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   plugins:
   - name: proxy-cache
     config:
@@ -289,77 +294,68 @@ services:
       config:
         minute: 3
 EOF</code></pre></div>
-
 <p>The configuration includes:</p>
 <ul>
 <li><strong>minute</strong> as <code>3</code>, which means the Route can be consumed only 3 times a given minute.</li>
 </ul>
 <h4 id="submit-the-declaration">Submit the declaration</h4>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT httpbin.yaml</code></pre></div>
-
 <h4 id="consume-the-service-1">Consume the Service</h4>
 <p>If you consume the service again, you&rsquo;ll see, besides the caching related headers, new ones describing the status of current rate limiting policy:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -v $DATA_PLANE_LB/httpbin-route/get</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i $DATA_PLANE_URL/httpbin-route/get</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+content-length: 500
+x-kong-request-id: dc73a70617cde444eada947550425656
+ratelimit-limit: 3
+ratelimit-remaining: 2
+x-ratelimit-limit-minute: 3
+x-ratelimit-remaining-minute: 2
+ratelimit-reset: 29
+x-cache-key: f44e43eff1a09eeb35e0436a117f95f9363267d79089b8bdd950f85ca6247e97
+x-cache-status: Miss
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:19:31 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 8
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-&gt; GET /httpbin-route/get HTTP/1.1
-&gt; Host: 127.0.0.1
-&gt; User-Agent: curl/8.7.1
-&gt; Accept: */*
-&gt; 
-* Request completely sent off
-&lt; HTTP/1.1 200 OK
-&lt; Content-Type: application/json
-&lt; Content-Length: 377
-&lt; Connection: keep-alive
-&lt; X-RateLimit-Limit-Minute: 3
-&lt; RateLimit-Remaining: 2
-&lt; RateLimit-Reset: 32
-&lt; RateLimit-Limit: 3
-&lt; X-RateLimit-Remaining-Minute: 2
-&lt; X-Cache-Key: a00008105a989fd0fa8a1eeeee08924b7205d24ed1adee71698926c12a31f2b7
-&lt; X-Cache-Status: Miss
-&lt; Server: gunicorn
-&lt; Date: Mon, 11 Aug 2025 14:41:28 GMT
-&lt; Access-Control-Allow-Origin: *
-&lt; Access-Control-Allow-Credentials: true
-&lt; X-Kong-Upstream-Latency: 1
-&lt; X-Kong-Proxy-Latency: 5
-&lt; Via: 1.1 kong/3.11.0.2-enterprise-edition
-&lt; X-Kong-Request-Id: 882b11008e7ddd2eff471a433576524d
-&lt; 
-{&#34;args&#34;:{},&#34;headers&#34;:{&#34;Accept&#34;:&#34;*/*&#34;,&#34;Connection&#34;:&#34;keep-alive&#34;,&#34;Host&#34;:&#34;httpbin.kong.svc.cluster.local:8000&#34;,&#34;User-Agent&#34;:&#34;curl/8.7.1&#34;,&#34;X-Forwarded-Host&#34;:&#34;127.0.0.1&#34;,&#34;X-Forwarded-Path&#34;:&#34;/httpbin-route/get&#34;,&#34;X-Forwarded-Prefix&#34;:&#34;/httpbin-route&#34;,&#34;X-Kong-Request-Id&#34;:&#34;882b11008e7ddd2eff471a433576524d&#34;},&#34;origin&#34;:&#34;10.244.0.1&#34;,&#34;url&#34;:&#34;http://httpbin.kong.svc.cluster.local:8000/get&#34;}
-* Connection #0 to host 127.0.0.1 left intact</code></pre></div>
+{
+  &#34;args&#34;: {}, 
+  &#34;headers&#34;: {
+    &#34;Accept&#34;: &#34;*/*&#34;, 
+    &#34;Connection&#34;: &#34;keep-alive&#34;, 
+    &#34;Host&#34;: &#34;httpbin.konghq.com&#34;, 
+    &#34;User-Agent&#34;: &#34;curl/8.7.1&#34;, 
+    &#34;X-Forwarded-Host&#34;: &#34;kong-cceb6a93c9usmc2hk.kongcloud.dev&#34;, 
+    &#34;X-Forwarded-Path&#34;: &#34;/httpbin-route/get&#34;, 
+    &#34;X-Forwarded-Prefix&#34;: &#34;/httpbin-route&#34;, 
+    &#34;X-Kong-Request-Id&#34;: &#34;dc73a70617cde444eada947550425656&#34;
+  }, 
+  &#34;origin&#34;: &#34;186.204.54.49, 66.51.127.198, 172.16.12.194&#34;, 
+  &#34;url&#34;: &#34;https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get&#34;
+}</code></pre></div>
 <p>If you keep sending new requests to the Runtime Instance, eventually, you&rsquo;ll get a <strong>429</strong> error code, meaning you have reached the consumption rate limiting policy for this Route.</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -v $DATA_PLANE_LB/httpbin-route/get
-*   Trying 127.0.0.1:80...
-* Connected to 127.0.0.1 (127.0.0.1) port 80
-&gt; GET /httpbin-route/get HTTP/1.1
-&gt; Host: 127.0.0.1
-&gt; User-Agent: curl/8.7.1
-&gt; Accept: */*
-&gt; 
-* Request completely sent off
-&lt; HTTP/1.1 429 Too Many Requests
-&lt; Date: Mon, 11 Aug 2025 14:41:58 GMT
-&lt; Content-Type: application/json; charset=utf-8
-&lt; Connection: keep-alive
-&lt; X-RateLimit-Limit-Minute: 3
-&lt; X-RateLimit-Remaining-Minute: 0
-&lt; RateLimit-Reset: 2
-&lt; Retry-After: 2
-&lt; RateLimit-Remaining: 0
-&lt; RateLimit-Limit: 3
-&lt; Content-Length: 92
-&lt; X-Kong-Response-Latency: 1
-&lt; Server: kong/3.11.0.2-enterprise-edition
-&lt; X-Kong-Request-Id: ce56eb67161a85678126a00ef59e6159
-&lt; 
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>% curl -i $DATA_PLANE_URL/httpbin-route/get
+HTTP/2 429 
+date: Tue, 23 Sep 2025 12:19:37 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: bf61f204c78bc7404721310d6a35ec11
+retry-after: 23
+ratelimit-limit: 3
+ratelimit-remaining: 0
+x-ratelimit-limit-minute: 3
+x-ratelimit-remaining-minute: 0
+ratelimit-reset: 23
+content-length: 92
+x-kong-response-latency: 0
+server: kong/3.11.0.0-enterprise-edition
+
 {
   &#34;message&#34;:&#34;API rate limit exceeded&#34;,
-  &#34;request_id&#34;:&#34;ce56eb67161a85678126a00ef59e6159&#34;
-* Connection #0 to host 127.0.0.1 left intact
+  &#34;request_id&#34;:&#34;bf61f204c78bc7404721310d6a35ec11&#34;
 }</code></pre></div>
 <h3 id="enabling-a-kong-plugin-globally">Enabling a Kong Plugin globally</h3>
 <p>Besides scoping a plugin to a Kong Service or Route, we can apply it globally also. When we do it so, all Services ans Routes will enforce the police described by the plugin.</p>
@@ -367,7 +363,7 @@ EOF</code></pre></div>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; httpbin.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
@@ -380,8 +376,8 @@ services:
 - name: httpbin-service
   tags:
   - httpbin-service-route
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     tags:
@@ -394,14 +390,20 @@ services:
       config:
         minute: 3
 EOF</code></pre></div>
-
 <h4 id="submit-the-declaration-1">Submit the declaration</h4>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT httpbin.yaml</code></pre></div>
-
-<p>After testing the configuration reset the Control Plane:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f</code></pre></div>
-
-<p>Kong-gratulations! have now reached the end of this module by caching API responses. You can now click <strong>Next</strong> to proceed with the next module.</p>
+<ul>
+<li>Expected output</li>
+</ul>
+<p>Note the first Proxy Cache instance is deleted to get the Control Plane state synced with the declaratio:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>creating plugin proxy-cache (global)
+deleting plugin proxy-cache for service httpbin-service
+Summary:
+  Created: 1
+  Updated: 0
+  Deleted: 1</code></pre></div>
+<p>After testing the configuration, reset the Control Plane:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f</code></pre></div>
 
   <footer class="footline">
   </footer>
@@ -453,8 +455,9 @@ EOF</code></pre></div>
             <li class="" data-nav-id="/architecture/index.html"><a class="padding" href="/architecture/index.html">Kong Konnect Architectural Overview</a></li>
             <li class="" data-nav-id="/11-konnect-setup/index.html"><a class="padding" href="/11-konnect-setup/index.html">Konnect Setup</a><ul id="R-subsections-fd457d3a7fac9b2f9cefa5c6c0dae1e7" class="collapsible-menu"></ul></li>
             <li class="parent " data-nav-id="/12-api-gateway/index.html"><a class="padding" href="/12-api-gateway/index.html">Kong API Gateway</a><ul id="R-subsections-edeba57bcdf65a92672ecb9c5ed9177f" class="collapsible-menu">
-            <li class="" data-nav-id="/12-api-gateway/121-oas-import/index.html"><a class="padding" href="/12-api-gateway/121-oas-import/index.html">Import an OpenAPI specification</a></li>
-            <li class="" data-nav-id="/12-api-gateway/122-kong-service-route/index.html"><a class="padding" href="/12-api-gateway/122-kong-service-route/index.html">Kong Gateway Service and Kong Route</a></li>
+            <li class="" data-nav-id="/12-api-gateway/121-kong-service-route/index.html"><a class="padding" href="/12-api-gateway/121-kong-service-route/index.html">Kong Gateway Service, Kong Route and Kong Plugin</a></li>
+            <li class="" data-nav-id="/12-api-gateway/122-oas-import/index.html"><a class="padding" href="/12-api-gateway/122-oas-import/index.html">Import an OpenAPI specification</a></li>
+            <li class="" data-nav-id="/12-api-gateway/123-kong-service-route-deck/index.html"><a class="padding" href="/12-api-gateway/123-kong-service-route-deck/index.html">Use decK to create Kong Objects</a></li>
             <li class="parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/index.html">Use Cases</a><ul id="R-subsections-d072a953a914cdb4c69798f4d5bdaaed" class="collapsible-menu">
             <li class="active " data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html">Proxy Caching</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/151-key-authentication/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/151-key-authentication/index.html">API Key Authentication</a></li>
@@ -483,8 +486,8 @@ EOF</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758622740" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758622740" defer></script>
-    <script src="/js/theme.js?1758622740" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758630910" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758630910" defer></script>
+    <script src="/js/theme.js?1758630910" defer></script>
   </body>
 </html>

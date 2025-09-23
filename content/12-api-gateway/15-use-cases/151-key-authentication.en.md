@@ -15,18 +15,18 @@ Please, check the [**Key-Auth** plugin](https://docs.konghq.com/hub/kong-inc/key
 
 ### Enable the Key Authentication Plugin on the Kong Route
 
-{{<highlight>}}
+```
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -35,11 +35,11 @@ services:
   - name: key-auth
     instance_name: key-auth1
 EOF
-{{</highlight>}}
+```
 
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT key-auth.yaml
-{{</highlight>}}
+```
 
 
 
@@ -47,24 +47,23 @@ deck gateway sync --konnect-token $PAT key-auth.yaml
 
 Now, if you try the Route, you'll get a specific **401** error code meaning that, since you don't have any API Key injected in your request, you are not allowd to consume it.
 
-{{<highlight>}}
-curl -i $DATA_PLANE_LB/key-auth-route/get
-{{</highlight>}}
+```
+curl -i $DATA_PLANE_URL/key-auth-route/get
+```
 
 ```
-HTTP/1.1 401 Unauthorized
-Date: Mon, 11 Aug 2025 14:44:59 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-WWW-Authenticate: Key
-Content-Length: 96
-X-Kong-Response-Latency: 2
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 1f8a6c1c9d0d1853d9db426588c1ce1c
+HTTP/2 401 
+date: Tue, 23 Sep 2025 12:28:41 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 5082dc799dcc913c3e27581f84eba120
+www-authenticate: Key
+content-length: 96
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition
 
 {
   "message":"No API key found in request",
-  "request_id":"1f8a6c1c9d0d1853d9db426588c1ce1c"
+  "request_id":"5082dc799dcc913c3e27581f84eba120"
 }
 ```
 
@@ -73,18 +72,18 @@ X-Kong-Request-Id: 1f8a6c1c9d0d1853d9db426588c1ce1c
 
 In order to consume the Route we need to create a Kong Consumer. Here's its declaration:
 
-{{<highlight>}}
+```
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -97,13 +96,13 @@ consumers:
   - key: "123456"
   username: consumer1
 EOF
-{{</highlight>}}
+```
 
 
 Submit the declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT key-auth.yaml
-{{</highlight>}}
+```
 
 
 
@@ -111,37 +110,35 @@ deck gateway sync --konnect-token $PAT key-auth.yaml
 
 Now, you need to inject the Key you've just created, as a header, in your requests. Using HTTPie, you can do it easily like this:
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:123456'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:123456'
+```
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:45:52 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 9
-X-Kong-Proxy-Latency: 4
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: b535885591f5ec7f7fb5f070fa365465
+HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: b54df81da8dde905312cd55d5600f638
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:29:57 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 10
+x-kong-proxy-latency: 2
+via: 1.1 kong/3.11.0.0-enterprise-edition
 ```
 
 Of course, if you inject a wrong key, you get a specific error like this:
 ```
-# curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:12'
-HTTP/1.1 401 Unauthorized
-Date: Mon, 11 Aug 2025 14:46:36 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-WWW-Authenticate: Key
-Content-Length: 81
-X-Kong-Response-Latency: 1
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 688e271ea4cae5794bc1cb59ea3ec131
+% curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:12'
+HTTP/2 401 
+date: Tue, 23 Sep 2025 12:30:23 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 31c73846e3a250366a42d805f0282b4b
+www-authenticate: Key
+content-length: 81
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition
 ```
 
 
@@ -172,18 +169,18 @@ For this section we're implementing a Rate Limiting policy. Keep in mind that a 
 
 Create the second ``consumer2``, just like you did with the first one, with the ``987654`` key.
 
-{{<highlight>}}
+```
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -199,44 +196,44 @@ consumers:
   - key: "987654"
   username: consumer2
 EOF
-{{</highlight>}}
+```
 
 Submit the declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT key-auth.yaml
-{{</highlight>}}
+```
 
 
 
 If you will, you can inject both keys to your requests.
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:123456'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:123456'
+```
 
 or
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:987654'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:987654'
+```
 
 
 #### Consumers' Policy
 
 Now let's enhance the plugins declaration enabling the Rate Limiting plugin to each one of our consumers.
 
-{{<highlight>}}
+```
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -262,13 +259,13 @@ consumers:
     config:
       minute: 8
 EOF
-{{</highlight>}}
+```
 
 
 Submit the declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT key-auth.yaml
-{{</highlight>}}
+```
 
 
 
@@ -276,113 +273,109 @@ deck gateway sync --konnect-token $PAT key-auth.yaml
 
 First of all let's consume the Route with the Consumer1's API Key:
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:123456'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:123456'
+```
 
 **Expected Output**
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 5
-X-RateLimit-Remaining-Minute: 4
-RateLimit-Reset: 11
-RateLimit-Remaining: 4
-RateLimit-Limit: 5
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:47:49 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 3
-X-Kong-Proxy-Latency: 2
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: ad38e60e76c57d5826f3c37fdce4925c
+HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: 863f8f3fc16dd32bdf8f045465857c7e
+ratelimit-limit: 5
+ratelimit-remaining: 4
+x-ratelimit-limit-minute: 5
+x-ratelimit-remaining-minute: 4
+ratelimit-reset: 35
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:33:25 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 8
+x-kong-proxy-latency: 2
+via: 1.1 kong/3.11.0.0-enterprise-edition
 ```
 
 Now, let's consume it with the Consumer2's API Key. As you can see the Data Plane is processing the Rate Limiting processes independently.
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:987654'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:987654'
+```
 
 **Expected Output**
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 8
-X-RateLimit-Remaining-Minute: 7
-RateLimit-Reset: 27
-RateLimit-Remaining: 7
-RateLimit-Limit: 8
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:49:33 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 2
-X-Kong-Proxy-Latency: 3
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 9cf1fb53db3a9b740d9bd42e9091d245
+HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: 3c99310c94ed3157f1cdb4604e0a8c4e
+ratelimit-limit: 8
+ratelimit-remaining: 7
+x-ratelimit-limit-minute: 8
+x-ratelimit-remaining-minute: 7
+ratelimit-reset: 9
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:33:51 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 9
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 ```
 
 If we keep sending requests using the first API Key, eventually, as expected, we'll get an error code:
 
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:123456'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:123456'
+```
 
 
 **Expected Output**
 
 ```
-HTTP/1.1 429 Too Many Requests
-Date: Mon, 11 Aug 2025 14:50:21 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 5
-X-RateLimit-Remaining-Minute: 0
-RateLimit-Reset: 39
-Retry-After: 39
-RateLimit-Remaining: 0
-RateLimit-Limit: 5
-Content-Length: 92
-X-Kong-Response-Latency: 1
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 38afd254e246a946a65153780606be3c
+HTTP/2 429 
+date: Tue, 23 Sep 2025 12:34:21 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 3e890328c589ee56b57a0171c4c89267
+retry-after: 39
+ratelimit-limit: 5
+ratelimit-remaining: 0
+x-ratelimit-limit-minute: 5
+x-ratelimit-remaining-minute: 0
+ratelimit-reset: 39
+content-length: 92
+x-kong-response-latency: 0
+server: kong/3.11.0.0-enterprise-edition
 ```
 
 However, the second API Key is still allowed to consume the Kong Route:
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/key-auth-route/get -H 'apikey:987654'
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/key-auth-route/get -H 'apikey:987654'
+```
 
 **Expected Output**
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 8
-X-RateLimit-Remaining-Minute: 7
-RateLimit-Reset: 34
-RateLimit-Remaining: 7
-RateLimit-Limit: 8
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:50:26 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 1
-X-Kong-Proxy-Latency: 2
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: f8602e2e2778f306fba41f1661ef554c
+HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: 86f7c102950a06452a4e0f66c290f30e
+ratelimit-limit: 8
+ratelimit-remaining: 7
+x-ratelimit-limit-minute: 8
+x-ratelimit-remaining-minute: 7
+ratelimit-reset: 26
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:34:34 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 8
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 ```
 
 Kong-gratulations! have now reached the end of this module by authenticating the API requests with a key and associating different consumers with policy plans. You can now click **Next** to proceed with the next module.

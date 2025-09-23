@@ -19,28 +19,28 @@
     <meta property="article:section" content="Kong API Gateway">
     <meta itemprop="name" content="API Key Authentication :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="To get started with API Authentication, let’s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.">
-    <meta itemprop="wordCount" content="1278">
+    <meta itemprop="wordCount" content="1255">
     <title>API Key Authentication :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758622740" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758622740" defer></script>
-    <script src="/js/search-lunr.js?1758622740" defer></script>
-    <script src="/js/search.js?1758622740" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758630910" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758630910" defer></script>
+    <script src="/js/search-lunr.js?1758630910" defer></script>
+    <script src="/js/search.js?1758630910" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758622740";
+      window.relearn.index_js_url="/searchindex.en.js?1758630910";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758622740" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758622740" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758622740" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758622740" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758630910" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758630910" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758630910" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758630910" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758622740" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758622740" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758622740" rel="stylesheet">
-    <link href="/css/theme.css?1758622740" rel="stylesheet">
-    <link href="/css/format-html.css?1758622740" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758630910" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758630910" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758630910" rel="stylesheet">
+    <link href="/css/theme.css?1758630910" rel="stylesheet">
+    <link href="/css/format-html.css?1758630910" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -151,21 +151,21 @@
 
 <p>To get started with API Authentication, let&rsquo;s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.</p>
 <p>A Kong Consumer represents a consumer (user or application) of a Service. A Kong Consumer is tightly coupled to an Authentication mechanism the Kong Gateway provides.</p>
-<p><a href="#R-image-0a22bc4639827f1e987ce469ebfe1ca6" class="lightbox-link"><img alt="kong_consumer" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_consumer.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-0a22bc4639827f1e987ce469ebfe1ca6"><img alt="kong_consumer" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_consumer.png"></a></p>
+<p><a href="#R-image-a34189d50ac1a9dc29069d9b3845e988" class="lightbox-link"><img alt="kong_consumer" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_consumer.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a34189d50ac1a9dc29069d9b3845e988"><img alt="kong_consumer" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_consumer.png"></a></p>
 <p>Please, check the <a href="https://docs.konghq.com/hub/kong-inc/key-auth/" rel="external" target="_blank"><strong>Key-Auth</strong> plugin</a> plugin and <a href="https://docs.konghq.com/gateway/latest/key-concepts/consumers/" rel="external" target="_blank"><strong>Kong Consumer</strong></a> documentation pages to learn more about them.</p>
 <h3 id="enable-the-key-authentication-plugin-on-the-kong-route">Enable the Key Authentication Plugin on the Kong Route</h3>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; key-auth.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -174,40 +174,36 @@ services:
   - name: key-auth
     instance_name: key-auth1
 EOF</code></pre></div>
-
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT key-auth.yaml</code></pre></div>
-
 <h4 id="consume-the-route">Consume the Route</h4>
 <p>Now, if you try the Route, you&rsquo;ll get a specific <strong>401</strong> error code meaning that, since you don&rsquo;t have any API Key injected in your request, you are not allowd to consume it.</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i $DATA_PLANE_LB/key-auth-route/get</code></pre></div>
-
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 401 Unauthorized
-Date: Mon, 11 Aug 2025 14:44:59 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-WWW-Authenticate: Key
-Content-Length: 96
-X-Kong-Response-Latency: 2
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 1f8a6c1c9d0d1853d9db426588c1ce1c
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i $DATA_PLANE_URL/key-auth-route/get</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 401 
+date: Tue, 23 Sep 2025 12:28:41 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 5082dc799dcc913c3e27581f84eba120
+www-authenticate: Key
+content-length: 96
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition
 
 {
   &#34;message&#34;:&#34;No API key found in request&#34;,
-  &#34;request_id&#34;:&#34;1f8a6c1c9d0d1853d9db426588c1ce1c&#34;
+  &#34;request_id&#34;:&#34;5082dc799dcc913c3e27581f84eba120&#34;
 }</code></pre></div>
 <h4 id="create-a-kong-consumer">Create a Kong Consumer</h4>
 <p>In order to consume the Route we need to create a Kong Consumer. Here&rsquo;s its declaration:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; key-auth.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -220,37 +216,32 @@ consumers:
   - key: &#34;123456&#34;
   username: consumer1
 EOF</code></pre></div>
-
-<p>Submit the declaration
+<p>Submit the declaration</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT key-auth.yaml</code></pre></div>
-</p>
 <h4 id="consume-the-route-with-the-api-key">Consume the Route with the API Key</h4>
 <p>Now, you need to inject the Key you&rsquo;ve just created, as a header, in your requests. Using HTTPie, you can do it easily like this:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
-
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:45:52 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 9
-X-Kong-Proxy-Latency: 4
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: b535885591f5ec7f7fb5f070fa365465</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: b54df81da8dde905312cd55d5600f638
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:29:57 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 10
+x-kong-proxy-latency: 2
+via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
 <p>Of course, if you inject a wrong key, you get a specific error like this:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code># curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:12&#39;
-HTTP/1.1 401 Unauthorized
-Date: Mon, 11 Aug 2025 14:46:36 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-WWW-Authenticate: Key
-Content-Length: 81
-X-Kong-Response-Latency: 1
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 688e271ea4cae5794bc1cb59ea3ec131</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>% curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:12&#39;
+HTTP/2 401 
+date: Tue, 23 Sep 2025 12:30:23 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 31c73846e3a250366a42d805f0282b4b
+www-authenticate: Key
+content-length: 81
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition</code></pre></div>
 <p><strong>NOTE</strong></p>
 <ul>
 <li>The header has to have the API Key name, which is, in our case, <code>apikey</code>. That was the default name provided by Konnect when you enabled the <strong>Key Authentication</strong> on the Kong Route. You can change the plugin configuration, if you will.</li>
@@ -279,14 +270,14 @@ X-Kong-Request-Id: 688e271ea4cae5794bc1cb59ea3ec131</code></pre></div>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; key-auth.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -302,29 +293,25 @@ consumers:
   - key: &#34;987654&#34;
   username: consumer2
 EOF</code></pre></div>
-
-<p>Submit the declaration
+<p>Submit the declaration</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT key-auth.yaml</code></pre></div>
-</p>
 <p>If you will, you can inject both keys to your requests.</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
-
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
 <p>or</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:987654&#39;</code></pre></div>
-
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:987654&#39;</code></pre></div>
 <h4 id="consumers-policy">Consumers&rsquo; Policy</h4>
 <p>Now let&rsquo;s enhance the plugins declaration enabling the Rate Limiting plugin to each one of our consumers.</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; key-auth.yaml &lt;&lt; &#39;EOF&#39;
 _format_version: &#34;3.0&#34;
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: httpbin-route
     paths:
@@ -350,92 +337,82 @@ consumers:
     config:
       minute: 8
 EOF</code></pre></div>
-
-<p>Submit the declaration
+<p>Submit the declaration</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT key-auth.yaml</code></pre></div>
-</p>
 <h4 id="consumer-the-route-using-different-api-keys">Consumer the Route using different API Keys.</h4>
 <p>First of all let&rsquo;s consume the Route with the Consumer1&rsquo;s API Key:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
-
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
 <p><strong>Expected Output</strong></p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 5
-X-RateLimit-Remaining-Minute: 4
-RateLimit-Reset: 11
-RateLimit-Remaining: 4
-RateLimit-Limit: 5
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:47:49 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 3
-X-Kong-Proxy-Latency: 2
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: ad38e60e76c57d5826f3c37fdce4925c</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: 863f8f3fc16dd32bdf8f045465857c7e
+ratelimit-limit: 5
+ratelimit-remaining: 4
+x-ratelimit-limit-minute: 5
+x-ratelimit-remaining-minute: 4
+ratelimit-reset: 35
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:33:25 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 8
+x-kong-proxy-latency: 2
+via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
 <p>Now, let&rsquo;s consume it with the Consumer2&rsquo;s API Key. As you can see the Data Plane is processing the Rate Limiting processes independently.</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:987654&#39;</code></pre></div>
-
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:987654&#39;</code></pre></div>
 <p><strong>Expected Output</strong></p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 8
-X-RateLimit-Remaining-Minute: 7
-RateLimit-Reset: 27
-RateLimit-Remaining: 7
-RateLimit-Limit: 8
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:49:33 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 2
-X-Kong-Proxy-Latency: 3
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 9cf1fb53db3a9b740d9bd42e9091d245</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: 3c99310c94ed3157f1cdb4604e0a8c4e
+ratelimit-limit: 8
+ratelimit-remaining: 7
+x-ratelimit-limit-minute: 8
+x-ratelimit-remaining-minute: 7
+ratelimit-reset: 9
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:33:51 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 9
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
 <p>If we keep sending requests using the first API Key, eventually, as expected, we&rsquo;ll get an error code:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
-
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:123456&#39;</code></pre></div>
 <p><strong>Expected Output</strong></p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 429 Too Many Requests
-Date: Mon, 11 Aug 2025 14:50:21 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 5
-X-RateLimit-Remaining-Minute: 0
-RateLimit-Reset: 39
-Retry-After: 39
-RateLimit-Remaining: 0
-RateLimit-Limit: 5
-Content-Length: 92
-X-Kong-Response-Latency: 1
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 38afd254e246a946a65153780606be3c</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 429 
+date: Tue, 23 Sep 2025 12:34:21 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 3e890328c589ee56b57a0171c4c89267
+retry-after: 39
+ratelimit-limit: 5
+ratelimit-remaining: 0
+x-ratelimit-limit-minute: 5
+x-ratelimit-remaining-minute: 0
+ratelimit-reset: 39
+content-length: 92
+x-kong-response-latency: 0
+server: kong/3.11.0.0-enterprise-edition</code></pre></div>
 <p>However, the second API Key is still allowed to consume the Kong Route:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_LB/key-auth-route/get -H &#39;apikey:987654&#39;</code></pre></div>
-
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl --head $DATA_PLANE_URL/key-auth-route/get -H &#39;apikey:987654&#39;</code></pre></div>
 <p><strong>Expected Output</strong></p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 551
-Connection: keep-alive
-X-RateLimit-Limit-Minute: 8
-X-RateLimit-Remaining-Minute: 7
-RateLimit-Reset: 34
-RateLimit-Remaining: 7
-RateLimit-Limit: 8
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:50:26 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-X-Kong-Upstream-Latency: 1
-X-Kong-Proxy-Latency: 2
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: f8602e2e2778f306fba41f1661ef554c</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+content-length: 702
+x-kong-request-id: 86f7c102950a06452a4e0f66c290f30e
+ratelimit-limit: 8
+ratelimit-remaining: 7
+x-ratelimit-limit-minute: 8
+x-ratelimit-remaining-minute: 7
+ratelimit-reset: 26
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:34:34 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+x-kong-upstream-latency: 8
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
 <p>Kong-gratulations! have now reached the end of this module by authenticating the API requests with a key and associating different consumers with policy plans. You can now click <strong>Next</strong> to proceed with the next module.</p>
 <h3 id="optional-reading">Optional Reading</h3>
 <p>Applying Kong Plugins on Services, Routes or Globally helps us to implement an extensive list of policies in the API Gateway layer. However, so far, we are not controlling who is sending the requests to the Data Plane. That is, anyone who has the Runtime Instance ELB address is capable to send requests to it and consumer the Services.</p>
@@ -500,8 +477,9 @@ X-Kong-Request-Id: f8602e2e2778f306fba41f1661ef554c</code></pre></div>
             <li class="" data-nav-id="/architecture/index.html"><a class="padding" href="/architecture/index.html">Kong Konnect Architectural Overview</a></li>
             <li class="" data-nav-id="/11-konnect-setup/index.html"><a class="padding" href="/11-konnect-setup/index.html">Konnect Setup</a><ul id="R-subsections-fd457d3a7fac9b2f9cefa5c6c0dae1e7" class="collapsible-menu"></ul></li>
             <li class="parent " data-nav-id="/12-api-gateway/index.html"><a class="padding" href="/12-api-gateway/index.html">Kong API Gateway</a><ul id="R-subsections-edeba57bcdf65a92672ecb9c5ed9177f" class="collapsible-menu">
-            <li class="" data-nav-id="/12-api-gateway/121-oas-import/index.html"><a class="padding" href="/12-api-gateway/121-oas-import/index.html">Import an OpenAPI specification</a></li>
-            <li class="" data-nav-id="/12-api-gateway/122-kong-service-route/index.html"><a class="padding" href="/12-api-gateway/122-kong-service-route/index.html">Kong Gateway Service and Kong Route</a></li>
+            <li class="" data-nav-id="/12-api-gateway/121-kong-service-route/index.html"><a class="padding" href="/12-api-gateway/121-kong-service-route/index.html">Kong Gateway Service, Kong Route and Kong Plugin</a></li>
+            <li class="" data-nav-id="/12-api-gateway/122-oas-import/index.html"><a class="padding" href="/12-api-gateway/122-oas-import/index.html">Import an OpenAPI specification</a></li>
+            <li class="" data-nav-id="/12-api-gateway/123-kong-service-route-deck/index.html"><a class="padding" href="/12-api-gateway/123-kong-service-route-deck/index.html">Use decK to create Kong Objects</a></li>
             <li class="parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/index.html">Use Cases</a><ul id="R-subsections-d072a953a914cdb4c69798f4d5bdaaed" class="collapsible-menu">
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html">Proxy Caching</a></li>
             <li class="active " data-nav-id="/12-api-gateway/15-use-cases/151-key-authentication/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/151-key-authentication/index.html">API Key Authentication</a></li>
@@ -530,8 +508,8 @@ X-Kong-Request-Id: f8602e2e2778f306fba41f1661ef554c</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758622740" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758622740" defer></script>
-    <script src="/js/theme.js?1758622740" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758630910" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758630910" defer></script>
+    <script src="/js/theme.js?1758630910" defer></script>
   </body>
 </html>

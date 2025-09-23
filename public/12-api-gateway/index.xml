@@ -19,14 +19,14 @@
       <link>http://localhost:1313/12-api-gateway/122-oas-import/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/12-api-gateway/122-oas-import/index.html</guid>
-      <description>For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.&#xA;Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) Test the API Deployment curl $DATA_PLANE_URL/transactions You should get a response from the API Notice the x-kong-* headers like request id, proxy latency, upstream latency Run the request again, what do you notice about the proxy latency now?</description>
+      <description>For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.&#xA;Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) You should see your new Kong Service and Routes:</description>
     </item>
     <item>
-      <title>Kong Gateway Service and Kong Route</title>
+      <title>Use decK to create Kong Objects</title>
       <link>http://localhost:1313/12-api-gateway/123-kong-service-route-deck/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/12-api-gateway/123-kong-service-route-deck/index.html</guid>
-      <description>Gateway Services represent the upstream services in your system. These applications are the business logic components of your system responsible for responding to requests.&#xA;The configuration of a Gateway Service defines the connectivity details between the Kong Gateway and the upstream service, along with other metadata. Generally, you should map one Gateway Service to each upstream service.&#xA;For simple deployments, the upstream URL can be provided directly in the Gateway Service. For sophisticated traffic management needs, a Gateway Service can point at an Upstream.</description>
+      <description>Now, let’s use decK to create Kong Objects. This time, you’ll create and expose a service to the HTTPbin API. HTTPbin is an echo-type application that returns requests back to the requester as responses.&#xA;Ping Konnect with decK Before start using decK, you should ping Konnect to check if the connecting is up. Note we assume you have the PAT environment variable set. Please, refer to the previous section to learn how to issue a PAT.</description>
     </item>
     <item>
       <title>Use Cases</title>

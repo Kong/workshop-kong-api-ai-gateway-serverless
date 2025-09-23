@@ -6,45 +6,45 @@
     <meta name="generator" content="Hugo 0.150.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
     <meta name="description" content="For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.
-Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) Test the API Deployment curl $DATA_PLANE_URL/transactions You should get a response from the API Notice the x-kong-* headers like request id, proxy latency, upstream latency Run the request again, what do you notice about the proxy latency now?">
+Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) You should see your new Kong Service and Routes:">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Import an OpenAPI specification :: API Management with Kong Konnect and Serverless API Gateway">
     <meta name="twitter:description" content="For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.
-Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) Test the API Deployment curl $DATA_PLANE_URL/transactions You should get a response from the API Notice the x-kong-* headers like request id, proxy latency, upstream latency Run the request again, what do you notice about the proxy latency now?">
+Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) You should see your new Kong Service and Routes:">
     <meta property="og:url" content="http://localhost:1313/12-api-gateway/122-oas-import/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="Import an OpenAPI specification :: API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:description" content="For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.
-Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) Test the API Deployment curl $DATA_PLANE_URL/transactions You should get a response from the API Notice the x-kong-* headers like request id, proxy latency, upstream latency Run the request again, what do you notice about the proxy latency now?">
+Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) You should see your new Kong Service and Routes:">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Kong API Gateway">
     <meta itemprop="name" content="Import an OpenAPI specification :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.
-Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) Test the API Deployment curl $DATA_PLANE_URL/transactions You should get a response from the API Notice the x-kong-* headers like request id, proxy latency, upstream latency Run the request again, what do you notice about the proxy latency now?">
-    <meta itemprop="wordCount" content="458">
+Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) You should see your new Kong Service and Routes:">
+    <meta itemprop="wordCount" content="214">
     <title>Import an OpenAPI specification :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758628554" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758628554" defer></script>
-    <script src="/js/search-lunr.js?1758628554" defer></script>
-    <script src="/js/search.js?1758628554" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758629650" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758629650" defer></script>
+    <script src="/js/search-lunr.js?1758629650" defer></script>
+    <script src="/js/search.js?1758629650" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758628554";
+      window.relearn.index_js_url="/searchindex.en.js?1758629650";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758628554" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758628554" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758628554" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758628554" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758629650" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758629650" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758629650" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758629650" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758628554" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758628554" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758628554" rel="stylesheet">
-    <link href="/css/theme.css?1758628554" rel="stylesheet">
-    <link href="/css/format-html.css?1758628554" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758629650" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758629650" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758629650" rel="stylesheet">
+    <link href="/css/theme.css?1758629650" rel="stylesheet">
+    <link href="/css/format-html.css?1758629650" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -129,7 +129,7 @@ Download the bankong.yaml spec. In your Control Plane, click on Import via OAS s
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/121-kong-service-route/index.html" title="Kong Gateway Service, Kong Route and Kong Plugin (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/123-kong-service-route-deck/index.html" title="Kong Gateway Service and Kong Route (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/123-kong-service-route-deck/index.html" title="Use decK to create Kong Objects (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -160,83 +160,50 @@ Download the bankong.yaml spec. In your Control Plane, click on Import via OAS s
 <li>Notice the Services and Routes that will be imported</li>
 <li>Notice declarative representation of this import as well (more on this later)</li>
 </ul>
+<p>You should see your new Kong Service and Routes:</p>
+<p><a href="#R-image-49ddbfc032384fbd2d20d05069744d14" class="lightbox-link"><img alt="bankong" class="lazy lightbox figure-image" loading="lazy" src="/static/images/bankong-service-route.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-49ddbfc032384fbd2d20d05069744d14"><img alt="bankong" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/bankong-service-route.png"></a></p>
 <h3 id="test-the-api-deployment">Test the API Deployment</h3>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl $DATA_PLANE_URL/transactions</code></pre></div>
-<p>You should get a response from the API
-Notice the x-kong-* headers like request id, proxy latency, upstream latency
-Run the request again, what do you notice about the proxy latency now?</p>
-<h4 id="consume-the-route">Consume the Route</h4>
-<p>We are to use the same ELB provisioned during the Data Plane deployment:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -v $DATA_PLANE_URL/httpbin-route/get</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i $DATA_PLANE_URL/transactions</code></pre></div>
+<p>You should get a response from the API. Notice the <code>x-kong-*</code> headers like <code>request id</code>, <code>proxy latency</code>, <code>upstream latency</code>. Run the request again, what do you notice about the proxy latency now?</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json; charset=utf-8
+content-length: 517
+x-kong-request-id: 79d76d16883197392033bd590536481b
+x-powered-by: Express
+vary: Origin, Accept-Encoding
+access-control-allow-credentials: true
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+x-content-type-options: nosniff
+etag: W/&#34;205-u4o2XSHOR6oYVCAyD/5BTbm6Xgk&#34;
+date: Tue, 23 Sep 2025 11:58:13 GMT
+server: kong/3.11.0.1-enterprise-edition
+x-kong-upstream-latency: 39
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.1-enterprise-edition, 1.1 kong/3.11.0.0-enterprise-edition
 
-<p>If successful, you should see the <strong>httpbin</strong> output:</p>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>* Host kong-cceb6a93c9usmc2hk.kongcloud.dev:443 was resolved.
-* IPv6: (none)
-* IPv4: 66.51.127.198
-*   Trying 66.51.127.198:443...
-* Connected to kong-cceb6a93c9usmc2hk.kongcloud.dev (66.51.127.198) port 443
-* ALPN: curl offers h2,http/1.1
-* (304) (OUT), TLS handshake, Client hello (1):
-*  CAfile: /etc/ssl/cert.pem
-*  CApath: none
-* (304) (IN), TLS handshake, Server hello (2):
-* (304) (IN), TLS handshake, Unknown (8):
-* (304) (IN), TLS handshake, Certificate (11):
-* (304) (IN), TLS handshake, CERT verify (15):
-* (304) (IN), TLS handshake, Finished (20):
-* (304) (OUT), TLS handshake, Finished (20):
-* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
-* ALPN: server accepted h2
-* Server certificate:
-*  subject: CN=*.kongcloud.dev
-*  start date: Aug 15 23:28:00 2025 GMT
-*  expire date: Nov 13 23:27:59 2025 GMT
-*  subjectAltName: host &#34;kong-cceb6a93c9usmc2hk.kongcloud.dev&#34; matched cert&#39;s &#34;*.kongcloud.dev&#34;
-*  issuer: C=US; O=Let&#39;s Encrypt; CN=E6
-*  SSL certificate verify ok.
-* using HTTP/2
-* [HTTP/2] [1] OPENED stream for https://kong-cceb6a93c9usmc2hk.kongcloud.dev/httpbin-route/get
-* [HTTP/2] [1] [:method: GET]
-* [HTTP/2] [1] [:scheme: https]
-* [HTTP/2] [1] [:authority: kong-cceb6a93c9usmc2hk.kongcloud.dev]
-* [HTTP/2] [1] [:path: /httpbin-route/get]
-* [HTTP/2] [1] [user-agent: curl/8.7.1]
-* [HTTP/2] [1] [accept: */*]
-&gt; GET /httpbin-route/get HTTP/2
-&gt; Host: kong-cceb6a93c9usmc2hk.kongcloud.dev
-&gt; User-Agent: curl/8.7.1
-&gt; Accept: */*
-&gt; 
-* Request completely sent off
-&lt; HTTP/2 200 
-&lt; content-type: application/json
-&lt; content-length: 500
-&lt; x-kong-request-id: b3517f65a230d3091265e724d7d3ba14
-&lt; server: gunicorn/19.9.0
-&lt; date: Mon, 22 Sep 2025 19:59:58 GMT
-&lt; access-control-allow-origin: *
-&lt; access-control-allow-credentials: true
-&lt; x-kong-upstream-latency: 10
-&lt; x-kong-proxy-latency: 131
-&lt; via: 1.1 kong/3.11.0.0-enterprise-edition
-&lt; 
-{
-  &#34;args&#34;: {}, 
-  &#34;headers&#34;: {
-    &#34;Accept&#34;: &#34;*/*&#34;, 
-    &#34;Connection&#34;: &#34;keep-alive&#34;, 
-    &#34;Host&#34;: &#34;httpbin.konghq.com&#34;, 
-    &#34;User-Agent&#34;: &#34;curl/8.7.1&#34;, 
-    &#34;X-Forwarded-Host&#34;: &#34;kong-cceb6a93c9usmc2hk.kongcloud.dev&#34;, 
-    &#34;X-Forwarded-Path&#34;: &#34;/httpbin-route/get&#34;, 
-    &#34;X-Forwarded-Prefix&#34;: &#34;/httpbin-route&#34;, 
-    &#34;X-Kong-Request-Id&#34;: &#34;b3517f65a230d3091265e724d7d3ba14&#34;
-  }, 
-  &#34;origin&#34;: &#34;186.204.54.49, 66.51.127.198, 172.16.12.194&#34;, 
-  &#34;url&#34;: &#34;https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get&#34;
-}
-* Connection #0 to host kong-cceb6a93c9usmc2hk.kongcloud.dev left intact</code></pre></div>
-<p>Kong-gratulations! have now reached the end of this module by having your first service set up, running, and routing traffic proxied through a Kong data plane. You can now click <strong>Next</strong> to proceed with the next module.</p>
+[
+  {
+    &#34;source&#34;: &#34;DE8412325587359375895&#34;,
+    &#34;senderName&#34;: &#34;Max Mustermann&#34;,
+    &#34;destination&#34;: &#34;GR872659435350353&#34;,
+    &#34;amount&#34;: 10.2,
+    &#34;currency&#34;: &#34;EUR&#34;,
+    &#34;subject&#34;: &#34;The money we have talked about&#34;,
+    &#34;id&#34;: &#34;b88f7029-fa93-41a5-9462-4884e544bf63&#34;
+  },
+  {
+    &#34;source&#34;: &#34;UK8412325587359375895&#34;,
+    &#34;senderName&#34;: &#34;Mister Smith&#34;,
+    &#34;destination&#34;: &#34;GR872559435350353&#34;,
+    &#34;amount&#34;: 10000,
+    &#34;currency&#34;: &#34;EUR&#34;,
+    &#34;subject&#34;: &#34;Invoice #34078ja&#34;,
+    &#34;id&#34;: &#34;143aadce-f995-4503-ba6e-01ed01c6af88&#34;
+  }
+]</code></pre></div>
 
   <footer class="footline">
   </footer>
@@ -290,7 +257,7 @@ Run the request again, what do you notice about the proxy latency now?</p>
             <li class="parent " data-nav-id="/12-api-gateway/index.html"><a class="padding" href="/12-api-gateway/index.html">Kong API Gateway</a><ul id="R-subsections-edeba57bcdf65a92672ecb9c5ed9177f" class="collapsible-menu">
             <li class="" data-nav-id="/12-api-gateway/121-kong-service-route/index.html"><a class="padding" href="/12-api-gateway/121-kong-service-route/index.html">Kong Gateway Service, Kong Route and Kong Plugin</a></li>
             <li class="active " data-nav-id="/12-api-gateway/122-oas-import/index.html"><a class="padding" href="/12-api-gateway/122-oas-import/index.html">Import an OpenAPI specification</a></li>
-            <li class="" data-nav-id="/12-api-gateway/123-kong-service-route-deck/index.html"><a class="padding" href="/12-api-gateway/123-kong-service-route-deck/index.html">Kong Gateway Service and Kong Route</a></li>
+            <li class="" data-nav-id="/12-api-gateway/123-kong-service-route-deck/index.html"><a class="padding" href="/12-api-gateway/123-kong-service-route-deck/index.html">Use decK to create Kong Objects</a></li>
             <li class="alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/index.html">Use Cases</a><ul id="R-subsections-d072a953a914cdb4c69798f4d5bdaaed" class="collapsible-menu"></ul></li></ul></li>
             <li class="" data-nav-id="/14-apiops-deck/index.html"><a class="padding" href="/14-apiops-deck/index.html">APIOps and decK</a></li>
             <li class="" data-nav-id="/15-developer-portal/index.html"><a class="padding" href="/15-developer-portal/index.html">Konnect Developer Portal</a></li>
@@ -313,8 +280,8 @@ Run the request again, what do you notice about the proxy latency now?</p>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758628554" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758628554" defer></script>
-    <script src="/js/theme.js?1758628554" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758629650" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758629650" defer></script>
+    <script src="/js/theme.js?1758629650" defer></script>
   </body>
 </html>

@@ -1,35 +1,19 @@
 ---
-title : "Kong Gateway Service and Kong Route"
+title : "Use decK to create Kong Objects"
 weight : 123
 ---
 
 
-**Gateway Services** represent the upstream services in your system. These applications are the business logic components of your system responsible for responding to requests.
-
-The configuration of a Gateway Service defines the connectivity details between the Kong Gateway and the upstream service, along with other metadata. Generally, you should map one Gateway Service to each upstream service.
-
-For simple deployments, the upstream URL can be provided directly in the Gateway Service. For sophisticated traffic management needs, a Gateway Service can point at an **Upstream**.
-
-Gateway Services, in conjunction with **Routes**, let you expose your upstream services to clients with Kong Gateway.
-
-**Plugins** can be attached to a Service, and will run against every request that triggers a request to the Service that they’re attached to.
-
-
-![kong_entities](/static/images/kong_entities.png)
-
-
-
-
-For the purpose of this workshop, you’ll create and expose a service to the HTTPbin API. HTTPbin is an echo-type application that returns requests back to the requester as responses.
+Now, let's use **decK** to create Kong Objects. This time, you’ll create and expose a service to the [**HTTPbin**](http://httpbin.konghq.com) API. **HTTPbin** is an echo-type application that returns requests back to the requester as responses.
 
 
 #### Ping Konnect with decK
 
 Before start using decK, you should ping Konnect to check if the connecting is up. Note we assume you have the PAT environment variable set. Please, refer to the previous section to learn how to issue a PAT.
 
-{{<highlight>}}
+```
 deck gateway ping --konnect-control-plane-name serverless-default --konnect-token $PAT
-{{</highlight>}}
+```
 
 
 **Expected Output**
@@ -41,10 +25,10 @@ Successfully Konnected to the AcquaOrg organization!
 #### Create a Kong Gateway Service and Kong Route
 
 Create the following declaration first. Remarks:
-* Note the ``host`` and ``port`` refers to the HTTPbin's Kubernetes Service FQDN (Fully Qualified Domain Name), in our case ``http://httpbin.kong.svc.cluster.local:8000``.
+* Note the ``host`` and ``port`` refers to the HTTPbin's endpoint ``http://httpbin.konghq.com:80``.
 * The declaration tags the objects so you can managing them apart from other ones.
 
-{{<highlight>}}
+```
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
@@ -61,7 +45,7 @@ services:
     paths:
     - /httpbin-route
 EOF
-{{</highlight>}}
+```
 
 
 #### Submit the declaration
@@ -97,9 +81,9 @@ deck gateway reset --konnect-control-plane-name kong-aws --konnect-token $PAT -f
 
 We are to use the same ELB provisioned during the Data Plane deployment:
 
-{{<highlight>}}
+```
 curl -v $DATA_PLANE_URL/httpbin-route/get
-{{</highlight>}}
+```
 
 If successful, you should see the **httpbin** output:
 
@@ -145,13 +129,13 @@ If successful, you should see the **httpbin** output:
 < HTTP/2 200 
 < content-type: application/json
 < content-length: 500
-< x-kong-request-id: b3517f65a230d3091265e724d7d3ba14
+< x-kong-request-id: 738fe4313578a34415154c6833df4e40
 < server: gunicorn/19.9.0
-< date: Mon, 22 Sep 2025 19:59:58 GMT
+< date: Tue, 23 Sep 2025 12:10:29 GMT
 < access-control-allow-origin: *
 < access-control-allow-credentials: true
-< x-kong-upstream-latency: 10
-< x-kong-proxy-latency: 131
+< x-kong-upstream-latency: 12
+< x-kong-proxy-latency: 69
 < via: 1.1 kong/3.11.0.0-enterprise-edition
 < 
 {
@@ -164,14 +148,11 @@ If successful, you should see the **httpbin** output:
     "X-Forwarded-Host": "kong-cceb6a93c9usmc2hk.kongcloud.dev", 
     "X-Forwarded-Path": "/httpbin-route/get", 
     "X-Forwarded-Prefix": "/httpbin-route", 
-    "X-Kong-Request-Id": "b3517f65a230d3091265e724d7d3ba14"
+    "X-Kong-Request-Id": "738fe4313578a34415154c6833df4e40"
   }, 
   "origin": "186.204.54.49, 66.51.127.198, 172.16.12.194", 
   "url": "https://kong-cceb6a93c9usmc2hk.kongcloud.dev/get"
 }
-* Connection #0 to host kong-cceb6a93c9usmc2hk.kongcloud.dev left intact
-```
+* Connection #0 to host kong-cceb6a93c9usmc2hk.kongcloud.dev left intact```
 
-
-Kong-gratulations! have now reached the end of this module by having your first service set up, running, and routing traffic proxied through a Kong data plane. You can now click **Next** to proceed with the next module.
 
