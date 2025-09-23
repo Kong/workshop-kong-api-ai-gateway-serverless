@@ -12,7 +12,7 @@
       <link>http://localhost:1313/11-konnect-setup/112-personal-access-token/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/11-konnect-setup/112-personal-access-token/index.html</guid>
-      <description>We will also create Kong Objects using decK. decK requires a Konnect Personal Access Token (PAT) to manage your Control Plane. To generate your PAT, click on your initials in the upper right corner of the Konnect home page, then select Personal Access Tokens. Click on + Generate Token, name your PAT, set its expiration time, and be sure to copy and save it in an evironment variable, as Konnect won’t display it again.</description>
+      <description>decK requires a Konnect Personal Access Token (PAT) to manage your Control Plane. To generate your PAT, click on your initials in the upper right corner of the Konnect home page, then select Personal Access Tokens. Click on + Generate Token, name your PAT, set its expiration time, and be sure to copy and save it in an evironment variable, as Konnect won’t display it again.</description>
     </item>
   </channel>
 </rss>

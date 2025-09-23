@@ -3,15 +3,29 @@
   <channel>
     <title>Kong API Gateway :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/12-api-gateway/index.html</link>
-    <description>With our Control Plane created and Data Plane layer deployed it’s time to create an API and expose an application. In this module, we will:&#xA;Use decK to define a Kong Service based on an endpoint provided by the application and a Kong Route on top of the Kong Service to expose the application. Enable Kong Plugins to the Kong Route or Kong Service. Define Kong Consumers to represent the entities sending request to the Gateway and enable Kong Plugin to them. With decK (declarations for Kong) you can manage Kong Konnect configuration in a declaratively way.</description>
+    <description>With our Control Plane created and Data Plane layer deployed it’s time to create an API and expose an application. In this module, we will:&#xA;Use Konnect UI to import an OpenAPI specification. Use decK to define a Kong Service based on an endpoint provided by the application and a Kong Route on top of the Kong Service to expose the application. Enable Kong Plugins to the Kong Route or Kong Service. Define Kong Consumers to represent the entities sending request to the Gateway and enable Kong Plugin to them. With decK (declarations for Kong) you can manage Kong Konnect configuration in a declaratively way.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/12-api-gateway/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Kong Gateway Service and Kong Route</title>
-      <link>http://localhost:1313/12-api-gateway/122-kong-service-route/index.html</link>
+      <title>Kong Gateway Service, Kong Route and Kong Plugin</title>
+      <link>http://localhost:1313/12-api-gateway/121-kong-service-route/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/12-api-gateway/122-kong-service-route/index.html</guid>
+      <guid>http://localhost:1313/12-api-gateway/121-kong-service-route/index.html</guid>
+      <description>Kong Gateway can proxy:&#xA;Layer 7 protocol, including: REST, GraphQL, gRPC, Websocket, SOAP, Kafka Layer 4 TCP and UDP Streaming Kong Gateway Service Gateway Services represent the upstream services in your system. These applications are the business logic components of your system responsible for responding to requests.&#xA;The configuration of a Gateway Service defines the connectivity details between the Kong Gateway and the upstream service, along with other metadata. Generally, you should map one Gateway Service to each upstream service.</description>
+    </item>
+    <item>
+      <title>Import an OpenAPI specification</title>
+      <link>http://localhost:1313/12-api-gateway/122-oas-import/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/12-api-gateway/122-oas-import/index.html</guid>
+      <description>For our first Kong Service, we are going to import an OpenAPI spec (OAS) to our Control Plane. The Control Plane will convert the spec into Kong Service and Kong Routes.&#xA;Download the bankong.yaml spec. In your Control Plane, click on Import via OAS spec. Choose the bankong.yaml spec and click Continue. Review the Import Summary and click Import Notice the Services and Routes that will be imported Notice declarative representation of this import as well (more on this later) Test the API Deployment curl $DATA_PLANE_URL/transactions You should get a response from the API Notice the x-kong-* headers like request id, proxy latency, upstream latency Run the request again, what do you notice about the proxy latency now?</description>
+    </item>
+    <item>
+      <title>Kong Gateway Service and Kong Route</title>
+      <link>http://localhost:1313/12-api-gateway/123-kong-service-route-deck/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/12-api-gateway/123-kong-service-route-deck/index.html</guid>
       <description>Gateway Services represent the upstream services in your system. These applications are the business logic components of your system responsible for responding to requests.&#xA;The configuration of a Gateway Service defines the connectivity details between the Kong Gateway and the upstream service, along with other metadata. Generally, you should map one Gateway Service to each upstream service.&#xA;For simple deployments, the upstream URL can be provided directly in the Gateway Service. For sophisticated traffic management needs, a Gateway Service can point at an Upstream.</description>
     </item>
     <item>

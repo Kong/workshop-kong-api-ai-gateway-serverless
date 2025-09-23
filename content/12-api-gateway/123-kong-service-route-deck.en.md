@@ -1,6 +1,6 @@
 ---
 title : "Kong Gateway Service and Kong Route"
-weight : 122
+weight : 123
 ---
 
 

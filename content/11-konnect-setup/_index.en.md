@@ -75,9 +75,10 @@ Expected result
 There are multiple ways to create new Kong Objects in your Control Plane:
 * Konnect User Interface.
 * [RESTful Admin API](https://developer.konghq.com/api/), a fundamental mechanism for administration purposes.
-* [Kong Gateway Operator (KGO)](https://developer.konghq.com/gateway-operator/) and Kubernetes CRDs
+* [Kong Gateway Operator (KGO)](https://developer.konghq.com/gateway-operator/) and Kubernetes CRDs.
+* [deck](https://developer.konghq.com/deck/) - Declarations for Kong.
 
-To get an easier and faster deployment, this workshop uses Konnect User Interface.
+To get an easier and faster deployment, this workshop uses [deck](https://developer.konghq.com/deck/) and Konnect UI.
 
 This tutorial is intended to be used for labs and PoC only. There are many aspects and processes, typically implemented in production sites, not described here. For example: Digital Certificate issuing, Cluster monitoring, etc. For a production ready deployment, refer Kong on Terraform Constructs, available [here](https://developer.konghq.com/terraform/)
 

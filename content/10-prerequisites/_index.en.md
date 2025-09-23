@@ -26,7 +26,7 @@ Complete two badges via Kong Academy: **Kong Gateway Foundations** and **Kong Ga
 You will need a Kong Konnect Subscription to execute this workshop.
 
 
-#### 2. decK (Declaration for Kong)
+#### 2. decK (Declarations for Kong)
 Please, make sure you have [**decK**](https://developer.konghq.com/deck/) installed in your local environment.
 
 
