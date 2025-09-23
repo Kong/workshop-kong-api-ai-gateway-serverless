@@ -1,6 +1,6 @@
 ---
-title : "API Key Authentication"
-weight : 151
+title : "API Key Authentication and Rate Limiting"
+weight : 152
 ---
 
 To get started with API Authentication, let's implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.

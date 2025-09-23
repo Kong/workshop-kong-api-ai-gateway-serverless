@@ -1,5 +1,5 @@
 ---
-title : "Proxy Caching"
+title : "Proxy Caching and Rate Limiting"
 weight : 150
 ---
 

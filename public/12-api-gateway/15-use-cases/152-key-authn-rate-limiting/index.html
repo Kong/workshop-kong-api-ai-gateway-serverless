@@ -10,7 +10,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="API Key Authentication and Rate Limiting :: API Management with Kong Konnect and Serverless API Gateway">
     <meta name="twitter:description" content="To get started with API Authentication, let’s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.">
-    <meta property="og:url" content="http://localhost:1313/12-api-gateway/15-use-cases/151-key-authentication/index.html">
+    <meta property="og:url" content="http://localhost:1313/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="API Key Authentication and Rate Limiting :: API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:description" content="To get started with API Authentication, let’s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.">
@@ -21,31 +21,31 @@
     <meta itemprop="description" content="To get started with API Authentication, let’s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.">
     <meta itemprop="wordCount" content="1255">
     <title>API Key Authentication and Rate Limiting :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758631954" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758631954" defer></script>
-    <script src="/js/search-lunr.js?1758631954" defer></script>
-    <script src="/js/search.js?1758631954" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758632566" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758632566" defer></script>
+    <script src="/js/search-lunr.js?1758632566" defer></script>
+    <script src="/js/search.js?1758632566" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758631954";
+      window.relearn.index_js_url="/searchindex.en.js?1758632566";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758631954" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758631954" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758631954" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758631954" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758632566" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758632566" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758632566" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758632566" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758631954" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758631954" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758631954" rel="stylesheet">
-    <link href="/css/theme.css?1758631954" rel="stylesheet">
-    <link href="/css/format-html.css?1758631954" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758632566" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758632566" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758632566" rel="stylesheet">
+    <link href="/css/theme.css?1758632566" rel="stylesheet">
+    <link href="/css/format-html.css?1758632566" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = ``;
-      window.relearn.path='\/12-api-gateway\/15-use-cases\/151-key-authentication\/index.html';
+      window.relearn.path='\/12-api-gateway\/15-use-cases\/152-key-authn-rate-limiting\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='http:\/\/localhost:1313';
@@ -95,7 +95,7 @@
       window.relearn.markVariant();
     </script>
   </head>
-  <body class="mobile-support html" data-url="/12-api-gateway/15-use-cases/151-key-authentication/index.html">
+  <body class="mobile-support html" data-url="/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -125,7 +125,7 @@
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/index.html"><span itemprop="name">Kong API Gateway</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/12-api-gateway/15-use-cases/index.html"><span itemprop="name">Use Cases</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">API Key Authentication and Rate Limiting</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html" title="Proxy Caching (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html" title="Proxy Caching and Rate Limiting (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/12-api-gateway/15-use-cases/153-response-transformer/index.html" title="Response Transformer (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
@@ -151,8 +151,8 @@
 
 <p>To get started with API Authentication, let&rsquo;s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.</p>
 <p>A Kong Consumer represents a consumer (user or application) of a Service. A Kong Consumer is tightly coupled to an Authentication mechanism the Kong Gateway provides.</p>
-<p><a href="#R-image-2fdcf07ac0285bb81ead55c5bed38693" class="lightbox-link"><img alt="kong_consumer" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_consumer.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2fdcf07ac0285bb81ead55c5bed38693"><img alt="kong_consumer" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_consumer.png"></a></p>
+<p><a href="#R-image-fb6068b6470511c0b7690761203ef99b" class="lightbox-link"><img alt="kong_consumer" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_consumer.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-fb6068b6470511c0b7690761203ef99b"><img alt="kong_consumer" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_consumer.png"></a></p>
 <p>Please, check the <a href="https://docs.konghq.com/hub/kong-inc/key-auth/" rel="external" target="_blank"><strong>Key-Auth</strong> plugin</a> plugin and <a href="https://docs.konghq.com/gateway/latest/key-concepts/consumers/" rel="external" target="_blank"><strong>Kong Consumer</strong></a> documentation pages to learn more about them.</p>
 <h3 id="enable-the-key-authentication-plugin-on-the-kong-route">Enable the Key Authentication Plugin on the Kong Route</h3>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; key-auth.yaml &lt;&lt; &#39;EOF&#39;
@@ -481,11 +481,10 @@ via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
             <li class="" data-nav-id="/12-api-gateway/122-oas-import/index.html"><a class="padding" href="/12-api-gateway/122-oas-import/index.html">Import an OpenAPI specification</a></li>
             <li class="" data-nav-id="/12-api-gateway/123-kong-service-route-deck/index.html"><a class="padding" href="/12-api-gateway/123-kong-service-route-deck/index.html">Use decK to create Kong Objects</a></li>
             <li class="parent alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/index.html">Use Cases</a><ul id="R-subsections-d072a953a914cdb4c69798f4d5bdaaed" class="collapsible-menu">
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching/index.html">Proxy Caching</a></li>
-            <li class="active " data-nav-id="/12-api-gateway/15-use-cases/151-key-authentication/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/151-key-authentication/index.html">API Key Authentication and Rate Limiting</a></li>
+            <li class="" data-nav-id="/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html">Proxy Caching and Rate Limiting</a></li>
+            <li class="active " data-nav-id="/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html">API Key Authentication and Rate Limiting</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/153-response-transformer/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/153-response-transformer/index.html">Response Transformer</a></li>
             <li class="" data-nav-id="/12-api-gateway/15-use-cases/154-request-callout/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/154-request-callout/index.html">Request Callout</a></li>
-            <li class="" data-nav-id="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html">Rate Limiting</a></li>
             <li class="alwaysopen " data-nav-id="/12-api-gateway/15-use-cases/157-openidconnect/index.html"><a class="padding" href="/12-api-gateway/15-use-cases/157-openidconnect/index.html">OpenID Connect</a><ul id="R-subsections-34875f368b35fa0fde449b57e732d3fb" class="collapsible-menu"></ul></li></ul></li></ul></li>
             <li class="" data-nav-id="/14-apiops-deck/index.html"><a class="padding" href="/14-apiops-deck/index.html">APIOps and decK</a></li>
             <li class="" data-nav-id="/15-developer-portal/index.html"><a class="padding" href="/15-developer-portal/index.html">Konnect Developer Portal</a></li>
@@ -508,8 +507,8 @@ via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758631954" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758631954" defer></script>
-    <script src="/js/theme.js?1758631954" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758632566" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758632566" defer></script>
+    <script src="/js/theme.js?1758632566" defer></script>
   </body>
 </html>

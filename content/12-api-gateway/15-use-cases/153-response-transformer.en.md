@@ -12,18 +12,18 @@ In this section, you will configure the Response Transformer plugin on the Kong 
 
 Take the plugins declaration and enable the **Response Transformer** plugin to the Route.
 
-{{<highlight>}}
+```
 cat > response-transformer.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - httpbin-service-route
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
-  port: 8000
+  host: httpbin.konghq.com
+  port: 80
   routes:
   - name: response-transformer-route
     paths:
@@ -36,36 +36,35 @@ services:
           headers:
           - demo:injected-by-kong
 EOF
-{{</highlight>}}
+```
 
 
 Submit the declaration
-{{<highlight>}}
+```
 deck gateway sync --konnect-token $PAT response-transformer.yaml
-{{</highlight>}}
+```
 
 
 ### Verify
 Test to make sure Kong transforms the request to the echo server and httpbin server. 
 
-{{<highlight>}}
-curl --head $DATA_PLANE_LB/response-transformer-route/get
-{{</highlight>}}
+```
+curl --head $DATA_PLANE_URL/response-transformer-route/get
+```
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 403
-Connection: keep-alive
-Server: gunicorn
-Date: Mon, 11 Aug 2025 14:51:56 GMT
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
+HTTP/2 200 
+content-type: application/json
+content-length: 526
+x-kong-request-id: 29f8371c1b1cc446119b7f5df69a6128
+server: gunicorn/19.9.0
+date: Tue, 23 Sep 2025 12:40:54 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
 demo: injected-by-kong
-X-Kong-Upstream-Latency: 1
-X-Kong-Proxy-Latency: 2
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 6d294407e61075665321d07709210e3a
+x-kong-upstream-latency: 12
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 ```
 
 
@@ -76,9 +75,9 @@ X-Kong-Request-Id: 6d294407e61075665321d07709210e3a
 
 Reset the Control Plane to ensure that the plugins do not interfere with any other modules in the workshop for demo purposes and each workshop module code continues to function independently.
 
-{{<highlight>}}
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
-{{</highlight>}}
+```
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+```
 
 In real world scenario, you can enable as many plugins as you like depending on your use cases.
 

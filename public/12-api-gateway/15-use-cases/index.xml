@@ -3,22 +3,22 @@
   <channel>
     <title>Use Cases :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/12-api-gateway/15-use-cases/index.html</link>
-    <description>In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.&#xA;Proxy caching API Key with Kong Consumers Request Transformer Request Callout OpenID Connect with Keycloak These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the Plugin Hub.&#xA;You can now click Next to begin the module.</description>
+    <description>In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer.&#xA;Proxy caching Rate Limiting API Key with Kong Consumers Request Transformer Request Callout OpenID Connect with Kong Identity These functionalities are extended by the use of Kong Plugins. You can find a full list of all Kong plugins on the Plugin Hub.&#xA;You can now click Next to begin the module.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/12-api-gateway/15-use-cases/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Proxy Caching</title>
-      <link>http://localhost:1313/12-api-gateway/15-use-cases/150-proxy-caching/index.html</link>
+      <title>Proxy Caching and Rate Limiting</title>
+      <link>http://localhost:1313/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/12-api-gateway/15-use-cases/150-proxy-caching/index.html</guid>
+      <guid>http://localhost:1313/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html</guid>
       <description>Proxy Caching provides a reverse proxy cache implementation for Kong. It caches response entities based on configurable response code and content type, as well as request method. It can cache per-Consumer or per-API. Cache entities are stored for a configurable period of time, after which subsequent requests to the same resource will re-fetch and re-store the resource. Cache entities can also be forcefully purged via the Admin API prior to their expiration time.</description>
     </item>
     <item>
-      <title>API Key Authentication</title>
-      <link>http://localhost:1313/12-api-gateway/15-use-cases/151-key-authentication/index.html</link>
+      <title>API Key Authentication and Rate Limiting</title>
+      <link>http://localhost:1313/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/12-api-gateway/15-use-cases/151-key-authentication/index.html</guid>
+      <guid>http://localhost:1313/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html</guid>
       <description>To get started with API Authentication, let’s implement a basic Key Authentication mechanism. API Keys are one of the foundamental security mechanisms provided by Konnect. In order to consume an API, the consumer should inject a previously created API Key in the header of the request. The API consumption is allowed if the Gateway recognizes the API Key. Consumers add their API key either in a query string parameter, a header, or a request body to authenticate their requests and consume the application.</description>
     </item>
     <item>
@@ -26,7 +26,7 @@
       <link>http://localhost:1313/12-api-gateway/15-use-cases/153-response-transformer/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/12-api-gateway/15-use-cases/153-response-transformer/index.html</guid>
-      <description>The Response Transformer plugin modifies the upstream response (e.g. response from the server) before returning it to the client.&#xA;In this section, you will configure the Response Transformer plugin on the Kong Route. Specifically, you will configure Kong Konnect to add a new header “demo: injected-by-kong” before responding to the client.&#xA;Create the Response Transformer Plugin Take the plugins declaration and enable the Response Transformer plugin to the Route.&#xA;cat &gt; response-transformer.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: response-transformer-route paths: - /response-transformer-route plugins: - name: response-transformer instance_name: response-transformer1 config: add: headers: - demo:injected-by-kong EOF Submit the declaration deck gateway sync --konnect-token $PAT response-transformer.yaml</description>
+      <description>The Response Transformer plugin modifies the upstream response (e.g. response from the server) before returning it to the client.&#xA;In this section, you will configure the Response Transformer plugin on the Kong Route. Specifically, you will configure Kong Konnect to add a new header “demo: injected-by-kong” before responding to the client.&#xA;Create the Response Transformer Plugin Take the plugins declaration and enable the Response Transformer plugin to the Route.&#xA;cat &gt; response-transformer.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.konghq.com port: 80 routes: - name: response-transformer-route paths: - /response-transformer-route plugins: - name: response-transformer instance_name: response-transformer1 config: add: headers: - demo:injected-by-kong EOF Submit the declaration</description>
     </item>
     <item>
       <title>Request Callout</title>
@@ -34,13 +34,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/12-api-gateway/15-use-cases/154-request-callout/index.html</guid>
       <description>The Request Callout plugin allows you to insert arbitrary API calls before proxying a request to the upstream service.&#xA;In this section, you will configure the Request Callout plugin on the Kong Route. Specifically, you will configure the plugin to do the following:&#xA;Call Wikipedia using the “srseach” header as a parameter. The number of hits found and returned by Wikipeadia is added as a new header to the request. The request is sent to httpbin application which echoes the number of hits. Hit Wikipedia Just to get an idea what the Wikipedia response, send the following request:</description>
-    </item>
-    <item>
-      <title>Rate Limiting</title>
-      <link>http://localhost:1313/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/12-api-gateway/15-use-cases/156-setup-rate-limiting-plugin/index.html</guid>
-      <description>Add Rate Limiting plugin Just like you did before, add the Rate Limiting plugin on the Route setting Minute as 5 requests per minute, and set the identifier to Service.&#xA;cat &gt; rate-limiting.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - httpbin-service-route services: - name: httpbin-service host: httpbin.kong.svc.cluster.local port: 8000 routes: - name: rate-limiting-route paths: - /rate-limiting-route plugins: - name: rate-limiting instance_name: rate-limiting1 config: minute: 5 EOF Submit the declaration:</description>
     </item>
     <item>
       <title>OpenID Connect</title>
