@@ -48,7 +48,7 @@ For the plugin configuration we used the following settings:
 * **strategy** with ``memory``. The plugin will use the Runtime Instance's memory to implement to cache.
 * **cache_ttl** with ``30``, which means the plugin will clear all data that reached this time limit.
 
-All plugin configuration paramenters are described inside **[Kong Plugin Hub](https://docs.konghq.com/hub/)** portal, in its specific [documentation page](https://docs.konghq.com/hub/kong-inc/proxy-cache/).
+All plugin configuration paramenters are described inside [**Kong Plugin Hub**](https://docs.konghq.com/hub/) portal, in its specific [documentation page](https://docs.konghq.com/hub/kong-inc/proxy-cache/).
 
 #### Submit the new declaration
 ```

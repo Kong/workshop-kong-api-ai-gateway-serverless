@@ -7,56 +7,52 @@
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
     <meta name="description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
-Exercise Clone/Open your lab repo where specs and configs are stored.
-Review the Bash script below. It demonstrates:
-Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes for traceability Merging platform defaults, plugins, and upstreams Syncing the configuration with Konnect #!/bin/sh set -e INPUT_SPEC=&#34;./spec/kong-air-apis.yaml&#34; OUTPUT_SPEC=&#34;./decks/kong.yaml&#34; echo &#34;Step 1: Convert OpenAPI → Kong decK format&#34; deck file openapi2kong --spec &#34;$INPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 2: Add tags&#34; deck file add-tags kong-konnect-bootcamp -s &#34;$OUTPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 3: Merge platform configs&#34; deck file merge &#34;$OUTPUT_SPEC&#34; ./platform/*.yaml -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 4: Sync with Konnect&#34; deck gateway sync &#34;$OUTPUT_SPEC&#34; \ --konnect-addr &#34;https://eu.api.konghq.com&#34; \ --konnect-control-plane-name &#34;bootcamp-2025&#34; \ --konnect-token &#34;$DECK_KONNECT_TOKEN&#34; \ --select-tag kong-konnect-bootcamp Refer to ./scripts/apiops.sh for the full Bash script. Run the script locally to simulate a pipeline execution.">
+Download the OpenAPI specification Download the kong-air-apis.yaml OpenAPI spec. The spec defines routes to consume APIs exposed by the KongAir API Server
+Convert the OpenAPI spec into Kong configuration deck file openapi2kong --spec ./kong-air-apis.yaml -o kong.yaml Add tags for traceability deck file add-tags kong-konnect-workshop -s kong.yaml -o kong.yaml Merge plugins configuration Create a plugin configuration file">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
     <meta name="twitter:description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
-Exercise Clone/Open your lab repo where specs and configs are stored.
-Review the Bash script below. It demonstrates:
-Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes for traceability Merging platform defaults, plugins, and upstreams Syncing the configuration with Konnect #!/bin/sh set -e INPUT_SPEC=&#34;./spec/kong-air-apis.yaml&#34; OUTPUT_SPEC=&#34;./decks/kong.yaml&#34; echo &#34;Step 1: Convert OpenAPI → Kong decK format&#34; deck file openapi2kong --spec &#34;$INPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 2: Add tags&#34; deck file add-tags kong-konnect-bootcamp -s &#34;$OUTPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 3: Merge platform configs&#34; deck file merge &#34;$OUTPUT_SPEC&#34; ./platform/*.yaml -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 4: Sync with Konnect&#34; deck gateway sync &#34;$OUTPUT_SPEC&#34; \ --konnect-addr &#34;https://eu.api.konghq.com&#34; \ --konnect-control-plane-name &#34;bootcamp-2025&#34; \ --konnect-token &#34;$DECK_KONNECT_TOKEN&#34; \ --select-tag kong-konnect-bootcamp Refer to ./scripts/apiops.sh for the full Bash script. Run the script locally to simulate a pipeline execution.">
+Download the OpenAPI specification Download the kong-air-apis.yaml OpenAPI spec. The spec defines routes to consume APIs exposed by the KongAir API Server
+Convert the OpenAPI spec into Kong configuration deck file openapi2kong --spec ./kong-air-apis.yaml -o kong.yaml Add tags for traceability deck file add-tags kong-konnect-workshop -s kong.yaml -o kong.yaml Merge plugins configuration Create a plugin configuration file">
     <meta property="og:url" content="http://localhost:1313/14-apiops-deck/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
-Exercise Clone/Open your lab repo where specs and configs are stored.
-Review the Bash script below. It demonstrates:
-Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes for traceability Merging platform defaults, plugins, and upstreams Syncing the configuration with Konnect #!/bin/sh set -e INPUT_SPEC=&#34;./spec/kong-air-apis.yaml&#34; OUTPUT_SPEC=&#34;./decks/kong.yaml&#34; echo &#34;Step 1: Convert OpenAPI → Kong decK format&#34; deck file openapi2kong --spec &#34;$INPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 2: Add tags&#34; deck file add-tags kong-konnect-bootcamp -s &#34;$OUTPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 3: Merge platform configs&#34; deck file merge &#34;$OUTPUT_SPEC&#34; ./platform/*.yaml -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 4: Sync with Konnect&#34; deck gateway sync &#34;$OUTPUT_SPEC&#34; \ --konnect-addr &#34;https://eu.api.konghq.com&#34; \ --konnect-control-plane-name &#34;bootcamp-2025&#34; \ --konnect-token &#34;$DECK_KONNECT_TOKEN&#34; \ --select-tag kong-konnect-bootcamp Refer to ./scripts/apiops.sh for the full Bash script. Run the script locally to simulate a pipeline execution.">
+Download the OpenAPI specification Download the kong-air-apis.yaml OpenAPI spec. The spec defines routes to consume APIs exposed by the KongAir API Server
+Convert the OpenAPI spec into Kong configuration deck file openapi2kong --spec ./kong-air-apis.yaml -o kong.yaml Add tags for traceability deck file add-tags kong-konnect-workshop -s kong.yaml -o kong.yaml Merge plugins configuration Create a plugin configuration file">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="Concept APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.
 With Kong Konnect and decK, APIs can be treated as code — versioned, tested, and deployed through pipelines.
-Exercise Clone/Open your lab repo where specs and configs are stored.
-Review the Bash script below. It demonstrates:
-Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes for traceability Merging platform defaults, plugins, and upstreams Syncing the configuration with Konnect #!/bin/sh set -e INPUT_SPEC=&#34;./spec/kong-air-apis.yaml&#34; OUTPUT_SPEC=&#34;./decks/kong.yaml&#34; echo &#34;Step 1: Convert OpenAPI → Kong decK format&#34; deck file openapi2kong --spec &#34;$INPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 2: Add tags&#34; deck file add-tags kong-konnect-bootcamp -s &#34;$OUTPUT_SPEC&#34; -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 3: Merge platform configs&#34; deck file merge &#34;$OUTPUT_SPEC&#34; ./platform/*.yaml -o &#34;$OUTPUT_SPEC&#34; echo &#34;Step 4: Sync with Konnect&#34; deck gateway sync &#34;$OUTPUT_SPEC&#34; \ --konnect-addr &#34;https://eu.api.konghq.com&#34; \ --konnect-control-plane-name &#34;bootcamp-2025&#34; \ --konnect-token &#34;$DECK_KONNECT_TOKEN&#34; \ --select-tag kong-konnect-bootcamp Refer to ./scripts/apiops.sh for the full Bash script. Run the script locally to simulate a pipeline execution.">
-    <meta itemprop="wordCount" content="277">
+Download the OpenAPI specification Download the kong-air-apis.yaml OpenAPI spec. The spec defines routes to consume APIs exposed by the KongAir API Server
+Convert the OpenAPI spec into Kong configuration deck file openapi2kong --spec ./kong-air-apis.yaml -o kong.yaml Add tags for traceability deck file add-tags kong-konnect-workshop -s kong.yaml -o kong.yaml Merge plugins configuration Create a plugin configuration file">
+    <meta itemprop="wordCount" content="303">
     <title>APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link href="/14-apiops-deck/index.xml" rel="alternate" type="application/rss+xml" title="APIOps and decK :: API Management with Kong Konnect and Serverless API Gateway">
-    <link href="/css/auto-complete/auto-complete.min.css?1758635848" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758635848" defer></script>
-    <script src="/js/search-lunr.js?1758635848" defer></script>
-    <script src="/js/search.js?1758635848" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758641101" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758641101" defer></script>
+    <script src="/js/search-lunr.js?1758641101" defer></script>
+    <script src="/js/search.js?1758641101" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758635848";
+      window.relearn.index_js_url="/searchindex.en.js?1758641101";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758635848" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758635848" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758635848" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758635848" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758641101" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758641101" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758641101" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758641101" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758635848" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758635848" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758635848" rel="stylesheet">
-    <link href="/css/theme.css?1758635848" rel="stylesheet">
-    <link href="/css/format-html.css?1758635848" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758641101" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758641101" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758641101" rel="stylesheet">
+    <link href="/css/theme.css?1758641101" rel="stylesheet">
+    <link href="/css/format-html.css?1758641101" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -125,14 +121,22 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#concept">Concept</a>
       <ul>
-        <li><a href="#concept">Concept</a></li>
-        <li><a href="#exercise">Exercise</a></li>
+        <li><a href="#download-the-openapi-specification">Download the OpenAPI specification</a></li>
+        <li><a href="#convert-the-openapi-spec-into-kong-configuration">Convert the OpenAPI spec into Kong configuration</a></li>
+        <li><a href="#add-tags-for-traceability">Add tags for traceability</a></li>
+        <li><a href="#merge-plugins-configuration">Merge plugins configuration</a></li>
+        <li><a href="#sync-with-konnect">Sync with Konnect</a></li>
+        <li><a href="#consume-a-kong-route">Consume a Kong Route</a></li>
       </ul>
     </li>
-    <li><a href="#key-takeaways">Key Takeaways</a></li>
-    <li><a href="#next-steps">Next Steps</a></li>
+    <li><a href="#ci-tool-integration">CI tool integration</a>
+      <ul>
+        <li><a href="#key-takeaways">Key Takeaways</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
                 </div>
@@ -166,75 +170,67 @@ Converting an OpenAPI spec into Kong configuration (openapi2kong) Tagging routes
 
 <h1 id="apiops-and-deck">APIOps and decK</h1>
 
-<h3 id="concept">Concept</h3>
+<h2 id="concept">Concept</h2>
 <p>APIOps applies DevOps principles (automation, version control, CI/CD) to API lifecycle management.<br>
 With Kong Konnect and <strong>decK</strong>, APIs can be treated as code — versioned, tested, and deployed through pipelines.</p>
-<h3 id="exercise">Exercise</h3>
-<ol>
-<li>
-<p><strong>Clone/Open your lab repo</strong> where specs and configs are stored.</p>
-</li>
-<li>
-<p><strong>Review the Bash script</strong> below. It demonstrates:</p>
+<h3 id="download-the-openapi-specification">Download the OpenAPI specification</h3>
+<p>Download the <a href="/code/kong-air-apis.yaml">kong-air-apis.yaml</a> OpenAPI spec. The spec defines routes to consume APIs exposed by the <a href="https://api.kong-air.com/routes" rel="external" target="_blank"><strong>KongAir API Server</strong></a></p>
+<h3 id="convert-the-openapi-spec-into-kong-configuration">Convert the OpenAPI spec into Kong configuration</h3>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck file openapi2kong --spec ./kong-air-apis.yaml -o kong.yaml</code></pre></div>
+<h3 id="add-tags-for-traceability">Add tags for traceability</h3>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck file add-tags kong-konnect-workshop -s kong.yaml -o kong.yaml</code></pre></div>
+<h3 id="merge-plugins-configuration">Merge plugins configuration</h3>
+<p>Create a plugin configuration file</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; plugins.yaml &lt;&lt; &#39;EOF&#39;
+_format_version: &#34;3.0&#34;
+_konnect:
+   control_plane_name: serverless-default
+_info:
+   select_tags:
+   - kong-konnect-workshop
+plugins:
+- name: proxy-cache
+  enabled: true
+  config:
+   strategy: memory
+   cache_ttl: 30
+EOF</code></pre></div>
+<p>Merge the files</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck file merge ./kong.yaml ./plugins.yaml -o kong.yaml</code></pre></div>
+<h3 id="sync-with-konnect">Sync with Konnect</h3>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync kong.yaml \
+    --konnect-addr &#34;https://us.api.konghq.com&#34; \
+    --konnect-control-plane-name serverless-default \
+    --konnect-token $PAT \
+    --select-tag kong-konnect-workshop</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>creating service routes-service
+creating route routes-service_get-route
+creating route routes-service_health-check
+creating route routes-service_get-routes
+creating plugin proxy-cache (global)
+Summary:
+  Created: 5
+  Updated: 0
+  Deleted: 0</code></pre></div>
+<h3 id="consume-a-kong-route">Consume a Kong Route</h3>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -s $DATA_PLANE_URL/routes | jq</code></pre></div>
+<h2 id="ci-tool-integration">CI tool integration</h2>
+<p>As a best practice, for a CI tool integration, these steps should be included in a script and integrated into a CI tool of your choice (e.g., Jenkins, GitHub Actions, GitLab CI).</p>
+<p>The script should be triggered the script on every code push or pull request.</p>
+<p>Lastly, you should store your Konnect token as secrets.</p>
+<h3 id="key-takeaways">Key Takeaways</h3>
 <ul>
-<li>Converting an OpenAPI spec into Kong configuration (<code>openapi2kong</code>)</li>
-<li>Tagging routes for traceability</li>
-<li>Merging platform defaults, plugins, and upstreams</li>
-<li>Syncing the configuration with <strong>Konnect</strong></li>
+<li>Treat APIs as code: store OpenAPI + Kong configs in version control.</li>
+<li>Automate API deployment with decK for repeatability and reliability.</li>
+<li>CI/CD tools can run Bash scripts to enable APIOps in real-world projects.</li>
 </ul>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set -e
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>INPUT_SPEC<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./spec/kong-air-apis.yaml&#34;</span>
-</span></span><span style="display:flex;"><span>OUTPUT_SPEC<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./decks/kong.yaml&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 1: Convert OpenAPI → Kong decK format&#34;</span>
-</span></span><span style="display:flex;"><span>deck file openapi2kong --spec <span style="color:#e6db74">&#34;</span>$INPUT_SPEC<span style="color:#e6db74">&#34;</span> -o <span style="color:#e6db74">&#34;</span>$OUTPUT_SPEC<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 2: Add tags&#34;</span>
-</span></span><span style="display:flex;"><span>deck file add-tags kong-konnect-bootcamp -s <span style="color:#e6db74">&#34;</span>$OUTPUT_SPEC<span style="color:#e6db74">&#34;</span> -o <span style="color:#e6db74">&#34;</span>$OUTPUT_SPEC<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 3: Merge platform configs&#34;</span>
-</span></span><span style="display:flex;"><span>deck file merge <span style="color:#e6db74">&#34;</span>$OUTPUT_SPEC<span style="color:#e6db74">&#34;</span> ./platform/*.yaml -o <span style="color:#e6db74">&#34;</span>$OUTPUT_SPEC<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 4: Sync with Konnect&#34;</span>
-</span></span><span style="display:flex;"><span>deck gateway sync <span style="color:#e6db74">&#34;</span>$OUTPUT_SPEC<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--konnect-addr <span style="color:#e6db74">&#34;https://eu.api.konghq.com&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--konnect-control-plane-name <span style="color:#e6db74">&#34;bootcamp-2025&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--konnect-token <span style="color:#e6db74">&#34;</span>$DECK_KONNECT_TOKEN<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--select-tag kong-konnect-bootcamp</span></span></code></pre></div>
-<ul>
-<li>Refer to <code>./scripts/apiops.sh</code> for the full Bash script.</li>
-</ul>
-</li>
-<li>
-<p>Run the script locally to simulate a pipeline execution.</p>
-<ul>
-<li>Replace spec/config paths with your files.</li>
-<li>Ensure decK is installed and your Konnect token is set.</li>
-</ul>
-</li>
-<li>
-<p>(Optional) Integrate this script into a CI tool of your choice (e.g., Jenkins, GitHub Actions, GitLab CI).</p>
-<ul>
-<li>Store Konnect tokens as secrets.</li>
-<li>Trigger the script on every code push or pull request.</li>
-</ul>
-</li>
-</ol>
-<h2 id="key-takeaways">Key Takeaways</h2>
-<ul>
-<li><strong>Treat APIs as code</strong>: store OpenAPI + Kong configs in version control.</li>
-<li><strong>Automate API deployment</strong> with decK for repeatability and reliability.</li>
-<li><strong>CI/CD tools</strong> can run the same Bash script to enable APIOps in real-world projects.</li>
-</ul>
-<h2 id="next-steps">Next Steps</h2>
+<h3 id="next-steps">Next Steps</h3>
 <ul>
 <li>Extend the script with tests (linting, validation, diff before sync).</li>
 <li>Explore GitHub Actions or Jenkins examples for pipeline automation.</li>
 <li>Move towards full GitOps by integrating declarative API configs with source control workflows.</li>
 </ul>
-<hr>
 
   <footer class="footline">
   </footer>
@@ -307,8 +303,8 @@ With Kong Konnect and <strong>decK</strong>, APIs can be treated as code — ver
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758635848" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758635848" defer></script>
-    <script src="/js/theme.js?1758635848" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758641101" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758641101" defer></script>
+    <script src="/js/theme.js?1758641101" defer></script>
   </body>
 </html>
