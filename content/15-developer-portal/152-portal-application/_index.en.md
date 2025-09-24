@@ -1,11 +1,9 @@
 ---
-title : "API Product"
+title : "Developer Self-Service and Appication Registration"
 weight : 152
 ---
 
-
-
-RBAC
+This section will explore the [**Developer self-service and App registration**](https://developer.konghq.com/dev-portal/self-service/) capabilities provided by Konnect Developer Portal.
 
 1. Go to APIs -> Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service.
 You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later.

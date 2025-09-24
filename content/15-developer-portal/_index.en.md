@@ -34,5 +34,5 @@ Konnect Developer Portal provides an extensive list of benefits to **Developers*
 This section is divided into two parts:
 
 1. Create a Developer Portal and publish an API
-2. Create API Products to consume the API
+2. Use Developer self-service capability to create and consume Portal Applications.
 
