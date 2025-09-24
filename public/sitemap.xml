@@ -19,9 +19,6 @@
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/159-ai-proxy-advanced/4-lowest-latency-usage/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/16-ai-gateway/17-use-cases/159-ai-proxy-advanced/5-semantic-routing/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/10-prerequisites/index.html</loc>
   </url>
   <url>
@@ -85,9 +82,6 @@
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/155-request-response-transformer/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/16-ai-gateway/17-use-cases/156-semantic-cache/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/157-apikey/index.html</loc>
   </url>
   <url>
@@ -104,9 +98,6 @@
   </url>
   <url>
     <loc>http://localhost:1313/16-ai-gateway/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/16-ai-gateway/17-use-cases/170-rag/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/index.html</loc>
