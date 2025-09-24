@@ -35,4 +35,3 @@ This section is divided into two parts:
 
 1. Create a Developer Portal and publish an API
 2. Use Developer self-service capability to create and consume Portal Applications.
-

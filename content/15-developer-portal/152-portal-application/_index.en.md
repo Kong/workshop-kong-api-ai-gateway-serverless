@@ -5,82 +5,104 @@ weight : 152
 
 This section will explore the [**Developer self-service and App registration**](https://developer.konghq.com/dev-portal/self-service/) capabilities provided by Konnect Developer Portal.
 
-1. Go to APIs -> Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service.
-You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later.
+So far, you have your API published in the portal. However, there's no control over the API consumption. Konnect Dev Portal provides flexible options for controlling access to content and APIs. When combined with a Gateway Service, developers visiting a Dev Portal can sign up, create an application, register it with an API, and retrieve API keys without intervention from Dev Portal administrators.
 
-When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. While you can’t directly modify the KAA plugin as it’s managed by Konnect, you can modify the plugin’s behavior by adding JSON to the advanced configuration of your application auth strategy.
+Developer self-service consists of two main components:
 
-2. Play the developer role. If you try to consume the API will get a 401
-
-3. Portal -> Settings -> Security -> turn RBAC on to your Portal
-
-4. Portal -> Access and approvals -> create a Team
-
-5. Add the developer to the team
-
-6. Inside your team -> APIs -> Add a new role with the existing API and “API Consumer” role
-
-7. Play the developer role. If you try to consume the API you still get a 401
+* User authentication: Allows users to access your Dev Portal by logging in. You can further customize what logged in users can see using RBAC.
+* Application registration: Allows developers to use your APIs using credentials and create applications for them.
 
 
 
-App
+### Link the API to your Gateway Service.
 
-1. Play the developer role. Click “Use this API” and create an application (the Auth strategy is the default - api key auth)
+When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. After linking to the Konnect Gateway Service, developers can create applications and generate credentials, e.g. API keys.
 
-2. Copy the Credential (API Key - 3cI5F8xFj7DAkeAEfFA5vpHnQJjByYmx)
+Play the Administrator role again and click on **APIs** inside the **Dev Portal** menu option. Choose your API. Click in the **Gateway Service** tab and link the API to your Kong Gateway Service, created in the ``serverless-default`` Control Plane.
 
-3. Approve the Application
+![link_gateway_service](/static/images/link_gateway_service.png)
 
-4. Play the developer role. Add your API Key in the Authentication box. You should be able to consume the API (e.g. Returns Origin IP)
+As a developer, if you try to consume the API from the Dev Portal you are going to get a ``401`` error code, meaning the Dev Portal is controlling the Authentication mechanism which is, by default, based on API Keys.
 
-5. Choose your app and navigate to the Credentials tab.
-
-
+![401_dev_portal](/static/images/401_dev_portal.png)
 
 
-### 1. Create a Dev Portal
-- Navigate to **Konnect** and go to **Dev Portal**.
-- Click **Create Dev Portal** and fill in the required details (name, authentication settings, visibility, etc.).
-- Save and note your Dev Portal URL.
+### Turn RBAC on in your Portal
 
-### 2. Publish an API to the Dev Portal
-- Go to **Dev Portal > APIs**.
-- Click **New API** and provide the API name, version, and upload an OpenAPI spec or Markdown documentation.
-- (Optional) Link the API to a Gateway Service to enable developer self-service and authentication.
-- Publish the API to your Dev Portal and select an authentication strategy if required.  
-  > ℹ️ You must have the `Product Publisher` role to publish APIs to the portal.
+In order to control the API consumption we are going to turn the RBAC security model in our portal. That will allow to define which developer can consume the API.
 
-### 3. Register as a Developer and Create an Application
-- Open your Dev Portal URL in a new browser window.
-- Sign up as a new developer (or sign in if you already have an account).
-- Once approved, go to **My Apps** and create a new application.
-- Register your application for one or more APIs and generate credentials (API key or OIDC, depending on the authentication strategy).
+1. As an administrator, click the **Access and approvals** menu option inside your Dev Portal. Click on the **Teams** tab and create a team, named ``team1``.
 
-### 4. Explore API Products (Classic Dev Portal v2)
-- In **Konnect**, navigate to **API Products**.
-- Create a new API Product, add a version, and link it to a Gateway Service.
-- Add documentation (OpenAPI spec and/or Markdown).
-- Publish the API Product to a classic Dev Portal (v2) by selecting the portal and confirming publication.
+2. Inside your team, click **Add developer** and add your developer to your team.
 
----
+3. Go to the **APIs** tab and click **+ Add role**. Choose your API and add the ``API Conusumer`` role.
+
+That means your team has only one developer who has permissions to consumer your API.
+
+![team_dev_portal](/static/images/team_dev_portal.png)
+
+4. As a developer, if you try to consume the API again, you will still get the ``401`` error code.
+
+
+### Create a Portal Application.
+
+1. Play the developer role again. Inside the API page, click “Use this API” and create an application, named ``app1`` (the Auth strategy is the default - API Key Auth). Click **Create and use API**.
+
+![app_dev_portal](/static/images/app_dev_portal.png)
+
+
+2. Copy the Credential (e.g. vuOeFHUiR9oSc2fDLRvJDrJvd8ZLJJbh) and click **Copy and close**
+
+![credential_dev_portal](/static/images/credential_dev_portal.png)
+
+
+3. Add your API Key in the Authentication box. You will still get the ``401`` error code if you try to consume the API again.
+
+
+
+### Approve the Application
+
+1. As the administrator get back to the **Access and approvals** menu option inside your portal. Click the **App Registration** tab and approve the application.
+
+![app_approval_dev_portal](/static/images/app_approval_dev_portal.png)
+
+2. As the developer, you should be finally able to consume the API inside the Dev Portal.
+
+![app_consumption_dev_portal](/static/images/app_consumption_dev_portal.png)
+
+
+### Check your Application
+
+1. Still as the developer you can check your applications through the self-services provided by the Konnect Dev Portal. Click on the user icon on the upper-right corner of the Dev Portal page.
+
+2. You should see the applications you've created. In our case, there's only one, ``app1``.
+
+![app_self_service](/static/images/app_self_service.png)
+
+3. Click on the application. You will see three tabs avaiable. The first one, **APIs**, you can see all APIs defined for the application. In our case, only the ``httpbin`` API has been used.
+
+4. The second tab, **Analytics**, provides observability data related to the API consumption.
+
+5. The third tab, **Credentials**, you can manage your credentials, e.g. delete the existing ones, issue new ones, etc.
+
+
+
+
+
 
 ## Key Takeaways
 
 - The Konnect Dev Portal enables you to publish, document, and manage APIs for internal, partner, or public consumption.
 - APIs can be published to the Dev Portal with OpenAPI/AsyncAPI specs and Markdown documentation, and linked to Gateway Services for authentication and self-service.
 - Developers can self-register, create applications, and generate credentials directly from the Dev Portal.
-- API Products (v2) allow you to bundle multiple services and versions, manage documentation, and publish to classic Dev Portals for broader consumption.
 - All of these actions can be performed via the Konnect UI, providing a user-friendly, centralized management experience for your API ecosystem.
 
----
 
 ## Next Steps
 
 - Explore advanced Dev Portal customization options (branding, custom pages, and layouts).
 - Review analytics for your APIs and API Products in Konnect.
 - Learn about automating API and Dev Portal management using Konnect APIs or Terraform.
----
 
 
 **References:**  
@@ -89,4 +111,3 @@ App
 - [API Products and Classic Dev Portal](https://developer.konghq.com/api-products/)  
 - [Developer Self-Service and App Registration](https://developer.konghq.com/dev-portal/self-service/)  
 
-*All steps above are achievable via the Konnect UI as described in the official documentation.*
