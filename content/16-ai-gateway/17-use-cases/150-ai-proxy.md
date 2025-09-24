@@ -21,15 +21,23 @@ The following table describes which providers and requests the AI Proxy plugin s
 
 ## Getting Started with Kong AI Gateway
 
-We are going to get started with a simple configuration. The following decK declaration enables the **AI Proxy** plugin to the Kong Gateway Service, to send requests to the LLM and consume the Ollama's **lamma3.2:1b** FM and OpenAI's **gpt-5** FM with **chat** LLM requests.
+We are going to get started with a simple configuration. The following decK declaration enables the **AI Proxy** plugin to the Kong Gateway Service, to send requests to the LLM and consume the Mistral's **mistral-tiny** FM with **chat** LLM requests.
 
-Update your **ai-proxy.yaml** file with that. Make sure you have the **DECK_OPENAI_API_KEY** environment variable set with your OpenAI's API Key.
+Update your ai-proxy.yaml file with that. Make sure you have the DECK_OPENAI_API_KEY environment variable set with your OpenAI’s API Key.
+
+
+Set an environment variable with your Mistral's API Key.
+```
+export DECK_OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
+```
+
+Create the declaration:
 
 ```
 cat > ai-proxy.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
@@ -38,20 +46,6 @@ services:
   host: localhost
   port: 32000
   routes:
-  - name: ollama-route
-    paths:
-    - /ollama-route
-    plugins:
-    - name: ai-proxy
-      instance_name: ai-proxy-ollama
-      config:
-        route_type: llm/v1/chat
-        model:
-          provider: llama2
-          name: llama3.2:1b
-          options:
-            llama2_format: ollama
-            upstream_url: http://ollama.ollama:11434/api/chat
   - name: openai-route
     paths:
     - /openai-route
@@ -74,7 +68,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy.yaml
 ```
 
@@ -89,7 +83,7 @@ Now, send a request to Kong AI Gateway following the [OpenAI API Chat](https://p
 
 ```
 curl -s -X POST \
-  --url http://$DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [
@@ -107,24 +101,16 @@ Note the response also complies to the OpenAI API spec:
 
 ```
 {
-     "messages": [
-       {
-         "role": "user",
-         "content": "what is pi?"
-       }
-     ]
-   }' | jq
-{
-  "id": "chatcmpl-C3jWHoMI65rb0Ojkai1NjBq0JoRMG",
+  "id": "chatcmpl-CJPuRRxO43loCR0KCL5OMoAQLlH8u",
   "object": "chat.completion",
-  "created": 1755005997,
+  "created": 1758743863,
   "model": "gpt-5-2025-08-07",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "Pi (π) is the mathematical constant equal to the ratio of a circle’s circumference to its diameter. It’s the same for all circles.\n\n- Approximate value: 3.141592653589793…\n- Nature: irrational (non-terminating, non-repeating) and transcendental.\n- Common formulas:\n  - Circumference: C = 2πr\n  - Area of a circle: A = πr²\n  - Appears widely, e.g., e^(iπ) + 1 = 0, normal distribution, waves/Fourier analysis.\n- Handy approximations: 22/7 ≈ 3.142857, 355/113 ≈ 3.14159292.\n\nIf you want more digits or historical background, say the word.",
+        "content": "Pi (π) is the mathematical constant equal to the ratio of a circle’s circumference to its diameter.\n\nKey points:\n- Approximate value: 3.141592653589793…\n- Properties: irrational and transcendental (its decimal expansion never ends or repeats).\n- Common formulas: C = 2πr (circumference), A = πr² (area).\n- Ubiquitous in math and physics; appears in trigonometry, calculus, probability, and identities like e^(iπ) + 1 = 0.\n- Handy approximations: 3.14, 22/7, 355/113.\n\nIf you meant a different “pi” (e.g., principal investigator, Raspberry Pi), tell me which.",
         "refusal": null,
         "annotations": []
       },
@@ -133,8 +119,8 @@ Note the response also complies to the OpenAI API spec:
   ],
   "usage": {
     "prompt_tokens": 10,
-    "completion_tokens": 621,
-    "total_tokens": 631,
+    "completion_tokens": 611,
+    "total_tokens": 621,
     "prompt_tokens_details": {
       "cached_tokens": 0,
       "audio_tokens": 0
@@ -151,21 +137,6 @@ Note the response also complies to the OpenAI API spec:
 }
 ```
 
-
-You can also consume the Ollama's route
-```
-curl -s -X POST \
-  --url http://$DATA_PLANE_LB/ollama-route \
-  --header 'Content-Type: application/json' \
-  --data '{
-     "messages": [
-       {
-         "role": "user",
-         "content": "what is pi?"
-       }
-     ]
-   }' | jq
-```
 
 
 ##### AI Proxy configuration parameters
@@ -199,7 +170,7 @@ As you may have noticed our **AI Proxy** plugin defines the model it should cons
 cat > ai-proxy.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
@@ -208,19 +179,6 @@ services:
   host: localhost
   port: 32000
   routes:
-  - name: ollama-route
-    paths:
-    - /ollama-route
-    plugins:
-    - name: ai-proxy
-      instance_name: ai-proxy-ollama
-      config:
-        route_type: llm/v1/chat
-        model:
-          provider: llama2
-          options:
-            llama2_format: ollama
-            upstream_url: http://ollama.ollama:11434/api/chat
   - name: openai-route
     paths:
     - /openai-route
@@ -239,9 +197,9 @@ services:
 EOF
 ```
 
+Submit the declaration
 
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy.yaml
 ```
 
@@ -250,7 +208,7 @@ Send the request specifing the model:
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [
@@ -267,7 +225,7 @@ or
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [
@@ -280,7 +238,8 @@ curl -i -X POST \
    }'
 ```
 
-Note the Kong AI Proxy plugin adds a new **X-Kong-LLM-Model** header with the model we consumer: ``openai/gpt-5`` or ``openai/gpt-4``
+
+Note the Kong AI Proxy plugin adds a new **x-kong-llm-model** header with the model we consumed: ``mistral/mistral-tiny``
 
 
 ### Streaming
@@ -293,7 +252,7 @@ As an example, if you send the same request with the **stream** parameter as ``t
 
 ```
 curl -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [
@@ -308,21 +267,34 @@ curl -X POST \
 ```
 
 ```
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"role":"assistant","content":"","refusal":null},"logprobs":null,"finish_reason":null}],"obfuscation":"D5jIQAiER0kD2"}
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"role":"assistant","content":"","refusal":null},"logprobs":null,"finish_reason":null}],"obfuscation":"K3A23CoFUaAJu"}
 
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":"Pi"},"logprobs":null,"finish_reason":null}],"obfuscation":"3S9RmT4NS9k3b"}
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":"Pi"},"logprobs":null,"finish_reason":null}],"obfuscation":"UoRzdjHDE8Evc"}
 
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" ("},"logprobs":null,"finish_reason":null}],"obfuscation":"3ARtgUA4COqRA"}
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" is"},"logprobs":null,"finish_reason":null}],"obfuscation":"Dgg4gQxL4dvw"}
 
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":"π"},"logprobs":null,"finish_reason":null}],"obfuscation":"IS99TImGO4SoLp"}
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" a"},"logprobs":null,"finish_reason":null}],"obfuscation":"8g20TYPlKgxRc"}
 
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":")"},"logprobs":null,"finish_reason":null}],"obfuscation":"8jpC3eE7bQvh7b"}
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" mathematical"},"logprobs":null,"finish_reason":null}],"obfuscation":"aH"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" constant"},"logprobs":null,"finish_reason":null}],"obfuscation":"pQcMEi"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" that"},"logprobs":null,"finish_reason":null}],"obfuscation":"OKAgP9M4dR"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" represents"},"logprobs":null,"finish_reason":null}],"obfuscation":"V8SI"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" the"},"logprobs":null,"finish_reason":null}],"obfuscation":"pamC3RsKfeU"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" ratio"},"logprobs":null,"finish_reason":null}],"obfuscation":"sq0FRezS1"}
 
 ...
 
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":"."},"logprobs":null,"finish_reason":null}],"obfuscation":"YHL01GZcTNF1Wh"}
 
-data: {"id":"chatcmpl-C3jmyBQgTgsLd421Wg8fBhM0xkOiK","object":"chat.completion.chunk","created":1755007032,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}],"obfuscation":"vf2t9C6t3"}
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":" repeating"},"logprobs":null,"finish_reason":null}],"obfuscation":"NmF1W"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{"content":"."},"logprobs":null,"finish_reason":null}],"obfuscation":"qLrHCwlWsOhSFI"}
+
+data: {"id":"chatcmpl-CJPyYJDtqoBv2fMHjYyWn8vt9uVne","object":"chat.completion.chunk","created":1758744118,"model":"gpt-4-0613","service_tier":"default","system_fingerprint":null,"choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}],"obfuscation":"ABsseAiaw"}
 
 data: [DONE]
 ```

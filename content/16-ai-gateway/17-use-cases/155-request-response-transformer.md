@@ -30,13 +30,13 @@ Now, configure both plugins. Keep in mind that the plugins are totally independe
 cat > ai-request-response-tranformer.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
 services:
 - name: httpbin-service
-  host: httpbin.kong.svc.cluster.local
+  host: httpbin.konghq.com
   port: 8000
   routes:
   - name: httpbin-route
@@ -78,14 +78,14 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-request-response-tranformer.yaml
 ```
 
 
 ```
 curl -s -X POST \
-  --url $DATA_PLANE_LB/httpbin-route/post \
+  --url $DATA_PLANE_URL/httpbin-route/post \
   --header 'Content-Type: application/json' \
   --data '{
    "user": {

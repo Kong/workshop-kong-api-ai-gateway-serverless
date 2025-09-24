@@ -12,7 +12,7 @@ _info:
   select_tags:
   - llm
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 services:
 - name: ai-proxy-advanced-service
   host: localhost
@@ -37,12 +37,14 @@ services:
             header_value: Bearer ${{ env "DECK_OPENAI_API_KEY" }}
           weight: 80
         - model:
-            provider: llama2
-            name: llama3.2:1b
+            provider: openai
+            name: gpt-5
             options:
-              llama2_format: ollama
-              upstream_url: http://ollama.ollama:11434/api/chat
+              temperature: 1.0
           route_type: "llm/v1/chat"
+          auth:
+            header_name: Authorization
+            header_value: Bearer ${{ env "DECK_OPENAI_API_KEY" }}
           weight: 20
 EOF
 ```
@@ -50,6 +52,6 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy-advanced.yaml
 ```

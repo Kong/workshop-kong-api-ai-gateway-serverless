@@ -25,7 +25,7 @@ By analyzing the content of the request, the plugin can match it to the most app
 
 As a illustration here is the architecture where we are going to implement the multiple load balancing policies. AI Proxy Advanced will manage both LLMs:
 * gpt-4.1
-* llama3.2:1b
+* gpt-5
 
 ![ai_proxy_advanced](/static/images/ai_proxy_advanced.png)
 

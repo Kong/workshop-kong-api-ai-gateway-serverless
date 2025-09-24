@@ -18,11 +18,12 @@ The plugin matches lists of regular expressions to requests through AI Proxy. Th
 
 Here's an example to allow only valid credit cards numbers:
 
+
 ```
 cat > ai-prompt-guard.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
@@ -31,20 +32,6 @@ services:
   host: localhost
   port: 32000
   routes:
-  - name: ollama-route
-    paths:
-    - /ollama-route
-    plugins:
-    - name: ai-proxy
-      instance_name: ai-proxy-ollama
-      config:
-        route_type: llm/v1/chat
-        model:
-          provider: llama2
-          name: llama3.2:1b
-          options:
-            llama2_format: ollama
-            upstream_url: http://ollama.ollama:11434/api/chat
   - name: openai-route
     paths:
     - /openai-route
@@ -73,7 +60,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-prompt-guard.yaml
 ```
 
@@ -82,7 +69,7 @@ Send a request with a valid credit card pattern:
 
 ```
 curl -s -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data-raw '{
      "messages": [
@@ -95,13 +82,11 @@ curl -s -X POST \
 ```
 
 
-
-
 Now, send a non-valid number:
 
 ```
 curl -s -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data-raw '{
      "messages": [

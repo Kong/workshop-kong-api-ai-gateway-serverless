@@ -3,7 +3,7 @@
   <channel>
     <title>Kong AI Gateway :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link>http://localhost:1313/16-ai-gateway/index.html</link>
-    <description>In this second part of the workshop we are going to explore the AI capabilities provides by Kong AI Gateway and the specific collection of plugins.&#xA;You can now click Next to begin the module.&#xA;Optional Reading Learn more about Kong AI Gateway</description>
+    <description>In this part of the workshop we are going to explore the AI capabilities provides by Kong AI Gateway and the specific collection of plugins.&#xA;You can now click Next to begin the module.&#xA;Optional Reading Learn more about Kong AI Gateway</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/16-ai-gateway/index.xml" rel="self" type="application/rss+xml" />

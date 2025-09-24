@@ -44,19 +44,21 @@ services:
             header_name: Authorization
             header_value: Bearer ${{ env "DECK_OPENAI_API_KEY" }}
         - model:
-            provider: llama2
-            name: llama3.2:1b
+            provider: openai
+            name: gpt-5
             options:
-              llama2_format: ollama
-              upstream_url: http://ollama.ollama:11434/api/chat
+              temperature: 1.0
           route_type: "llm/v1/chat"
+          auth:
+            header_name: Authorization
+            header_value: Bearer ${{ env "DECK_OPENAI_API_KEY" }}
 EOF
 ```
 
 Apply the declaration with decK:
 
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy-advanced.yaml
 ```
 
@@ -64,7 +66,7 @@ Test the Route again.
 
 ```
 curl -s -X POST \
-  --url $DATA_PLANE_LB/route1 \
+  --url $DATA_PLANE_URL/route1 \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [
@@ -116,12 +118,14 @@ services:
             header_name: Authorization
             header_value: Bearer ${{ env "DECK_OPENAI_API_KEY" }}
         - model:
-            provider: llama2
-            name: llama3.2:1b
+            provider: openai
+            name: gpt-5
             options:
-              llama2_format: ollama
-              upstream_url: http://ollama.ollama:11434/api/chat
+              temperature: 1.0
           route_type: "llm/v1/chat"
+          auth:
+            header_name: Authorization
+            header_value: Bearer ${{ env "DECK_OPENAI_API_KEY" }}
 EOF
 ```
 
@@ -132,7 +136,7 @@ EOF
 Apply the declaration:
 
 ```
-deck gateway reset --konnect-control-plane-name kong-aws --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy-advanced.yaml
 ```
 
@@ -141,7 +145,7 @@ And test the Route again.
 
 ```
 curl -s -X POST \
-  --url $DATA_PLANE_LB/route1 \
+  --url $DATA_PLANE_URL/route1 \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [

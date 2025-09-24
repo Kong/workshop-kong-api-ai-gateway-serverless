@@ -14,7 +14,7 @@ Add a KongPlugin resource for authentication, specifically the **Key-Auth** plug
 cat > ai-key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
@@ -23,20 +23,6 @@ services:
   host: localhost
   port: 32000
   routes:
-  - name: ollama-route
-    paths:
-    - /ollama-route
-    plugins:
-    - name: ai-proxy
-      instance_name: ai-proxy-ollama
-      config:
-        route_type: llm/v1/chat
-        model:
-          provider: llama2
-          name: llama3.2:1b
-          options:
-            llama2_format: ollama
-            upstream_url: http://ollama.ollama:11434/api/chat
   - name: openai-route
     paths:
     - /openai-route
@@ -54,7 +40,7 @@ services:
           options:
             temperature: 1.0
     - name: key-auth
-      instance_name: key-auth-bedrock
+      instance_name: key-auth1
       enabled: true
 consumers:
 - keyauth_credentials:
@@ -66,7 +52,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-key-auth.yaml
 ```
 
@@ -77,7 +63,7 @@ New requests now require authentication
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
    --data '{
    "messages": [
@@ -94,19 +80,18 @@ curl -i -X POST \
 The response is a ``HTTP/1.1 401 Unauthorized``, meaning the Kong Gateway Service requires authentication.
 
 ```
-HTTP/1.1 401 Unauthorized
-Date: Tue, 12 Aug 2025 14:53:42 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-WWW-Authenticate: Key
-Content-Length: 96
-X-Kong-Response-Latency: 1
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: fd1bc16647271a20b7245b0cc9eb5052
+HTTP/2 401 
+date: Wed, 24 Sep 2025 20:14:07 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 95b133433cd56510d863734de2c1a16f
+www-authenticate: Key
+content-length: 96
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition
 
 {
   "message":"No API key found in request",
-  "request_id":"fd1bc16647271a20b7245b0cc9eb5052"
+  "request_id":"95b133433cd56510d863734de2c1a16f"
 }
 ```
 
@@ -116,7 +101,7 @@ Use the apikey to pass authentication to access the services.
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --header 'apikey: 123456' \
   --data '{

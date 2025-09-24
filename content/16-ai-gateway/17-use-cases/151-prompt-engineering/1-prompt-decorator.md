@@ -12,7 +12,7 @@ You can use this plugin to pre-set a system prompt, set up specific prompt histo
 cat > ai-prompt-decorator.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
@@ -21,19 +21,6 @@ services:
   host: localhost
   port: 32000
   routes:
-  - name: ollama-route
-    paths:
-    - /ollama-route
-    plugins:
-    - name: ai-proxy
-      instance_name: ai-proxy-ollama
-      config:
-        route_type: llm/v1/chat
-        model:
-          provider: llama2
-          options:
-            llama2_format: ollama
-            upstream_url: http://ollama.ollama:11434/api/chat
   - name: openai-route
     paths:
     - /openai-route
@@ -61,7 +48,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-prompt-decorator.yaml
 ```
 
@@ -70,7 +57,7 @@ Send a request now:
 
 ```
 curl -s -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --data '{
      "messages": [
@@ -79,7 +66,7 @@ curl -s -X POST \
          "content": "what is pi?"
        }
      ],
-     "model": "gpt-5"
+     "model": "gpt-4"
    }' | jq
 ```
 

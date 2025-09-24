@@ -30,7 +30,7 @@ Then, create the second ``consumer2``, just like you did with the first one, wit
 cat > ai-key-auth-rate-limiting-advanced.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: kong-workshop
+  control_plane_name: serverless-default
 _info:
   select_tags:
   - llm
@@ -39,20 +39,6 @@ services:
   host: localhost
   port: 32000
   routes:
-  - name: ollama-route
-    paths:
-    - /ollama-route
-    plugins:
-    - name: ai-proxy
-      instance_name: ai-proxy-ollama
-      config:
-        route_type: llm/v1/chat
-        model:
-          provider: llama2
-          name: llama3.2:1b
-          options:
-            llama2_format: ollama
-            upstream_url: http://ollama.ollama:11434/api/chat
   - name: openai-route
     paths:
     - /openai-route
@@ -70,7 +56,7 @@ services:
           options:
             temperature: 1.0
     - name: key-auth
-      instance_name: key-auth-bedrock
+      instance_name: key-auth1
       enabled: true
 consumers:
 - keyauth_credentials:
@@ -105,7 +91,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name kong-workshop --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-key-auth-rate-limiting-advanced.yaml
 ```
 
@@ -116,7 +102,7 @@ If you will, you can inject both keys to your requests.
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --header 'apikey: 123456' \
   --data '{
@@ -132,49 +118,49 @@ curl -i -X POST \
 * Expected output
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Connection: keep-alive
-X-AI-RateLimit-Limit-minute-openai: 500
-X-AI-RateLimit-Remaining-minute-openai: 500
+HTTP/2 200 
+content-type: application/json
+x-kong-request-id: e3526809fc3549492e2463168ecae109
+x-ai-ratelimit-limit-minute-openai: 500
+x-ai-ratelimit-remaining-minute-openai: 500
+x-ratelimit-remaining-tokens: 29993
+x-ratelimit-reset-requests: 120ms
+x-ratelimit-reset-tokens: 14ms
+x-request-id: req_1713c9930dba475a83c14e825e8c4c03
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
+alt-svc: h3=":443"; ma=86400
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:17:41 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844f7583ca8447a-EWR
 openai-version: 2020-10-01
-x-envoy-upstream-service-time: 8059
-Date: Tue, 12 Aug 2025 15:26:01 GMT
+cf-cache-status: DYNAMIC
+openai-processing-ms: 4861
 x-ratelimit-limit-requests: 500
 x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 5001
 x-ratelimit-remaining-requests: 499
-CF-RAY: 96e0fce49c204ee9-GRU
-x-ratelimit-remaining-tokens: 29993
-alt-svc: h3=":443"; ma=86400
-access-control-expose-headers: X-Request-ID
-X-Content-Type-Options: nosniff
-Server: cloudflare
-openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-x-request-id: req_f230ff10e7374c7a8b2fc292a3cc0685
-openai-processing-ms: 7964
-cf-cache-status: DYNAMIC
-openai-project: proj_r4KYFyenuGWthS5te4zaurNN
-x-ratelimit-reset-tokens: 14ms
-x-ratelimit-reset-requests: 120ms
-X-Kong-LLM-Model: openai/gpt-4.1
-Content-Length: 2058
-X-Kong-Upstream-Latency: 8798
-X-Kong-Proxy-Latency: 4
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 379bd531f3411379f613083969a88c07
+x-kong-llm-model: openai/gpt-4.1
+content-length: 2087
+x-kong-upstream-latency: 5155
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 
 {
-  "id": "chatcmpl-C3lAneT4SCgIa50fe89CYPadtBdfQ",
+  "id": "chatcmpl-CJQDgFMHEtVk3h2VotEk31bNLi0am",
   "object": "chat.completion",
-  "created": 1755012353,
+  "created": 1758745056,
   "model": "gpt-4.1-2025-04-14",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "Jimi Hendrix (born **James Marshall Hendrix**, November 27, 1942 – September 18, 1970) was an American guitarist, singer, and songwriter. He is widely regarded as one of the greatest and most influential electric guitarists in the history of popular music.\n\n**Career Highlights:**\n- Hendrix gained fame in the late 1960s with his band, **The Jimi Hendrix Experience**.\n- Some of his most famous songs include **\"Purple Haze,\" \"Hey Joe,\" \"The Wind Cries Mary,\"** and **\"All Along the Watchtower.\"**\n- He was known for his innovative guitar techniques, including feedback, distortion, and wah-wah, and his energetic and theatrical performance style.\n- Hendrix's legendary performances include his rendition of \"The Star-Spangled Banner\" at **Woodstock** in 1969.\n\n**Legacy:**\n- Despite his short career (he died at age 27), Hendrix's music and style had a major impact on rock, blues, and modern guitar playing.\n- He was posthumously inducted into the **Rock and Roll Hall of Fame** in 1992.\n- Hendrix is consistently ranked among the greatest guitarists of all time by music publications and critics.\n\n**Fun Fact:**  \nJimi Hendrix is part of the so-called \"27 Club,\" a group of influential musicians who died at the age of 27.",
+        "content": "**Jimi Hendrix** (born Johnny Allen Hendrix, later renamed James Marshall Hendrix; November 27, 1942 – September 18, 1970) was an American guitarist, singer, and songwriter who is widely regarded as one of the most influential electric guitarists in the history of popular music. \n\nHendrix gained fame in the mid-1960s with his band, **The Jimi Hendrix Experience**, and is celebrated for his innovative and experimental use of the electric guitar, pioneering the use of distortion, overdrive, and feedback. Songs like **\"Purple Haze,\" \"Hey Joe,\" \"The Wind Cries Mary,\" and \"All Along the Watchtower\"** are among his most famous recordings.\n\nHis stage presence, technical ability, and creative use of guitar effects revolutionized rock music. Hendrix's performance at the 1969 Woodstock Festival—particularly his iconic rendition of \"The Star-Spangled Banner\"—has become legendary.\n\nHe released only three studio albums during his lifetime:  \n- **Are You Experienced** (1967)  \n- **Axis: Bold as Love** (1967)  \n- **Electric Ladyland** (1968)  \n\nDespite his brief career—he died at the age of 27—Hendrix's music and style have had a lasting impact, inspiring generations of musicians. He is frequently ranked among the greatest guitarists of all time.",
         "refusal": null,
         "annotations": []
       },
@@ -184,8 +170,8 @@ X-Kong-Request-Id: 379bd531f3411379f613083969a88c07
   ],
   "usage": {
     "prompt_tokens": 13,
-    "completion_tokens": 285,
-    "total_tokens": 298,
+    "completion_tokens": 284,
+    "total_tokens": 297,
     "prompt_tokens_details": {
       "cached_tokens": 0,
       "audio_tokens": 0
@@ -198,7 +184,7 @@ X-Kong-Request-Id: 379bd531f3411379f613083969a88c07
     }
   },
   "service_tier": "default",
-  "system_fingerprint": "fp_b3f1157249"
+  "system_fingerprint": "fp_3502f4eb73"
 }
 ```
 
@@ -206,7 +192,7 @@ or
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --header 'apikey: 987654' \
   --data '{
@@ -222,49 +208,49 @@ curl -i -X POST \
 * Expected output
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Connection: keep-alive
-X-AI-RateLimit-Limit-minute-openai: 10000
-X-AI-RateLimit-Remaining-minute-openai: 10000
-x-ratelimit-limit-tokens: 30000
-x-ratelimit-remaining-requests: 499
-Date: Tue, 12 Aug 2025 15:26:41 GMT
+HTTP/2 200 
+content-type: application/json
+x-kong-request-id: 52a6a066cc4e210a67ab850612ced730
+x-ai-ratelimit-limit-minute-openai: 10000
+x-ai-ratelimit-remaining-minute-openai: 10000
 x-ratelimit-remaining-tokens: 29993
-access-control-expose-headers: X-Request-ID
-openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
-openai-processing-ms: 6376
 x-ratelimit-reset-requests: 120ms
-openai-project: proj_r4KYFyenuGWthS5te4zaurNN
-cf-cache-status: DYNAMIC
-openai-version: 2020-10-01
-Server: cloudflare
-X-Content-Type-Options: nosniff
-x-envoy-upstream-service-time: 6463
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-CF-RAY: 96e0fdeec8b7ae57-GRU
-x-ratelimit-limit-requests: 500
-x-request-id: req_f8c4559cbdac4d1bbff938b61a054f3d
 x-ratelimit-reset-tokens: 14ms
+x-request-id: req_99bf604880844d7c8ca5c47ffd8210ea
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
 alt-svc: h3=":443"; ma=86400
-X-Kong-LLM-Model: openai/gpt-4.1
-Content-Length: 2324
-X-Kong-Upstream-Latency: 6709
-X-Kong-Proxy-Latency: 3
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 6e2daa0a80e95772fa46e15637278177
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:18:24 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844f860ff07447a-EWR
+openai-version: 2020-10-01
+cf-cache-status: DYNAMIC
+openai-processing-ms: 5501
+x-ratelimit-limit-requests: 500
+x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 5532
+x-ratelimit-remaining-requests: 499
+x-kong-llm-model: openai/gpt-4.1
+content-length: 2003
+x-kong-upstream-latency: 5641
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 
 {
-  "id": "chatcmpl-C3lBT2cDacuuICQzugJ5CCMbWtCFV",
+  "id": "chatcmpl-CJQEMCDo5VIyVDRMI9Q7B951HlWxt",
   "object": "chat.completion",
-  "created": 1755012395,
+  "created": 1758745098,
   "model": "gpt-4.1-2025-04-14",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "**Jimi Hendrix** (born **James Marshall Hendrix**, November 27, 1942 – September 18, 1970) was an American guitarist, singer, and songwriter. Widely regarded as one of the greatest and most influential electric guitarists in the history of popular music, Hendrix is known for his innovative playing style, including groundbreaking use of guitar effects and techniques like feedback and distortion.\n\n### Brief Biography:\n- **Early Life:** Born in Seattle, Washington; started playing guitar as a teenager.\n- **Career:** Gained prominence in the mid-1960s after moving to England and forming the **Jimi Hendrix Experience** with bassist Noel Redding and drummer Mitch Mitchell.\n- **Famous Albums:** \n  - *Are You Experienced* (1967)\n  - *Axis: Bold as Love* (1967)\n  - *Electric Ladyland* (1968)\n- **Iconic Performances:** \n  - Monterey Pop Festival (1967)\n  - Woodstock Festival (1969), where he famously reinterpreted “The Star-Spangled Banner.”\n\n### Legacy:\nHendrix’s innovative approach fused rock, blues, and psychedelia. His use of the wah-wah pedal, feedback, and studio effects transformed notions of what the electric guitar could do. Despite his death at the age of 27, his influence persists across genres and generations.\n\n### Key Songs:\n- “Purple Haze”\n- “Hey Joe”\n- “All Along the Watchtower”\n- “Voodoo Child (Slight Return)”\n- “Little Wing”\n\nHendrix is a major figure in rock history and is frequently cited in “greatest guitarists of all time” lists.",
+        "content": "**Jimi Hendrix** (full name: **James Marshall Hendrix**; born November 27, 1942 – died September 18, 1970) was an American guitarist, singer, and songwriter. He is widely regarded as one of the most influential electric guitarists in the history of popular music and one of the most celebrated musicians of the 20th century.\n\nHendrix combined blues, rock, soul, and psychedelia in his innovative guitar style, known for his creative use of feedback, distortion, and other effects. He rose to fame in the 1960s with his band **The Jimi Hendrix Experience**, releasing iconic albums such as **\"Are You Experienced\"** (1967), **\"Axis: Bold as Love\"** (1967), and **\"Electric Ladyland\"** (1968).\n\nSome of his most famous songs include:\n- \"Purple Haze\"\n- \"All Along the Watchtower\" (a Bob Dylan cover)\n- \"Foxy Lady\"\n- \"Voodoo Child (Slight Return)\"\n- \"The Wind Cries Mary\"\n- \"Hey Joe\"\n\nHendrix's legendary performances, including his rendition of \"The Star-Spangled Banner\" at **Woodstock** in 1969, helped solidify his status as a rock icon. Despite his short career—he died at age 27—Hendrix's influence on rock, blues, and popular music continues to be profound.",
         "refusal": null,
         "annotations": []
       },
@@ -274,8 +260,8 @@ X-Kong-Request-Id: 6e2daa0a80e95772fa46e15637278177
   ],
   "usage": {
     "prompt_tokens": 13,
-    "completion_tokens": 346,
-    "total_tokens": 359,
+    "completion_tokens": 296,
+    "total_tokens": 309,
     "prompt_tokens_details": {
       "cached_tokens": 0,
       "audio_tokens": 0
@@ -288,7 +274,7 @@ X-Kong-Request-Id: 6e2daa0a80e95772fa46e15637278177
     }
   },
   "service_tier": "default",
-  "system_fingerprint": "fp_799e4ca3f1"
+  "system_fingerprint": "fp_3502f4eb73"
 }
 ```
 
@@ -301,7 +287,7 @@ Now, let's consume it with the Consumer1's API Key. As you can see the Data Plan
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --header 'apikey: 123456' \
   --data '{
@@ -316,37 +302,37 @@ curl -i -X POST \
 
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Connection: keep-alive
-X-AI-RateLimit-Limit-minute-openai: 500
-X-AI-RateLimit-Remaining-minute-openai: 110
-x-ratelimit-limit-tokens: 30000
-x-ratelimit-remaining-requests: 499
-Date: Tue, 12 Aug 2025 15:29:05 GMT
+HTTP/2 200 
+content-type: application/json
+x-kong-request-id: 90665c528c6845101ac2eb3b85937540
+x-ai-ratelimit-limit-minute-openai: 500
+x-ai-ratelimit-remaining-minute-openai: 478
 x-ratelimit-remaining-tokens: 29993
-access-control-expose-headers: X-Request-ID
-openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
-openai-processing-ms: 4385
 x-ratelimit-reset-requests: 120ms
-openai-project: proj_r4KYFyenuGWthS5te4zaurNN
-cf-cache-status: DYNAMIC
-openai-version: 2020-10-01
-Server: cloudflare
-X-Content-Type-Options: nosniff
-x-envoy-upstream-service-time: 4484
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-CF-RAY: 96e10178faf000f1-GRU
-x-ratelimit-limit-requests: 500
-x-request-id: req_b4611580cac4476288895c6315847b8b
 x-ratelimit-reset-tokens: 14ms
+x-request-id: req_2333577fbb0a4041aa6535ceba2e6102
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
 alt-svc: h3=":443"; ma=86400
-X-Kong-LLM-Model: openai/gpt-4.1
-Content-Length: 1796
-X-Kong-Upstream-Latency: 4881
-X-Kong-Proxy-Latency: 1
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 8b4285448ad3b335f766d33c61a37851
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:19:04 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844f94a4821447a-EWR
+openai-version: 2020-10-01
+cf-cache-status: DYNAMIC
+openai-processing-ms: 8492
+x-ratelimit-limit-requests: 500
+x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 8543
+x-ratelimit-remaining-requests: 499
+x-kong-llm-model: openai/gpt-4.1
+content-length: 2309
+x-kong-upstream-latency: 8627
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
 ```
 
 
@@ -354,7 +340,7 @@ If we keep sending requests using the first API Key, eventually, as expected, we
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --header 'apikey: 123456' \
   --data '{
@@ -368,20 +354,19 @@ curl -i -X POST \
 ```
 
 ```
-HTTP/1.1 429 Too Many Requests
-Date: Tue, 12 Aug 2025 15:29:52 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-X-AI-RateLimit-Limit-minute-openai: 500
-X-AI-RateLimit-Remaining-minute-openai: 0
-X-AI-RateLimit-Retry-After-minute-openai: 9
-X-AI-RateLimit-Reset: 9
-X-AI-RateLimit-Retry-After: 9
-X-AI-RateLimit-Reset-minute-openai: 9
-Content-Length: 66
-X-Kong-Response-Latency: 1
-Server: kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: c3a2a05b8f77b264230f041c527ade71
+HTTP/2 429 
+date: Wed, 24 Sep 2025 20:19:45 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 16d3d8047c19485e57837e36e9f2191f
+x-ai-ratelimit-reset-minute-openai: 29
+x-ai-ratelimit-retry-after: 29
+x-ai-ratelimit-reset: 29
+x-ai-ratelimit-limit-minute-openai: 500
+x-ai-ratelimit-remaining-minute-openai: 0
+x-ai-ratelimit-retry-after-minute-openai: 29
+content-length: 66
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition
 
 {"message":"AI token rate limit exceeded for provider(s): openai"}
 ```
@@ -391,7 +376,7 @@ However, the second API Key is still allowed to consume the Kong Route:
 
 ```
 curl -i -X POST \
-  --url $DATA_PLANE_LB/openai-route \
+  --url $DATA_PLANE_URL/openai-route \
   --header 'Content-Type: application/json' \
   --header 'apikey: 987654' \
   --data '{
@@ -405,49 +390,49 @@ curl -i -X POST \
 ```
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Connection: keep-alive
-X-AI-RateLimit-Limit-minute-openai: 10000
-X-AI-RateLimit-Remaining-minute-openai: 10000
+HTTP/2 200 
+content-type: application/json
+x-kong-request-id: e6ee574fbc371d4c54b745507ba08b12
+x-ai-ratelimit-limit-minute-openai: 10000
+x-ai-ratelimit-remaining-minute-openai: 10000
+x-ratelimit-remaining-tokens: 29993
+x-ratelimit-reset-requests: 120ms
+x-ratelimit-reset-tokens: 14ms
+x-request-id: req_ee7712a38e284ab1a06ddf85f37742da
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
+alt-svc: h3=":443"; ma=86400
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:20:14 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844fb1a48a2eef5-EWR
 openai-version: 2020-10-01
-x-envoy-upstream-service-time: 5053
-Date: Tue, 12 Aug 2025 15:30:26 GMT
+cf-cache-status: DYNAMIC
+openai-processing-ms: 4642
 x-ratelimit-limit-requests: 500
 x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 4669
 x-ratelimit-remaining-requests: 499
-CF-RAY: 96e103739ca64292-VCP
-x-ratelimit-remaining-tokens: 29993
-alt-svc: h3=":443"; ma=86400
-access-control-expose-headers: X-Request-ID
-X-Content-Type-Options: nosniff
-Server: cloudflare
-openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-x-request-id: req_379758f4fcd549acb57c7e6d911b5a89
-openai-processing-ms: 5014
-cf-cache-status: DYNAMIC
-openai-project: proj_r4KYFyenuGWthS5te4zaurNN
-x-ratelimit-reset-tokens: 14ms
-x-ratelimit-reset-requests: 120ms
-X-Kong-LLM-Model: openai/gpt-4.1
-Content-Length: 1998
-X-Kong-Upstream-Latency: 5602
-X-Kong-Proxy-Latency: 2
-Via: 1.1 kong/3.11.0.2-enterprise-edition
-X-Kong-Request-Id: 118caf09b62c8f4f78771c182f736b00
+x-kong-llm-model: openai/gpt-4.1
+content-length: 1870
+x-kong-upstream-latency: 4784
+x-kong-proxy-latency: 2
+via: 1.1 kong/3.11.0.0-enterprise-edition
 
 {
-  "id": "chatcmpl-C3lF7AC6zeB8NOBFQn5Xeacn6Ntf7",
+  "id": "chatcmpl-CJQGAUQK485uaDMZvu5fqtFWGG6KL",
   "object": "chat.completion",
-  "created": 1755012621,
+  "created": 1758745210,
   "model": "gpt-4.1-2025-04-14",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "**Jimi Hendrix** (born James Marshall Hendrix on November 27, 1942 – September 18, 1970) was an iconic American guitarist, singer, and songwriter. Widely regarded as one of the most influential electric guitarists in the history of popular music, Hendrix is celebrated for his innovative style, virtuosic playing, and groundbreaking use of guitar effects such as distortion, feedback, and wah-wah pedals.\n\nHendrix first gained fame in the mid-1960s after moving to London and forming the **Jimi Hendrix Experience** with bassist Noel Redding and drummer Mitch Mitchell. The band released classic albums such as *Are You Experienced* (1967), *Axis: Bold as Love* (1967), and *Electric Ladyland* (1968), featuring hit songs like \"Purple Haze,\" \"Hey Joe,\" \"The Wind Cries Mary,\" \"Voodoo Child (Slight Return),\" and his legendary rendition of \"The Star-Spangled Banner\" performed at Woodstock in 1969.\n\nTragically, Hendrix died at the young age of 27. Despite his short career, his influence continues to shape rock, blues, and popular music to this day. He is consistently ranked among the greatest guitarists of all time and has been inducted into the Rock and Roll Hall of Fame.",
+        "content": "**Jimi Hendrix** (born **James Marshall Hendrix** on November 27, 1942 – died September 18, 1970) was an American guitarist, singer, and songwriter. Widely regarded as **one of the greatest and most influential electric guitarists in the history of popular music**, Hendrix revolutionized the way the instrument was played, using innovative techniques such as feedback, distortion, and controlled noise.\n\nHe first gained fame in the UK after forming the **Jimi Hendrix Experience** in 1966, releasing hit songs like “Hey Joe,” “Purple Haze,” and “The Wind Cries Mary.” His groundbreaking performances at the **Monterey Pop Festival** in 1967 and **Woodstock** in 1969 are legendary, with his rendition of “The Star-Spangled Banner” at Woodstock being especially iconic.\n\nHendrix’s music blended rock, blues, psychedelia, and funk, influencing countless musicians. His career was tragically short; he died at age 27. Today, Jimi Hendrix is remembered as a cultural icon and is frequently cited on lists of the greatest guitarists of all time.",
         "refusal": null,
         "annotations": []
       },
@@ -457,8 +442,8 @@ X-Kong-Request-Id: 118caf09b62c8f4f78771c182f736b00
   ],
   "usage": {
     "prompt_tokens": 13,
-    "completion_tokens": 271,
-    "total_tokens": 284,
+    "completion_tokens": 232,
+    "total_tokens": 245,
     "prompt_tokens_details": {
       "cached_tokens": 0,
       "audio_tokens": 0
@@ -471,7 +456,7 @@ X-Kong-Request-Id: 118caf09b62c8f4f78771c182f736b00
     }
   },
   "service_tier": "default",
-  "system_fingerprint": "fp_51e1070cf2"
+  "system_fingerprint": "fp_3502f4eb73"
 }
 ```
 

@@ -31,7 +31,7 @@ Please, make sure you have [**decK**](https://developer.konghq.com/deck/) instal
 
 
 #### 3. LLM
-Some AI use cases require a GenAI infracture. Please make sure you have a [Mistral API Key](https://console.mistral.ai/).
+Some AI use cases require a GenAI infracture. Please make sure you have a [OpenAI API Key](https://platform.openai.com/settings/organization/api-keys).
 
 
 

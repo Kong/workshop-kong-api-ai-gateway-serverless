@@ -29,18 +29,11 @@
       <description>The AI Request Transformer and AI Response Transformer plugins integrate with the LLM on Amazon Bedrock, enabling introspection and transformation of the request’s body before proxying it to the Upstream Service and prior to forwarding the response to the client.&#xA;The plugins support llm/v1/chat style requests for all of the same providers as the AI Proxy plugin. It also use all of the same configuration and tuning parameters as the AI Proxy plugin, under the config.llm block.</description>
     </item>
     <item>
-      <title>AI Semantic Cache</title>
-      <link>http://localhost:1313/16-ai-gateway/17-use-cases/156-semantic-cache/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/16-ai-gateway/17-use-cases/156-semantic-cache/index.html</guid>
-      <description>Semantic caching enhances data retrieval efficiency by focusing on the meaning or context of queries rather than just exact matches. It stores responses based on the underlying intent and semantic similarities between different queries and can then retrieve those cached queries when a similar request is made.&#xA;When a new request is made, the system can retrieve and reuse previously cached responses if they are contextually relevant, even if the phrasing is different. This method reduces redundant processing, speeds up response times, and ensures that answers are more relevant to the user’s intent, ultimately improving overall system performance and user experience.</description>
-    </item>
-    <item>
       <title>Key Auth</title>
       <link>http://localhost:1313/16-ai-gateway/17-use-cases/157-apikey/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/16-ai-gateway/17-use-cases/157-apikey/index.html</guid>
-      <description>In this section, you will configure the Key-Auth plugin on the Kong Route to protect Amazon Bedrock.&#xA;Add Kong Key Authentication plugin and Kong Consumer Add a KongPlugin resource for authentication, specifically the Key-Auth plugin. Note that, besides describing the plugin configuration, the declaration also creates a Kong Consumer, named user1, with an API Key (123456) as its credential.&#xA;cat &gt; ai-key-auth.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: kong-workshop _info: select_tags: - llm services: - name: service1 host: localhost port: 32000 routes: - name: ollama-route paths: - /ollama-route plugins: - name: ai-proxy instance_name: ai-proxy-ollama config: route_type: llm/v1/chat model: provider: llama2 name: llama3.2:1b options: llama2_format: ollama upstream_url: http://ollama.ollama:11434/api/chat - name: openai-route paths: - /openai-route plugins: - name: ai-proxy instance_name: ai-proxy-openai config: route_type: llm/v1/chat auth: header_name: Authorization header_value: Bearer ${{ env &#34;DECK_OPENAI_API_KEY&#34; }} model: provider: openai name: gpt-4.1 options: temperature: 1.0 - name: key-auth instance_name: key-auth-bedrock enabled: true consumers: - keyauth_credentials: - key: &#34;123456&#34; username: user1 EOF Apply the declaration with decK:</description>
+      <description>In this section, you will configure the Key-Auth plugin on the Kong Route to protect Amazon Bedrock.&#xA;Add Kong Key Authentication plugin and Kong Consumer Add a KongPlugin resource for authentication, specifically the Key-Auth plugin. Note that, besides describing the plugin configuration, the declaration also creates a Kong Consumer, named user1, with an API Key (123456) as its credential.&#xA;cat &gt; ai-key-auth.yaml &lt;&lt; &#39;EOF&#39; _format_version: &#34;3.0&#34; _konnect: control_plane_name: serverless-default _info: select_tags: - llm services: - name: service1 host: localhost port: 32000 routes: - name: openai-route paths: - /openai-route plugins: - name: ai-proxy instance_name: ai-proxy-openai config: route_type: llm/v1/chat auth: header_name: Authorization header_value: Bearer ${{ env &#34;DECK_OPENAI_API_KEY&#34; }} model: provider: openai name: gpt-4.1 options: temperature: 1.0 - name: key-auth instance_name: key-auth1 enabled: true consumers: - keyauth_credentials: - key: &#34;123456&#34; username: user1 EOF Apply the declaration with decK:</description>
     </item>
     <item>
       <title>AI Rate Limiting Advanced</title>
@@ -55,13 +48,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/16-ai-gateway/17-use-cases/159-ai-proxy-advanced/index.html</guid>
       <description>The AI Proxy Advanced plugin lets you transform and proxy requests to multiple AI providers and models at the same time. This lets you set up load balancing between targets.&#xA;The plugin accepts requests in one of a few defined and standardised formats, translates them to the configured target format, and then transforms the response back into a standard format.&#xA;Load balancing This plugin supports several load-balancing algorithms, similar to those used for Kong upstreams, allowing efficient distribution of requests across different AI models. The supported algorithms include:</description>
-    </item>
-    <item>
-      <title>RAG - Retrieval-Augmented Generation</title>
-      <link>http://localhost:1313/16-ai-gateway/17-use-cases/170-rag/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/16-ai-gateway/17-use-cases/170-rag/index.html</guid>
-      <description>What is RAG? RAG offers a solution to some of the limitations in traditional generative AI models, such as accuracy and hallucinations, allowing companies to create more contextually relevant AI applications.&#xA;Basically, the RAG application comprises two main processes:&#xA;Data Preparation: External data sources, including all sorts of documents, are chunked and submitted to an Embedding Model which converts them into embeddings. The embeddings are stored in a Vector Database.</description>
     </item>
   </channel>
 </rss>
