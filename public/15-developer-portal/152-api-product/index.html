@@ -5,46 +5,46 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.150.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="Basic Developer Portal implementation In this section we are going to cover the basic steps to get a Developer Portal deployed
-Kong Service and Route Create a Kong Service based on http://httpbin.konghq.com Create a Kong Route with path / Globally enable the CORS plugin to your Control Plane. That’s needed to solve the relationship between the Dev Portal and the Upstream Service. Dev Portal creation Choose the Dev Portal menu option and click &#43; Create a new portal. Create a Private Portal named portal1. In the New Portal page accept the default values and click Save Click Go to overview. You should see the Overview page of your portal Check the Portal configuration: User authentication: Konnect built-in - That defines the default mechanism the Dev Portal uses for the user authentication. Besides the build-in option, it can be configured as OIDC or SAML. Default authentication strategy: key-auth - That defines the mechanism to control the API consumption inside the Dev Portal. Test your Dev Portal Sign Up If you click on the Dev Portal URL, you will play the Developer role and see your new portal home page. Since there’s no developer created, click Sing up and register to the Portal. Type your name and use a real email since the Dev Portal will send a confirmation request to it.">
+    <meta name="description" content="RBAC
+Go to APIs -&gt; Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service. You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later. When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. While you can’t directly modify the KAA plugin as it’s managed by Konnect, you can modify the plugin’s behavior by adding JSON to the advanced configuration of your application auth strategy.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="API Product :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta name="twitter:description" content="Basic Developer Portal implementation In this section we are going to cover the basic steps to get a Developer Portal deployed
-Kong Service and Route Create a Kong Service based on http://httpbin.konghq.com Create a Kong Route with path / Globally enable the CORS plugin to your Control Plane. That’s needed to solve the relationship between the Dev Portal and the Upstream Service. Dev Portal creation Choose the Dev Portal menu option and click &#43; Create a new portal. Create a Private Portal named portal1. In the New Portal page accept the default values and click Save Click Go to overview. You should see the Overview page of your portal Check the Portal configuration: User authentication: Konnect built-in - That defines the default mechanism the Dev Portal uses for the user authentication. Besides the build-in option, it can be configured as OIDC or SAML. Default authentication strategy: key-auth - That defines the mechanism to control the API consumption inside the Dev Portal. Test your Dev Portal Sign Up If you click on the Dev Portal URL, you will play the Developer role and see your new portal home page. Since there’s no developer created, click Sing up and register to the Portal. Type your name and use a real email since the Dev Portal will send a confirmation request to it.">
+    <meta name="twitter:description" content="RBAC
+Go to APIs -&gt; Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service. You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later. When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. While you can’t directly modify the KAA plugin as it’s managed by Konnect, you can modify the plugin’s behavior by adding JSON to the advanced configuration of your application auth strategy.">
     <meta property="og:url" content="http://localhost:1313/15-developer-portal/152-api-product/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="API Product :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta property="og:description" content="Basic Developer Portal implementation In this section we are going to cover the basic steps to get a Developer Portal deployed
-Kong Service and Route Create a Kong Service based on http://httpbin.konghq.com Create a Kong Route with path / Globally enable the CORS plugin to your Control Plane. That’s needed to solve the relationship between the Dev Portal and the Upstream Service. Dev Portal creation Choose the Dev Portal menu option and click &#43; Create a new portal. Create a Private Portal named portal1. In the New Portal page accept the default values and click Save Click Go to overview. You should see the Overview page of your portal Check the Portal configuration: User authentication: Konnect built-in - That defines the default mechanism the Dev Portal uses for the user authentication. Besides the build-in option, it can be configured as OIDC or SAML. Default authentication strategy: key-auth - That defines the mechanism to control the API consumption inside the Dev Portal. Test your Dev Portal Sign Up If you click on the Dev Portal URL, you will play the Developer role and see your new portal home page. Since there’s no developer created, click Sing up and register to the Portal. Type your name and use a real email since the Dev Portal will send a confirmation request to it.">
+    <meta property="og:description" content="RBAC
+Go to APIs -&gt; Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service. You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later. When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. While you can’t directly modify the KAA plugin as it’s managed by Konnect, you can modify the plugin’s behavior by adding JSON to the advanced configuration of your application auth strategy.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="API Product :: API Management with Kong Konnect and Serverless API Gateway">
-    <meta itemprop="description" content="Basic Developer Portal implementation In this section we are going to cover the basic steps to get a Developer Portal deployed
-Kong Service and Route Create a Kong Service based on http://httpbin.konghq.com Create a Kong Route with path / Globally enable the CORS plugin to your Control Plane. That’s needed to solve the relationship between the Dev Portal and the Upstream Service. Dev Portal creation Choose the Dev Portal menu option and click &#43; Create a new portal. Create a Private Portal named portal1. In the New Portal page accept the default values and click Save Click Go to overview. You should see the Overview page of your portal Check the Portal configuration: User authentication: Konnect built-in - That defines the default mechanism the Dev Portal uses for the user authentication. Besides the build-in option, it can be configured as OIDC or SAML. Default authentication strategy: key-auth - That defines the mechanism to control the API consumption inside the Dev Portal. Test your Dev Portal Sign Up If you click on the Dev Portal URL, you will play the Developer role and see your new portal home page. Since there’s no developer created, click Sing up and register to the Portal. Type your name and use a real email since the Dev Portal will send a confirmation request to it.">
-    <meta itemprop="wordCount" content="1275">
+    <meta itemprop="description" content="RBAC
+Go to APIs -&gt; Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service. You can link to a Konnect Gateway Service to allow developers to create applications and generate credentials or API keys. This is available to data planes running Kong Gateway 3.6 or later. When you link a service with an API, Konnect automatically adds the Konnect Application Auth (KAA) plugin on that Service. The KAA plugin is responsible for applying authentication and authorization on the Service. The authentication strategy that you select for the API defines how clients authenticate. While you can’t directly modify the KAA plugin as it’s managed by Konnect, you can modify the plugin’s behavior by adding JSON to the advanced configuration of your application auth strategy.">
+    <meta itemprop="wordCount" content="674">
     <title>API Product :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link href="/15-developer-portal/152-api-product/index.xml" rel="alternate" type="application/rss+xml" title="API Product :: API Management with Kong Konnect and Serverless API Gateway">
-    <link href="/css/auto-complete/auto-complete.min.css?1758664911" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758664911" defer></script>
-    <script src="/js/search-lunr.js?1758664911" defer></script>
-    <script src="/js/search.js?1758664911" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758711014" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758711014" defer></script>
+    <script src="/js/search-lunr.js?1758711014" defer></script>
+    <script src="/js/search.js?1758711014" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758664911";
+      window.relearn.index_js_url="/searchindex.en.js?1758711014";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758664911" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758664911" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758664911" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758664911" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758711014" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758711014" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758711014" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758711014" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758664911" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758664911" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758664911" rel="stylesheet">
-    <link href="/css/theme.css?1758664911" rel="stylesheet">
-    <link href="/css/format-html.css?1758664911" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758711014" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758711014" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758711014" rel="stylesheet">
+    <link href="/css/theme.css?1758711014" rel="stylesheet">
+    <link href="/css/format-html.css?1758711014" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -113,12 +113,8 @@ Kong Service and Route Create a Kong Service based on http://httpbin.konghq.com 
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#basic-developer-portal-implementation">Basic Developer Portal implementation</a>
+    <li>
       <ul>
-        <li><a href="#kong-service-and-route">Kong Service and Route</a></li>
-        <li><a href="#dev-portal-creation">Dev Portal creation</a></li>
-        <li><a href="#test-your-dev-portal">Test your Dev Portal</a></li>
-        <li><a href="#api-creation">API creation</a></li>
         <li><a href="#1-create-a-dev-portal">1. Create a Dev Portal</a></li>
         <li><a href="#2-publish-an-api-to-the-dev-portal">2. Publish an API to the Dev Portal</a></li>
         <li><a href="#3-register-as-a-developer-and-create-an-application">3. Register as a Developer and Create an Application</a></li>
@@ -160,110 +156,6 @@ Kong Service and Route Create a Kong Service based on http://httpbin.konghq.com 
 
 <h1 id="api-product">API Product</h1>
 
-<h2 id="basic-developer-portal-implementation">Basic Developer Portal implementation</h2>
-<p>In this section we are going to cover the basic steps to get a Developer Portal deployed</p>
-<h3 id="kong-service-and-route">Kong Service and Route</h3>
-<ol>
-<li>Create a Kong Service based on <code>http://httpbin.konghq.com</code></li>
-<li>Create a Kong Route with path <code>/</code></li>
-<li>Globally enable the CORS plugin to your Control Plane. That&rsquo;s needed to solve the relationship between the Dev Portal and the Upstream Service.</li>
-</ol>
-<h3 id="dev-portal-creation">Dev Portal creation</h3>
-<ol>
-<li>Choose the <strong>Dev Portal</strong> menu option and click <strong>+ Create a new portal</strong>.</li>
-<li>Create a <strong>Private Portal</strong> named <code>portal1</code>. In the <strong>New Portal</strong> page accept the default values and click <strong>Save</strong>
-<a href="#R-image-c79b48a56930754e6999ba6ac6c87034" class="lightbox-link"><img alt="portal1" class="lazy lightbox figure-image" loading="lazy" src="/static/images/portal1.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c79b48a56930754e6999ba6ac6c87034"><img alt="portal1" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/portal1.png"></a></li>
-<li>Click <strong>Go to overview</strong>. You should see the <strong>Overview</strong> page of your portal
-<a href="#R-image-4cdb1fd357a8da8f4355062124172ee5" class="lightbox-link"><img alt="portal1_overview" class="lazy lightbox figure-image" loading="lazy" src="/static/images/portal1_overview.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-4cdb1fd357a8da8f4355062124172ee5"><img alt="portal1_overview" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/portal1_overview.png"></a></li>
-<li>Check the Portal configuration:</li>
-</ol>
-<ul>
-<li><strong>User authentication</strong>: <code>Konnect built-in</code> - That defines the default mechanism the Dev Portal uses for the user authentication. Besides the <strong>build-in</strong> option, it can be configured as <strong>OIDC</strong> or <strong>SAML</strong>.</li>
-<li><strong>Default authentication strategy</strong>: <code>key-auth</code> - That defines the mechanism to control the API consumption inside the Dev Portal.</li>
-</ul>
-<h3 id="test-your-dev-portal">Test your Dev Portal</h3>
-<ol>
-<li>Sign Up</li>
-</ol>
-<p>If you click on the Dev Portal URL, you will play the Developer role and see your new portal home page. Since there&rsquo;s no developer created, click <strong>Sing up</strong> and register to the Portal. Type your name and use a real email since the Dev Portal will send a confirmation request to it.</p>
-<p><a href="#R-image-99da1b05ddd44226d98aca208f2550d3" class="lightbox-link"><img alt="portal1_signup" class="lazy lightbox figure-image" loading="lazy" src="/static/images/portal1_signup.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-99da1b05ddd44226d98aca208f2550d3"><img alt="portal1_signup" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/portal1_signup.png"></a></p>
-<p>Check your email and click the <strong>Confirm your email address</strong>. Still playing the developer role, you should get redirected to the Dev Portal to define your password.</p>
-<p>After creating the password, if you try to login, you&rsquo;ll receive an error message saying &ldquo;Your account is disabled or pending approval&rdquo;. That&rsquo;s because, by default, the Dev Portal was created with the <strong>Auto approved developers</strong> option disabled, meaning the administrator has to manually approve the new developers registrations.</p>
-<ol start="2">
-<li>Approve the Developer registration</li>
-</ol>
-<p>Getting back to the Dev Portal Administrator role, return to the <strong>Dev Portal</strong> menu option and choose <strong>Access and approvals</strong>. You can approve the new developer registration in the page:</p>
-<p><a href="#R-image-656aa17eff9b557107ea08ad12a148b4" class="lightbox-link"><img alt="portal1_developer_approval" class="lazy lightbox figure-image" loading="lazy" src="/static/images/portal1_developer_approval.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-656aa17eff9b557107ea08ad12a148b4"><img alt="portal1_developer_approval" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/portal1_developer_approval.png"></a></p>
-<ol start="3">
-<li>Login to the Dev Portal</li>
-</ol>
-<p>Playing the Developer role again, try to login to the Dev Portal one more time. You should get redirected to the Dev Portal home page. Click the <strong>API</strong> tab. You are supposed to get an empty page since we don&rsquo;t have any API published.</p>
-<p><a href="#R-image-8bc18783ea9f9ad34bb7aebba36c8633" class="lightbox-link"><img alt="portal1_no_apis" class="lazy lightbox figure-image" loading="lazy" src="/static/images/portal1_no_apis.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-8bc18783ea9f9ad34bb7aebba36c8633"><img alt="portal1_no_apis" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/portal1_no_apis.png"></a></p>
-<h3 id="api-creation">API creation</h3>
-<ol>
-<li>Prepare your OpenAPI specification</li>
-</ol>
-<p>Download the <a href="/code/httpbin_spec.yaml">httpbin_spec.yaml</a> OpenAPI specification. From the Konnect Dev Portal perspective, the spec has two main configurations:</p>
-<ul>
-<li>The <code>servers</code> section. Make sure the <code>url</code> parameters has your Proxy URL:</li>
-</ul>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>  - url: &lt;YOUR_PROXY_URL&gt;</code></pre></div>
-<ul>
-<li>Note the spec has added specific DevPortal elements in the <code>security</code> &amp; <code>securitySchemes</code> sections. That means the DevPortal will use the Key Auth plugin to control the API Consumption inside the Portal.</li>
-</ul>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>#################################
-# Kong DevPortal Security mechanism
-#################################
-security:
-  - ApiKeyAuth: []
-#################################</code></pre></div>
-<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>components:
-  securitySchemes:
-#################################
-# Kong Gateway Key-Auth
-#################################
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: apikey
-#################################</code></pre></div>
-<ol start="2">
-<li>Create your API</li>
-</ol>
-<p>Choose the <strong>APIs</strong> menu option inside <strong>Dev Portal</strong> and click <strong>+ New API</strong>. Upload your <code>httpbin_orig.yaml</code> and click <strong>Create</strong>. You should see your <code>httpbin</code> API page:</p>
-<p><a href="#R-image-67eff8deb1766a5f314984f18da46a07" class="lightbox-link"><img alt="httpbin_api" class="lazy lightbox figure-image" loading="lazy" src="/static/images/httpbin_api.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-67eff8deb1766a5f314984f18da46a07"><img alt="httpbin_api" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/httpbin_api.png"></a></p>
-<ol start="3">
-<li>Test your API</li>
-</ol>
-<p>Click the <strong>API Specification</strong> tab. Click <strong>try it!</strong> in the <strong>Returns Origin IP</strong></p>
-<p><a href="#R-image-6a3b1ce32a9d26b0ecbc41d495af88e6" class="lightbox-link"><img alt="tryit" class="lazy lightbox figure-image" loading="lazy" src="/static/images/tryit.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6a3b1ce32a9d26b0ecbc41d495af88e6"><img alt="tryit" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/tryit.png"></a></p>
-<ol start="4">
-<li>Add a documentation</li>
-</ol>
-<p>Click the <strong>Documentation</strong> tab. Create a new and empty document page with both name and slug as <code>doc1</code>. Click <strong>edit</strong> and type some documentation. Click <strong>save</strong> and switch the <strong>Published</strong> toggle on.</p>
-<p><a href="#R-image-fc2caa445f2d7b80b0f79492b8e3b2f6" class="lightbox-link"><img alt="api_documentation" class="lazy lightbox figure-image" loading="lazy" src="/static/images/api_documentation.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fc2caa445f2d7b80b0f79492b8e3b2f6"><img alt="api_documentation" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/api_documentation.png"></a></p>
-<ol start="5">
-<li>
-<p>Publish the API</p>
-</li>
-<li>
-<p>Go to APIs -&gt; Portals tab and publish the API to the Portal with Private visibility</p>
-</li>
-<li>
-<p>Play the developer role. Reload the Portal and see the new API available</p>
-</li>
-<li>
-<p>You should be able to consume the API, e.g. “Returns Origin IP”.</p>
-</li>
-</ol>
 <p>RBAC</p>
 <ol>
 <li>Go to APIs -&gt; Gateway Service. Link the API to the Kong Gateway Service. Show the Konnect App Auth plugin is enabled to the Service.
@@ -437,8 +329,8 @@ You can link to a Konnect Gateway Service to allow developers to create applicat
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758664911" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758664911" defer></script>
-    <script src="/js/theme.js?1758664911" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758711014" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758711014" defer></script>
+    <script src="/js/theme.js?1758711014" defer></script>
   </body>
 </html>

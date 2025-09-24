@@ -64,10 +64,16 @@
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/index.html</loc>
   </url>
   <url>
+    <loc>http://localhost:1313/15-developer-portal/151-api-publication/index.html</loc>
+  </url>
+  <url>
     <loc>http://localhost:1313/16-ai-gateway/17-use-cases/151-prompt-engineering/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/15-developer-portal/152-api-product/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/153-response-transformer/index.html</loc>
