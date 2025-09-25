@@ -29,26 +29,26 @@ Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data
     <meta itemprop="wordCount" content="514">
     <title>Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link href="/11-konnect-setup/index.xml" rel="alternate" type="application/rss+xml" title="Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway">
-    <link href="/css/auto-complete/auto-complete.min.css?1758745829" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758745829" defer></script>
-    <script src="/js/search-lunr.js?1758745829" defer></script>
-    <script src="/js/search.js?1758745829" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1758811839" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758811839" defer></script>
+    <script src="/js/search-lunr.js?1758811839" defer></script>
+    <script src="/js/search.js?1758811839" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758745829";
+      window.relearn.index_js_url="/searchindex.en.js?1758811839";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758745829" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758745829" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758745829" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758745829" defer></script>
+    <script src="/js/lunr/lunr.min.js?1758811839" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758811839" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758811839" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758811839" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758745829" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758745829" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758745829" rel="stylesheet">
-    <link href="/css/theme.css?1758745829" rel="stylesheet">
-    <link href="/css/format-html.css?1758745829" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758811839" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758811839" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758811839" rel="stylesheet">
+    <link href="/css/theme.css?1758811839" rel="stylesheet">
+    <link href="/css/format-html.css?1758811839" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -164,8 +164,8 @@ Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data
 <li>Access Kong Data Plane.</li>
 </ul>
 <p>Here&rsquo;s a Reference Architecture that will be implemented in this workshop:</p>
-<p><a href="#R-image-b85a9bc551ac7dce1077a72fdc942276" class="lightbox-link"><img alt="kong" class="lazy lightbox figure-image" loading="lazy" src="/static/images/ref_arch.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b85a9bc551ac7dce1077a72fdc942276"><img alt="kong" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/ref_arch.png"></a></p>
+<p><a href="#R-image-d579830870d01c81abf7f6f0b041c734" class="lightbox-link"><img alt="kong" class="lazy lightbox figure-image" loading="lazy" src="/static/images/ref_arch.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d579830870d01c81abf7f6f0b041c734"><img alt="kong" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/ref_arch.png"></a></p>
 <ul>
 <li>Kong Konnect Control Plane: responsible for managing your APIs</li>
 <li>Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers.</li>
@@ -187,13 +187,13 @@ Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data
 <li>Kong Ingress Controller which allows you to run Kong Gateway as a Kubernetes Ingress.</li>
 </ul>
 <p>To check all these options, click <code>+ New Gateway</code> inside the <code>API Gateway</code> menu option:</p>
-<p><a href="#R-image-a41d011b9fc3b1383bd9a8fc4aa32e80" class="lightbox-link"><img alt="Control Planes" class="lazy lightbox figure-image" loading="lazy" src="/static/images/konnect_control_planes.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a41d011b9fc3b1383bd9a8fc4aa32e80"><img alt="Control Planes" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/konnect_control_planes.png"></a></p>
+<p><a href="#R-image-456339dac7dea8b3e8f8aac6706d9926" class="lightbox-link"><img alt="Control Planes" class="lazy lightbox figure-image" loading="lazy" src="/static/images/konnect_control_planes.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-456339dac7dea8b3e8f8aac6706d9926"><img alt="Control Planes" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/konnect_control_planes.png"></a></p>
 <h3 id="serverless-proxy-url">Serverless Proxy URL</h3>
 <p>Konnect trial creates, by default, a Serverless API Gateway, naming it <code>serverless-default</code>
 Log in to the Kong Konnect UI. Inside the &ldquo;API Gateway&rdquo; page you should see your your Serverless Control Plane:</p>
-<p><a href="#R-image-938303a4e58a285fbb453bb810874919" class="lightbox-link"><img alt="Serverless Control Plane" class="lazy lightbox figure-image" loading="lazy" src="/static/images/serverless_control_plane.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-938303a4e58a285fbb453bb810874919"><img alt="Serverless Control Plane" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/serverless_control_plane.png"></a></p>
+<p><a href="#R-image-2c7da13be7bfb5ad7fdd0147c19e5135" class="lightbox-link"><img alt="Serverless Control Plane" class="lazy lightbox figure-image" loading="lazy" src="/static/images/serverless_control_plane.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2c7da13be7bfb5ad7fdd0147c19e5135"><img alt="Serverless Control Plane" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/serverless_control_plane.png"></a></p>
 <p>Copy the value of your Control Plane <code>Proxy URL</code> and keep it handy. That&rsquo;s the URL you Data Plane is located.</p>
 <h3 id="send-a-request-to-your-serverless-data-plane">Send a request to your Serverless Data Plane</h3>
 <p>Save your URL in an enviroment variable:</p>
@@ -289,8 +289,8 @@ Log in to the Kong Konnect UI. Inside the &ldquo;API Gateway&rdquo; page you sho
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758745829" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758745829" defer></script>
-    <script src="/js/theme.js?1758745829" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1758811839" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758811839" defer></script>
+    <script src="/js/theme.js?1758811839" defer></script>
   </body>
 </html>

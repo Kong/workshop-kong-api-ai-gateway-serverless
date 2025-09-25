@@ -200,6 +200,7 @@ EOF
 Submit the declaration
 
 ```
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy.yaml
 ```
 

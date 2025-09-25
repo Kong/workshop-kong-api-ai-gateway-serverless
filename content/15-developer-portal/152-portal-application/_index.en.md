@@ -73,7 +73,7 @@ That means your team has only one developer who has permissions to consumer your
 
 ### Check your Application
 
-1. Still as the developer you can check your applications through the self-services provided by the Konnect Dev Portal. Click on the user icon on the upper-right corner of the Dev Portal page.
+1. Still as the developer you can check your applications through the self-services provided by the Konnect Dev Portal. Click on the user icon on the top right corner of the Dev Portal page.
 
 2. You should see the applications you've created. In our case, there's only one, ``app1``.
 
@@ -105,9 +105,9 @@ That means your team has only one developer who has permissions to consumer your
 - Learn about automating API and Dev Portal management using Konnect APIs or Terraform.
 
 
-**References:**  
-- [Konnect Dev Portal Overview](https://developer.konghq.com/dev-portal/#dev-portal)  
-- [Publish your API to Dev Portal](https://developer.konghq.com/dev-portal/apis/#publish-your-api-to-dev-portal)  
-- [API Products and Classic Dev Portal](https://developer.konghq.com/api-products/)  
-- [Developer Self-Service and App Registration](https://developer.konghq.com/dev-portal/self-service/)  
+**References:**
+- [Konnect Dev Portal Overview](https://developer.konghq.com/dev-portal/#dev-portal)
+- [Publish your API to Dev Portal](https://developer.konghq.com/dev-portal/apis/#publish-your-api-to-dev-portal)
+- [Automate your API catalog with Dev Portal](https://developer.konghq.com/how-to/automate-api-catalog/)
+- [Developer Self-Service and App Registration](https://developer.konghq.com/dev-portal/self-service/)
 
