@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.150.1">
+    <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
+    <meta name="description" content="With the existing API Key policy, we can control the incoming requests. However, the policies implemented by the other plugins are the same regardless the consumer.
+In this section, we are going to define specific Rate Limiting policies for each Consumer represented by its API Key.
+Kong Consumer Policies It’s important then to be able to define specific policies for each one of these consumers. For example, it would be great to define Rate Limiting policies for different consumers like this:">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI Rate Limiting Advanced :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta name="twitter:description" content="With the existing API Key policy, we can control the incoming requests. However, the policies implemented by the other plugins are the same regardless the consumer.
+In this section, we are going to define specific Rate Limiting policies for each Consumer represented by its API Key.
+Kong Consumer Policies It’s important then to be able to define specific policies for each one of these consumers. For example, it would be great to define Rate Limiting policies for different consumers like this:">
+    <meta property="og:url" content="http://localhost:1313/16-ai-gateway/18-use-cases/158-rate-limiting/index.html">
+    <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
+    <meta property="og:title" content="AI Rate Limiting Advanced :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta property="og:description" content="With the existing API Key policy, we can control the incoming requests. However, the policies implemented by the other plugins are the same regardless the consumer.
+In this section, we are going to define specific Rate Limiting policies for each Consumer represented by its API Key.
+Kong Consumer Policies It’s important then to be able to define specific policies for each one of these consumers. For example, it would be great to define Rate Limiting policies for different consumers like this:">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Kong AI Gateway">
+    <meta itemprop="name" content="AI Rate Limiting Advanced :: API Management with Kong Konnect and Serverless API Gateway">
+    <meta itemprop="description" content="With the existing API Key policy, we can control the incoming requests. However, the policies implemented by the other plugins are the same regardless the consumer.
+In this section, we are going to define specific Rate Limiting policies for each Consumer represented by its API Key.
+Kong Consumer Policies It’s important then to be able to define specific policies for each one of these consumers. For example, it would be great to define Rate Limiting policies for different consumers like this:">
+    <meta itemprop="wordCount" content="1633">
+    <title>AI Rate Limiting Advanced :: API Management with Kong Konnect and Serverless API Gateway</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1758893492" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1758893492" defer></script>
+    <script src="/js/search-lunr.js?1758893492" defer></script>
+    <script src="/js/search.js?1758893492" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1758893492";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1758893492" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1758893492" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1758893492" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1758893492" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758893492" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758893492" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758893492" rel="stylesheet">
+    <link href="/css/theme.css?1758893492" rel="stylesheet">
+    <link href="/css/format-html.css?1758893492" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/16-ai-gateway\/18-use-cases\/158-rate-limiting\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'blue' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/16-ai-gateway/18-use-cases/158-rate-limiting/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kong-consumer-policies">Kong Consumer Policies</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">API Management with Kong Konnect and Serverless API Gateway</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/16-ai-gateway/index.html"><span itemprop="name">Kong AI Gateway</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/16-ai-gateway/18-use-cases/index.html"><span itemprop="name">Use Cases</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">AI Rate Limiting Advanced</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/16-ai-gateway/18-use-cases/157-apikey/index.html" title="Key Auth (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/16-ai-gateway/18-use-cases/159-ai-proxy-advanced/index.html" title="AI Proxy Advanced (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 16-ai-gateway" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="ai-rate-limiting-advanced">AI Rate Limiting Advanced</h1>
+
+<p>With the existing API Key policy, we can control the incoming requests. However, the policies implemented by the other plugins are the same regardless the consumer.</p>
+<p>In this section, we are going to define specific Rate Limiting policies for each Consumer represented by its API Key.</p>
+<h3 id="kong-consumer-policies">Kong Consumer Policies</h3>
+<p>It&rsquo;s important then to be able to define specific policies for each one of these consumers. For example, it would be great to define Rate Limiting policies for different consumers like this:</p>
+<ul>
+<li>consumer1:
+<ul>
+<li>apikey = 123456</li>
+<li>rate limiting policy = 500 tokens per minute</li>
+</ul>
+</li>
+<li>consumer2:
+<ul>
+<li>apikey = 987654</li>
+<li>rate limiting policy = 10000 tokens per minute</li>
+</ul>
+</li>
+</ul>
+<p>Doing that, the Data Plane is capable to not just protect the Route but to identify the consumer based on the key injected to enforce specific policies to the consumer. Keep in mind that a Consumer might have other plugins also enabled such as <a href="https://docs.konghq.com/hub/kong-inc/tcp-log/" rel="external" target="_blank">TCP Log</a>, etc.</p>
+<h4 id="new-consumer-and-ai-rate-limiting-advanced-plugin-policies">New Consumer and AI Rate Limiting Advanced plugin Policies</h4>
+<p>Then, create the second <code>consumer2</code>, just like you did with the first one, with the <code>987654</code> key. Both Kong Consumers have the <strong>AI Rate Limiting Advanced</strong> plugin enabled with specific configurations.</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>cat &gt; ai-key-auth-rate-limiting-advanced.yaml &lt;&lt; &#39;EOF&#39;
+_format_version: &#34;3.0&#34;
+_konnect:
+  control_plane_name: serverless-default
+_info:
+  select_tags:
+  - llm
+services:
+- name: service1
+  host: localhost
+  port: 32000
+  routes:
+  - name: openai-route
+    paths:
+    - /openai-route
+    plugins:
+    - name: ai-proxy
+      instance_name: ai-proxy-openai
+      config:
+        route_type: llm/v1/chat
+        auth:
+          header_name: Authorization
+          header_value: Bearer ${{ env &#34;DECK_OPENAI_API_KEY&#34; }}
+        model:
+          provider: openai
+          name: gpt-4.1
+          options:
+            temperature: 1.0
+    - name: key-auth
+      instance_name: key-auth1
+      enabled: true
+consumers:
+- keyauth_credentials:
+  - key: &#34;123456&#34;
+  username: user1
+  plugins:
+  - name: ai-rate-limiting-advanced
+    instance_name: ai-rate-limiting-advanced-consumer1
+    config:
+      llm_providers:
+      - name: openai
+        window_size:
+        - 60
+        limit:
+        - 500
+- keyauth_credentials:
+  - key: &#34;987654&#34;
+  username: user2  
+  plugins:
+  - name: ai-rate-limiting-advanced
+    instance_name: ai-rate-limiting-advanced-consumer2
+    config:
+      llm_providers:
+      - name: openai
+        window_size:
+        - 60
+        limit:
+        - 10000
+EOF</code></pre></div>
+<p>Apply the declaration with decK:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+deck gateway sync --konnect-token $PAT ai-key-auth-rate-limiting-advanced.yaml</code></pre></div>
+<h4 id="use-both-kong-consumers">Use both Kong Consumers</h4>
+<p>If you will, you can inject both keys to your requests.</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X POST \
+  --url $DATA_PLANE_URL/openai-route \
+  --header &#39;Content-Type: application/json&#39; \
+  --header &#39;apikey: 123456&#39; \
+  --data &#39;{
+   &#34;messages&#34;: [
+     {
+       &#34;role&#34;: &#34;user&#34;,
+       &#34;content&#34;: &#34;Who is Jimi Hendrix?&#34;
+     }
+   ]
+  }&#39;</code></pre></div>
+<ul>
+<li>Expected output</li>
+</ul>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+x-kong-request-id: e3526809fc3549492e2463168ecae109
+x-ai-ratelimit-limit-minute-openai: 500
+x-ai-ratelimit-remaining-minute-openai: 500
+x-ratelimit-remaining-tokens: 29993
+x-ratelimit-reset-requests: 120ms
+x-ratelimit-reset-tokens: 14ms
+x-request-id: req_1713c9930dba475a83c14e825e8c4c03
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
+alt-svc: h3=&#34;:443&#34;; ma=86400
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:17:41 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844f7583ca8447a-EWR
+openai-version: 2020-10-01
+cf-cache-status: DYNAMIC
+openai-processing-ms: 4861
+x-ratelimit-limit-requests: 500
+x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 5001
+x-ratelimit-remaining-requests: 499
+x-kong-llm-model: openai/gpt-4.1
+content-length: 2087
+x-kong-upstream-latency: 5155
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  &#34;id&#34;: &#34;chatcmpl-CJQDgFMHEtVk3h2VotEk31bNLi0am&#34;,
+  &#34;object&#34;: &#34;chat.completion&#34;,
+  &#34;created&#34;: 1758745056,
+  &#34;model&#34;: &#34;gpt-4.1-2025-04-14&#34;,
+  &#34;choices&#34;: [
+    {
+      &#34;index&#34;: 0,
+      &#34;message&#34;: {
+        &#34;role&#34;: &#34;assistant&#34;,
+        &#34;content&#34;: &#34;**Jimi Hendrix** (born Johnny Allen Hendrix, later renamed James Marshall Hendrix; November 27, 1942 – September 18, 1970) was an American guitarist, singer, and songwriter who is widely regarded as one of the most influential electric guitarists in the history of popular music. \n\nHendrix gained fame in the mid-1960s with his band, **The Jimi Hendrix Experience**, and is celebrated for his innovative and experimental use of the electric guitar, pioneering the use of distortion, overdrive, and feedback. Songs like **\&#34;Purple Haze,\&#34; \&#34;Hey Joe,\&#34; \&#34;The Wind Cries Mary,\&#34; and \&#34;All Along the Watchtower\&#34;** are among his most famous recordings.\n\nHis stage presence, technical ability, and creative use of guitar effects revolutionized rock music. Hendrix&#39;s performance at the 1969 Woodstock Festival—particularly his iconic rendition of \&#34;The Star-Spangled Banner\&#34;—has become legendary.\n\nHe released only three studio albums during his lifetime:  \n- **Are You Experienced** (1967)  \n- **Axis: Bold as Love** (1967)  \n- **Electric Ladyland** (1968)  \n\nDespite his brief career—he died at the age of 27—Hendrix&#39;s music and style have had a lasting impact, inspiring generations of musicians. He is frequently ranked among the greatest guitarists of all time.&#34;,
+        &#34;refusal&#34;: null,
+        &#34;annotations&#34;: []
+      },
+      &#34;logprobs&#34;: null,
+      &#34;finish_reason&#34;: &#34;stop&#34;
+    }
+  ],
+  &#34;usage&#34;: {
+    &#34;prompt_tokens&#34;: 13,
+    &#34;completion_tokens&#34;: 284,
+    &#34;total_tokens&#34;: 297,
+    &#34;prompt_tokens_details&#34;: {
+      &#34;cached_tokens&#34;: 0,
+      &#34;audio_tokens&#34;: 0
+    },
+    &#34;completion_tokens_details&#34;: {
+      &#34;reasoning_tokens&#34;: 0,
+      &#34;audio_tokens&#34;: 0,
+      &#34;accepted_prediction_tokens&#34;: 0,
+      &#34;rejected_prediction_tokens&#34;: 0
+    }
+  },
+  &#34;service_tier&#34;: &#34;default&#34;,
+  &#34;system_fingerprint&#34;: &#34;fp_3502f4eb73&#34;
+}</code></pre></div>
+<p>or</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X POST \
+  --url $DATA_PLANE_URL/openai-route \
+  --header &#39;Content-Type: application/json&#39; \
+  --header &#39;apikey: 987654&#39; \
+  --data &#39;{
+   &#34;messages&#34;: [
+     {
+       &#34;role&#34;: &#34;user&#34;,
+       &#34;content&#34;: &#34;Who is Jimi Hendrix?&#34;
+     }
+   ]
+  }&#39;</code></pre></div>
+<ul>
+<li>Expected output</li>
+</ul>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+x-kong-request-id: 52a6a066cc4e210a67ab850612ced730
+x-ai-ratelimit-limit-minute-openai: 10000
+x-ai-ratelimit-remaining-minute-openai: 10000
+x-ratelimit-remaining-tokens: 29993
+x-ratelimit-reset-requests: 120ms
+x-ratelimit-reset-tokens: 14ms
+x-request-id: req_99bf604880844d7c8ca5c47ffd8210ea
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
+alt-svc: h3=&#34;:443&#34;; ma=86400
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:18:24 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844f860ff07447a-EWR
+openai-version: 2020-10-01
+cf-cache-status: DYNAMIC
+openai-processing-ms: 5501
+x-ratelimit-limit-requests: 500
+x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 5532
+x-ratelimit-remaining-requests: 499
+x-kong-llm-model: openai/gpt-4.1
+content-length: 2003
+x-kong-upstream-latency: 5641
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  &#34;id&#34;: &#34;chatcmpl-CJQEMCDo5VIyVDRMI9Q7B951HlWxt&#34;,
+  &#34;object&#34;: &#34;chat.completion&#34;,
+  &#34;created&#34;: 1758745098,
+  &#34;model&#34;: &#34;gpt-4.1-2025-04-14&#34;,
+  &#34;choices&#34;: [
+    {
+      &#34;index&#34;: 0,
+      &#34;message&#34;: {
+        &#34;role&#34;: &#34;assistant&#34;,
+        &#34;content&#34;: &#34;**Jimi Hendrix** (full name: **James Marshall Hendrix**; born November 27, 1942 – died September 18, 1970) was an American guitarist, singer, and songwriter. He is widely regarded as one of the most influential electric guitarists in the history of popular music and one of the most celebrated musicians of the 20th century.\n\nHendrix combined blues, rock, soul, and psychedelia in his innovative guitar style, known for his creative use of feedback, distortion, and other effects. He rose to fame in the 1960s with his band **The Jimi Hendrix Experience**, releasing iconic albums such as **\&#34;Are You Experienced\&#34;** (1967), **\&#34;Axis: Bold as Love\&#34;** (1967), and **\&#34;Electric Ladyland\&#34;** (1968).\n\nSome of his most famous songs include:\n- \&#34;Purple Haze\&#34;\n- \&#34;All Along the Watchtower\&#34; (a Bob Dylan cover)\n- \&#34;Foxy Lady\&#34;\n- \&#34;Voodoo Child (Slight Return)\&#34;\n- \&#34;The Wind Cries Mary\&#34;\n- \&#34;Hey Joe\&#34;\n\nHendrix&#39;s legendary performances, including his rendition of \&#34;The Star-Spangled Banner\&#34; at **Woodstock** in 1969, helped solidify his status as a rock icon. Despite his short career—he died at age 27—Hendrix&#39;s influence on rock, blues, and popular music continues to be profound.&#34;,
+        &#34;refusal&#34;: null,
+        &#34;annotations&#34;: []
+      },
+      &#34;logprobs&#34;: null,
+      &#34;finish_reason&#34;: &#34;stop&#34;
+    }
+  ],
+  &#34;usage&#34;: {
+    &#34;prompt_tokens&#34;: 13,
+    &#34;completion_tokens&#34;: 296,
+    &#34;total_tokens&#34;: 309,
+    &#34;prompt_tokens_details&#34;: {
+      &#34;cached_tokens&#34;: 0,
+      &#34;audio_tokens&#34;: 0
+    },
+    &#34;completion_tokens_details&#34;: {
+      &#34;reasoning_tokens&#34;: 0,
+      &#34;audio_tokens&#34;: 0,
+      &#34;accepted_prediction_tokens&#34;: 0,
+      &#34;rejected_prediction_tokens&#34;: 0
+    }
+  },
+  &#34;service_tier&#34;: &#34;default&#34;,
+  &#34;system_fingerprint&#34;: &#34;fp_3502f4eb73&#34;
+}</code></pre></div>
+<p>Again, test the rate-limiting policy by executing the following command multiple times and observe the rate-limit headers in the response, specially, <code>X-AI-RateLimit-Limit-minute-openai</code> and <code>X-AI-RateLimit-Remaining-minute-openai</code>:</p>
+<p>Now, let&rsquo;s consume it with the Consumer1&rsquo;s API Key. As you can see the Data Plane is processing the Rate Limiting processes independently.</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X POST \
+  --url $DATA_PLANE_URL/openai-route \
+  --header &#39;Content-Type: application/json&#39; \
+  --header &#39;apikey: 123456&#39; \
+  --data &#39;{
+   &#34;messages&#34;: [
+     {
+       &#34;role&#34;: &#34;user&#34;,
+       &#34;content&#34;: &#34;Who is Jimi Hendrix?&#34;
+     }
+   ]
+  }&#39;</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+x-kong-request-id: 90665c528c6845101ac2eb3b85937540
+x-ai-ratelimit-limit-minute-openai: 500
+x-ai-ratelimit-remaining-minute-openai: 478
+x-ratelimit-remaining-tokens: 29993
+x-ratelimit-reset-requests: 120ms
+x-ratelimit-reset-tokens: 14ms
+x-request-id: req_2333577fbb0a4041aa6535ceba2e6102
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
+alt-svc: h3=&#34;:443&#34;; ma=86400
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:19:04 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844f94a4821447a-EWR
+openai-version: 2020-10-01
+cf-cache-status: DYNAMIC
+openai-processing-ms: 8492
+x-ratelimit-limit-requests: 500
+x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 8543
+x-ratelimit-remaining-requests: 499
+x-kong-llm-model: openai/gpt-4.1
+content-length: 2309
+x-kong-upstream-latency: 8627
+x-kong-proxy-latency: 1
+via: 1.1 kong/3.11.0.0-enterprise-edition</code></pre></div>
+<p>If we keep sending requests using the first API Key, eventually, as expected, we&rsquo;ll get an error code:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X POST \
+  --url $DATA_PLANE_URL/openai-route \
+  --header &#39;Content-Type: application/json&#39; \
+  --header &#39;apikey: 123456&#39; \
+  --data &#39;{
+   &#34;messages&#34;: [
+     {
+       &#34;role&#34;: &#34;user&#34;,
+       &#34;content&#34;: &#34;Who is Jimi Hendrix?&#34;
+     }
+   ]
+  }&#39;</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 429 
+date: Wed, 24 Sep 2025 20:19:45 GMT
+content-type: application/json; charset=utf-8
+x-kong-request-id: 16d3d8047c19485e57837e36e9f2191f
+x-ai-ratelimit-reset-minute-openai: 29
+x-ai-ratelimit-retry-after: 29
+x-ai-ratelimit-reset: 29
+x-ai-ratelimit-limit-minute-openai: 500
+x-ai-ratelimit-remaining-minute-openai: 0
+x-ai-ratelimit-retry-after-minute-openai: 29
+content-length: 66
+x-kong-response-latency: 1
+server: kong/3.11.0.0-enterprise-edition
+
+{&#34;message&#34;:&#34;AI token rate limit exceeded for provider(s): openai&#34;}</code></pre></div>
+<p>However, the second API Key is still allowed to consume the Kong Route:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -i -X POST \
+  --url $DATA_PLANE_URL/openai-route \
+  --header &#39;Content-Type: application/json&#39; \
+  --header &#39;apikey: 987654&#39; \
+  --data &#39;{
+   &#34;messages&#34;: [
+     {
+       &#34;role&#34;: &#34;user&#34;,
+       &#34;content&#34;: &#34;Who is Jimi Hendrix?&#34;
+     }
+   ]
+  }&#39;</code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/2 200 
+content-type: application/json
+x-kong-request-id: e6ee574fbc371d4c54b745507ba08b12
+x-ai-ratelimit-limit-minute-openai: 10000
+x-ai-ratelimit-remaining-minute-openai: 10000
+x-ratelimit-remaining-tokens: 29993
+x-ratelimit-reset-requests: 120ms
+x-ratelimit-reset-tokens: 14ms
+x-request-id: req_ee7712a38e284ab1a06ddf85f37742da
+x-openai-proxy-wasm: v0.1
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+x-content-type-options: nosniff
+access-control-expose-headers: X-Request-ID
+alt-svc: h3=&#34;:443&#34;; ma=86400
+openai-organization: user-4qzstwunaw6d1dhwnga5bc5q
+date: Wed, 24 Sep 2025 20:20:14 GMT
+openai-project: proj_r4KYFyenuGWthS5te4zaurNN
+cf-ray: 9844fb1a48a2eef5-EWR
+openai-version: 2020-10-01
+cf-cache-status: DYNAMIC
+openai-processing-ms: 4642
+x-ratelimit-limit-requests: 500
+x-ratelimit-limit-tokens: 30000
+x-envoy-upstream-service-time: 4669
+x-ratelimit-remaining-requests: 499
+x-kong-llm-model: openai/gpt-4.1
+content-length: 1870
+x-kong-upstream-latency: 4784
+x-kong-proxy-latency: 2
+via: 1.1 kong/3.11.0.0-enterprise-edition
+
+{
+  &#34;id&#34;: &#34;chatcmpl-CJQGAUQK485uaDMZvu5fqtFWGG6KL&#34;,
+  &#34;object&#34;: &#34;chat.completion&#34;,
+  &#34;created&#34;: 1758745210,
+  &#34;model&#34;: &#34;gpt-4.1-2025-04-14&#34;,
+  &#34;choices&#34;: [
+    {
+      &#34;index&#34;: 0,
+      &#34;message&#34;: {
+        &#34;role&#34;: &#34;assistant&#34;,
+        &#34;content&#34;: &#34;**Jimi Hendrix** (born **James Marshall Hendrix** on November 27, 1942 – died September 18, 1970) was an American guitarist, singer, and songwriter. Widely regarded as **one of the greatest and most influential electric guitarists in the history of popular music**, Hendrix revolutionized the way the instrument was played, using innovative techniques such as feedback, distortion, and controlled noise.\n\nHe first gained fame in the UK after forming the **Jimi Hendrix Experience** in 1966, releasing hit songs like “Hey Joe,” “Purple Haze,” and “The Wind Cries Mary.” His groundbreaking performances at the **Monterey Pop Festival** in 1967 and **Woodstock** in 1969 are legendary, with his rendition of “The Star-Spangled Banner” at Woodstock being especially iconic.\n\nHendrix’s music blended rock, blues, psychedelia, and funk, influencing countless musicians. His career was tragically short; he died at age 27. Today, Jimi Hendrix is remembered as a cultural icon and is frequently cited on lists of the greatest guitarists of all time.&#34;,
+        &#34;refusal&#34;: null,
+        &#34;annotations&#34;: []
+      },
+      &#34;logprobs&#34;: null,
+      &#34;finish_reason&#34;: &#34;stop&#34;
+    }
+  ],
+  &#34;usage&#34;: {
+    &#34;prompt_tokens&#34;: 13,
+    &#34;completion_tokens&#34;: 232,
+    &#34;total_tokens&#34;: 245,
+    &#34;prompt_tokens_details&#34;: {
+      &#34;cached_tokens&#34;: 0,
+      &#34;audio_tokens&#34;: 0
+    },
+    &#34;completion_tokens_details&#34;: {
+      &#34;reasoning_tokens&#34;: 0,
+      &#34;audio_tokens&#34;: 0,
+      &#34;accepted_prediction_tokens&#34;: 0,
+      &#34;rejected_prediction_tokens&#34;: 0
+    }
+  },
+  &#34;service_tier&#34;: &#34;default&#34;,
+  &#34;system_fingerprint&#34;: &#34;fp_3502f4eb73&#34;
+}</code></pre></div>
+<p>Kong-gratulations! have now reached the end of this module by authenticating the API requests with a key and associating different consumers with policy plans. You can now click <strong>Next</strong> to proceed with the next module.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/index.html">
+            <div class="logo-title">API Management with Kong Konnect and Serverless API Gateway</div>
+          </a>
+        </div>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/10-prerequisites/index.html"><a class="padding" href="/10-prerequisites/index.html">Prerequisites</a><ul id="R-subsections-cdc0df3ea972ffd3a9c45dea986dc8ab" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/architecture/index.html"><a class="padding" href="/architecture/index.html">Kong Konnect Architectural Overview</a></li>
+            <li class="" data-nav-id="/11-konnect-setup/index.html"><a class="padding" href="/11-konnect-setup/index.html">Konnect Setup</a><ul id="R-subsections-fd457d3a7fac9b2f9cefa5c6c0dae1e7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/12-api-gateway/index.html"><a class="padding" href="/12-api-gateway/index.html">Kong API Gateway</a><ul id="R-subsections-edeba57bcdf65a92672ecb9c5ed9177f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/14-apiops-deck/index.html"><a class="padding" href="/14-apiops-deck/index.html">APIOps and decK</a></li>
+            <li class="" data-nav-id="/15-developer-portal/index.html"><a class="padding" href="/15-developer-portal/index.html">Konnect Developer Portal</a><ul id="R-subsections-21b3550f5b82a7619e2d221f57fdbc43" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/16-ai-gateway/index.html"><a class="padding" href="/16-ai-gateway/index.html">Kong AI Gateway</a><ul id="R-subsections-2f2bf218915a29de3a144cfa324a5fc4" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/16-ai-gateway/17-konnect-ui/index.html"><a class="padding" href="/16-ai-gateway/17-konnect-ui/index.html">Konnect AI Gateway User Interface</a><ul id="R-subsections-1eab269cec0a8d662fa0057e8fd6bd37" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/16-ai-gateway/18-use-cases/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/index.html">Use Cases</a><ul id="R-subsections-c0641d16bd44e864326d3941cf8c94dd" class="collapsible-menu">
+            <li class="" data-nav-id="/16-ai-gateway/18-use-cases/150-ai-proxy/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/150-ai-proxy/index.html">AI Proxy</a></li>
+            <li class="alwaysopen " data-nav-id="/16-ai-gateway/18-use-cases/151-prompt-engineering/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/151-prompt-engineering/index.html">Prompt Engineering</a><ul id="R-subsections-e0aa5d87690e8126b78d4d9e9eb4a61c" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/16-ai-gateway/18-use-cases/155-request-response-transformer/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/155-request-response-transformer/index.html">AI Request and Response Transfomers</a></li>
+            <li class="" data-nav-id="/16-ai-gateway/18-use-cases/157-apikey/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/157-apikey/index.html">Key Auth</a></li>
+            <li class="active " data-nav-id="/16-ai-gateway/18-use-cases/158-rate-limiting/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/158-rate-limiting/index.html">AI Rate Limiting Advanced</a></li>
+            <li class="alwaysopen " data-nav-id="/16-ai-gateway/18-use-cases/159-ai-proxy-advanced/index.html"><a class="padding" href="/16-ai-gateway/18-use-cases/159-ai-proxy-advanced/index.html">AI Proxy Advanced</a><ul id="R-subsections-a39bd02cbe93b662e651bad14333d499" class="collapsible-menu"></ul></li></ul></li></ul></li>
+            <li class="" data-nav-id="/20-observability/index.html"><a class="padding" href="/20-observability/index.html">Konnect Builtin Observability</a><ul id="R-subsections-3829b558aa20efb46efd7e331dc0c9e9" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/clipboard/clipboard.min.js?1758893492" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758893492" defer></script>
+    <script src="/js/theme.js?1758893492" defer></script>
+  </body>
+</html>

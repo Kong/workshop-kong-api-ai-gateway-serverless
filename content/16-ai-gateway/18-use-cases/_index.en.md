@@ -1,9 +1,9 @@
 ---
 title : "Use Cases"
-weight : 170
+weight : 180
 ---
 
-In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer. 
+In this chapter we are going to explore the following common use cases we typically implement at the API Gateway Layer. We are going to use decK declarations to configure the Gateway and Plugins.
 
 * Simple AI Gateway Proxy
 * Prompt Engineering

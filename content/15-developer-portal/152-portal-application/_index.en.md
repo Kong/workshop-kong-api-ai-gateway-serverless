@@ -1,5 +1,5 @@
 ---
-title : "Developer Self-Service and Appication Registration"
+title : "Developer Self-Service and Application Registration"
 weight : 152
 ---
 
