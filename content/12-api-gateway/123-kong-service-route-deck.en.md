@@ -50,11 +50,17 @@ EOF
 
 #### Submit the declaration
 
-Now, you can use the following command to sync your Konnect Control Plane with the declaration. Note that all other existing objects will be deleted.
+Before submiting the declaration, run the following **deck** command to reset your Control Plane and delete all Kong Objects you might have created previously.
 
-{{<highlight>}}
+```
+deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+```
+
+Now, you can use the following command to sync your Konnect Control Plane with the declaration.
+
+```
 deck gateway sync --konnect-token $PAT httpbin.yaml
-{{</highlight>}}
+```
 
 **Expected Output**
 ```

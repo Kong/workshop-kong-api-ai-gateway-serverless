@@ -29,26 +29,26 @@ Layer 7 protocol, including: REST, GraphQL, gRPC, Websocket, SOAP, Kafka Layer 4
 The configuration of a Gateway Service defines the connectivity details between the Kong Gateway and the upstream service, along with other metadata. Generally, you should map one Gateway Service to each upstream service.">
     <meta itemprop="wordCount" content="243">
     <title>Kong Gateway Service, Kong Route and Kong Plugin :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1758893601" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758893601" defer></script>
-    <script src="/js/search-lunr.js?1758893601" defer></script>
-    <script src="/js/search.js?1758893601" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1759339074" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1759339074" defer></script>
+    <script src="/js/search-lunr.js?1759339074" defer></script>
+    <script src="/js/search.js?1759339074" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758893601";
+      window.relearn.index_js_url="/searchindex.en.js?1759339074";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758893601" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758893601" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758893601" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758893601" defer></script>
+    <script src="/js/lunr/lunr.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1759339074" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758893601" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758893601" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758893601" rel="stylesheet">
-    <link href="/css/theme.css?1758893601" rel="stylesheet">
-    <link href="/css/format-html.css?1758893601" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759339074" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759339074" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759339074" rel="stylesheet">
+    <link href="/css/theme.css?1759339074" rel="stylesheet">
+    <link href="/css/format-html.css?1759339074" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -153,8 +153,8 @@ The configuration of a Gateway Service defines the connectivity details between 
 
 <h1 id="kong-gateway-service-kong-route-and-kong-plugin">Kong Gateway Service, Kong Route and Kong Plugin</h1>
 
-<p><a href="#R-image-461af84b194c8d853dd6122146ae6a8a" class="lightbox-link"><img alt="kong_entities" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_entities.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-461af84b194c8d853dd6122146ae6a8a"><img alt="kong_entities" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_entities.png"></a></p>
+<p><a href="#R-image-9dd02027700fa46d5b44747a39a8f283" class="lightbox-link"><img alt="kong_entities" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_entities.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-9dd02027700fa46d5b44747a39a8f283"><img alt="kong_entities" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_entities.png"></a></p>
 <p>Kong Gateway can proxy:</p>
 <ul>
 <li>Layer 7 protocol, including: REST, GraphQL, gRPC, Websocket, SOAP, Kafka</li>
@@ -165,22 +165,22 @@ The configuration of a Gateway Service defines the connectivity details between 
 <p>The configuration of a Gateway Service defines the connectivity details between the Kong Gateway and the upstream service, along with other metadata. Generally, you should map one Gateway Service to each upstream service.</p>
 <p>For simple deployments, the upstream URL can be provided directly in the Gateway Service. For sophisticated traffic management needs, a Gateway Service can point at an <strong>Upstream</strong>.</p>
 <p>In the following diagram, seven Kong Gateway Services objects should be defined in Kong.</p>
-<p><a href="#R-image-e18461bbdc966d5a3f665b49a64f29ae" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_service.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-e18461bbdc966d5a3f665b49a64f29ae"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_service.png"></a></p>
+<p><a href="#R-image-1f84156da3b95e0e0754625b40aa943f" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_service.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1f84156da3b95e0e0754625b40aa943f"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_service.png"></a></p>
 <h2 id="kong-route">Kong Route</h2>
 <p>Gateway Services, in conjunction with <strong>Routes</strong>, let you expose your upstream services to clients with Kong Gateway, defining an entry point for client requests.</p>
 <p>A Kong Route defines rules that match client requests and associate them with a Kong Service. Routing can occur by PATH, URI, HEADERS, etc.</p>
 <p>A Kong Service can have many Kong Routes associated with it.</p>
-<p><a href="#R-image-8c9758962a78d2c0cfb0208c7cb73b15" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_route.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-8c9758962a78d2c0cfb0208c7cb73b15"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_route.png"></a></p>
+<p><a href="#R-image-bd6a9034cbfb0f93b0181322f78dd6d8" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_route.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-bd6a9034cbfb0f93b0181322f78dd6d8"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_route.png"></a></p>
 <h2 id="kong-plugin">Kong Plugin</h2>
 <p><strong>Plugins</strong> can be attached to a Service, and will run against every request that triggers a request to the Service that they’re attached to.</p>
 <p><strong>Plugins</strong> extend the functionality of Kong Gateway. They can be applied to different entities (i.e. Routes, Services, etc.).</p>
-<p><a href="#R-image-acc0e195837dfb62ddfd2159d9d51b1f" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_plugin.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-acc0e195837dfb62ddfd2159d9d51b1f"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_plugin.png"></a></p>
+<p><a href="#R-image-ea920fff65f23613b8398167b0ae397b" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_plugin.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ea920fff65f23613b8398167b0ae397b"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_plugin.png"></a></p>
 <p>Kong Gateway provides 90+ plugins out of the box and allows for Custom Plugins to be created</p>
-<p><a href="#R-image-670496fe029d872cab8610a26a2dfebe" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_plugin_categories.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-670496fe029d872cab8610a26a2dfebe"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_plugin_categories.png"></a></p>
+<p><a href="#R-image-aae1b718d6f716a9c811a228bebfcd29" class="lightbox-link"><img alt="kong_service" class="lazy lightbox figure-image" loading="lazy" src="/static/images/kong_plugin_categories.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-aae1b718d6f716a9c811a228bebfcd29"><img alt="kong_service" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/kong_plugin_categories.png"></a></p>
 
   <footer class="footline">
   </footer>
@@ -257,8 +257,8 @@ The configuration of a Gateway Service defines the connectivity details between 
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758893601" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758893601" defer></script>
-    <script src="/js/theme.js?1758893601" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1759339074" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759339074" defer></script>
+    <script src="/js/theme.js?1759339074" defer></script>
   </body>
 </html>

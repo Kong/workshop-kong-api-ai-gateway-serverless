@@ -7,48 +7,48 @@
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
     <meta name="description" content="This chapter will walk you through
 Konnect Control Plane and Data Plane. Access Kong Data Plane. Here’s a Reference Architecture that will be implemented in this workshop:
-Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
+Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your applications and microservices. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway">
     <meta name="twitter:description" content="This chapter will walk you through
 Konnect Control Plane and Data Plane. Access Kong Data Plane. Here’s a Reference Architecture that will be implemented in this workshop:
-Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
+Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your applications and microservices. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
     <meta property="og:url" content="http://localhost:1313/11-konnect-setup/index.html">
     <meta property="og:site_name" content="API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:title" content="Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway">
     <meta property="og:description" content="This chapter will walk you through
 Konnect Control Plane and Data Plane. Access Kong Data Plane. Here’s a Reference Architecture that will be implemented in this workshop:
-Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
+Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your applications and microservices. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="This chapter will walk you through
 Konnect Control Plane and Data Plane. Access Kong Data Plane. Here’s a Reference Architecture that will be implemented in this workshop:
-Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
-    <meta itemprop="wordCount" content="514">
+Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers. Kong provides a plugin framework, where each one of them is responsible for a specific functionality. As a can see, there are two main collections of plugins: On the left, the historic and regular API Gateway plugins, implementing all sort of policies including, for example, OIDC based Authentication processes with Keycloak, Amazon Cognito and Okta or Observability with Prometheus/Grafana and Dynatrace. On the right, another plugin collection for AI-based use cases. For example, the AI Rate Limiting plugin implements policies like this based on the number of tokens consumed be the requests. Or, as another example is the AI Semantic Cache plugin, which caches data based on the semantics related to the responses coming from the LLM models. Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases. Kong Gateway protects not just the LLM Models but also the upstream services, including your applications and microservices. Konnect Control Planes Kong Konnect is the main Kong offering for hybrid deployments, including:">
+    <meta itemprop="wordCount" content="512">
     <title>Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway</title>
     <link href="/11-konnect-setup/index.xml" rel="alternate" type="application/rss+xml" title="Konnect Setup :: API Management with Kong Konnect and Serverless API Gateway">
-    <link href="/css/auto-complete/auto-complete.min.css?1758893985" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1758893985" defer></script>
-    <script src="/js/search-lunr.js?1758893985" defer></script>
-    <script src="/js/search.js?1758893985" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1759339074" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1759339074" defer></script>
+    <script src="/js/search-lunr.js?1759339074" defer></script>
+    <script src="/js/search.js?1759339074" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1758893985";
+      window.relearn.index_js_url="/searchindex.en.js?1759339074";
     </script>
-    <script src="/js/lunr/lunr.min.js?1758893985" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1758893985" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1758893985" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1758893985" defer></script>
+    <script src="/js/lunr/lunr.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1759339074" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758893985" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1758893985" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1758893985" rel="stylesheet">
-    <link href="/css/theme.css?1758893985" rel="stylesheet">
-    <link href="/css/format-html.css?1758893985" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759339074" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759339074" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759339074" rel="stylesheet">
+    <link href="/css/theme.css?1759339074" rel="stylesheet">
+    <link href="/css/format-html.css?1759339074" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -164,8 +164,8 @@ Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data
 <li>Access Kong Data Plane.</li>
 </ul>
 <p>Here&rsquo;s a Reference Architecture that will be implemented in this workshop:</p>
-<p><a href="#R-image-d97d7b53137de0d4905ab5da7e762aac" class="lightbox-link"><img alt="kong" class="lazy lightbox figure-image" loading="lazy" src="/static/images/ref_arch.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d97d7b53137de0d4905ab5da7e762aac"><img alt="kong" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/ref_arch.png"></a></p>
+<p><a href="#R-image-9400275283e3304c606efec76a032762" class="lightbox-link"><img alt="kong" class="lazy lightbox figure-image" loading="lazy" src="/static/images/ref_arch.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-9400275283e3304c606efec76a032762"><img alt="kong" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/ref_arch.png"></a></p>
 <ul>
 <li>Kong Konnect Control Plane: responsible for managing your APIs</li>
 <li>Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers.</li>
@@ -176,7 +176,7 @@ Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data
 </ul>
 </li>
 <li>Kong AI Gateway supports, out of the box, a variety of infrastructures, including not just OpenAI, but also Amazon Bedrock, Google Gemini, Mistral, Anthropic, etc. In order to deal with embeddings, the Gateway also supports also vector databases.</li>
-<li>Kong Gateway protects not just the LLM Models but also the upstream services, including your application micros surfaces or services.</li>
+<li>Kong Gateway protects not just the LLM Models but also the upstream services, including your applications and microservices.</li>
 </ul>
 <h3 id="konnect-control-planes">Konnect Control Planes</h3>
 <p>Kong Konnect is the main Kong offering for hybrid deployments, including:</p>
@@ -187,13 +187,13 @@ Kong Konnect Control Plane: responsible for managing your APIs Kong Konnect Data
 <li>Kong Ingress Controller which allows you to run Kong Gateway as a Kubernetes Ingress.</li>
 </ul>
 <p>To check all these options, click <code>+ New Gateway</code> inside the <code>API Gateway</code> menu option:</p>
-<p><a href="#R-image-a06bf09bc4ac4354a917192d0937f0e1" class="lightbox-link"><img alt="Control Planes" class="lazy lightbox figure-image" loading="lazy" src="/static/images/konnect_control_planes.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a06bf09bc4ac4354a917192d0937f0e1"><img alt="Control Planes" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/konnect_control_planes.png"></a></p>
+<p><a href="#R-image-eba5d265d26bdfe257eec844db9a767e" class="lightbox-link"><img alt="Control Planes" class="lazy lightbox figure-image" loading="lazy" src="/static/images/konnect_control_planes.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-eba5d265d26bdfe257eec844db9a767e"><img alt="Control Planes" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/konnect_control_planes.png"></a></p>
 <h3 id="serverless-proxy-url">Serverless Proxy URL</h3>
 <p>Konnect trial creates, by default, a Serverless API Gateway, naming it <code>serverless-default</code>
 Log in to the Kong Konnect UI. Inside the &ldquo;API Gateway&rdquo; page you should see your your Serverless Control Plane:</p>
-<p><a href="#R-image-ea64cc8fad4c972eb84a7b376e1f38b7" class="lightbox-link"><img alt="Serverless Control Plane" class="lazy lightbox figure-image" loading="lazy" src="/static/images/serverless_control_plane.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-ea64cc8fad4c972eb84a7b376e1f38b7"><img alt="Serverless Control Plane" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/serverless_control_plane.png"></a></p>
+<p><a href="#R-image-f483467fe9a4ca96a1cd4d4f7403fe7a" class="lightbox-link"><img alt="Serverless Control Plane" class="lazy lightbox figure-image" loading="lazy" src="/static/images/serverless_control_plane.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f483467fe9a4ca96a1cd4d4f7403fe7a"><img alt="Serverless Control Plane" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/serverless_control_plane.png"></a></p>
 <p>Copy the value of your Control Plane <code>Proxy URL</code> and keep it handy. That&rsquo;s the URL you Data Plane is located.</p>
 <h3 id="send-a-request-to-your-serverless-data-plane">Send a request to your Serverless Data Plane</h3>
 <p>Save your URL in an enviroment variable:</p>
@@ -210,7 +210,7 @@ Log in to the Kong Konnect UI. Inside the &ldquo;API Gateway&rdquo; page you sho
 <ul>
 <li>Konnect User Interface.</li>
 <li><a href="https://developer.konghq.com/api/" rel="external" target="_blank">RESTful Admin API</a>, a fundamental mechanism for administration purposes.</li>
-<li><a href="https://developer.konghq.com/gateway-operator/" rel="external" target="_blank">Kong Gateway Operator (KGO)</a> and Kubernetes CRDs.</li>
+<li><a href="https://developer.konghq.com/operator/" rel="external" target="_blank">Kong Gateway Operator (KGO)</a> and Kubernetes CRDs.</li>
 <li><a href="https://developer.konghq.com/deck/" rel="external" target="_blank">deck</a> - Declarations for Kong.</li>
 </ul>
 <p>To get an easier and faster deployment, this workshop uses <a href="https://developer.konghq.com/deck/" rel="external" target="_blank">deck</a> and Konnect UI.</p>
@@ -289,8 +289,8 @@ Log in to the Kong Konnect UI. Inside the &ldquo;API Gateway&rdquo; page you sho
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1758893985" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1758893985" defer></script>
-    <script src="/js/theme.js?1758893985" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1759339074" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759339074" defer></script>
+    <script src="/js/theme.js?1759339074" defer></script>
   </body>
 </html>
