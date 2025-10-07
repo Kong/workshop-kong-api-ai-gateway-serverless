@@ -6,7 +6,7 @@ weight : 154
 The [Request Callout](https://developer.konghq.com/plugins/request-callout/) plugin allows you to insert arbitrary API calls before proxying a request to the upstream service.
 
 In this section, you will configure the Request Callout plugin on the Kong Route. Specifically, you will configure the plugin to do the following:
-* Call Wikipedia using the "srseach" header as a parameter.
+* Call Wikipedia using the "srsearch" header as a parameter.
 * The number of hits found and returned by Wikipeadia is added as a new header to the request.
 * The request is sent to **httpbin** application which echoes the number of hits.
 

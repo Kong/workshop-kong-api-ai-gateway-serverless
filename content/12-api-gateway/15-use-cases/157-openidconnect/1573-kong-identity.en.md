@@ -261,7 +261,7 @@ Enable the OIDC plugin globally:
 curl -sX POST "https://us.api.konghq.com/v2/control-planes/$CONTROL_PLANE_ID/core-entities/plugins/" \
   -H "Authorization: Bearer $PAT"\
   -H "Content-Type: application/json" \
-  --json '{
+  -d '{
     "name": "openid-connect",
     "config": {
       "issuer": "'$ISSUER_URL'",
