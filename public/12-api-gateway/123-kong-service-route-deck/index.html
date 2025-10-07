@@ -3,7 +3,7 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.150.1">
+    <meta name="generator" content="Hugo 0.151.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
     <meta name="description" content="Now, let’s use decK to create Kong Objects. This time, you’ll create and expose a service to the HTTPbin API. HTTPbin is an echo-type application that returns requests back to the requester as responses.
 Ping Konnect with decK Before start using decK, you should ping Konnect to check if the connecting is up. Note we assume you have the PAT environment variable set. Please, refer to the previous section to learn how to issue a PAT.">
@@ -23,28 +23,28 @@ Ping Konnect with decK Before start using decK, you should ping Konnect to check
     <meta itemprop="name" content="Use decK to create Kong Objects :: API Management with Kong Konnect and Serverless API Gateway">
     <meta itemprop="description" content="Now, let’s use decK to create Kong Objects. This time, you’ll create and expose a service to the HTTPbin API. HTTPbin is an echo-type application that returns requests back to the requester as responses.
 Ping Konnect with decK Before start using decK, you should ping Konnect to check if the connecting is up. Note we assume you have the PAT environment variable set. Please, refer to the previous section to learn how to issue a PAT.">
-    <meta itemprop="wordCount" content="520">
+    <meta itemprop="wordCount" content="543">
     <title>Use decK to create Kong Objects :: API Management with Kong Konnect and Serverless API Gateway</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1759339074" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1759339074" defer></script>
-    <script src="/js/search-lunr.js?1759339074" defer></script>
-    <script src="/js/search.js?1759339074" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1759863295" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1759863295" defer></script>
+    <script src="/js/search-lunr.js?1759863295" defer></script>
+    <script src="/js/search.js?1759863295" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1759339074";
+      window.relearn.index_js_url="/searchindex.en.js?1759863295";
     </script>
-    <script src="/js/lunr/lunr.min.js?1759339074" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1759339074" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1759339074" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1759339074" defer></script>
+    <script src="/js/lunr/lunr.min.js?1759863295" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1759863295" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1759863295" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1759863295" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759339074" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759339074" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759339074" rel="stylesheet">
-    <link href="/css/theme.css?1759339074" rel="stylesheet">
-    <link href="/css/format-html.css?1759339074" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759863295" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1759863295" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1759863295" rel="stylesheet">
+    <link href="/css/theme.css?1759863295" rel="stylesheet">
+    <link href="/css/format-html.css?1759863295" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -171,9 +171,10 @@ services:
     - /httpbin-route
 EOF</code></pre></div>
 <h4 id="submit-the-declaration">Submit the declaration</h4>
-<p>Now, you can use the following command to sync your Konnect Control Plane with the declaration. Note that all other existing objects will be deleted.</p>
+<p>Before submiting the declaration, run the following <strong>deck</strong> command to reset your Control Plane and delete all Kong Objects you might have created previously.</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f</code></pre></div>
+<p>Now, you can use the following command to sync your Konnect Control Plane with the declaration.</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>deck gateway sync --konnect-token $PAT httpbin.yaml</code></pre></div>
-
 <p><strong>Expected Output</strong></p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>creating service httpbin-service
 creating route httpbin-route
@@ -182,8 +183,8 @@ Summary:
   Updated: 0
   Deleted: 0</code></pre></div>
 <p>You should see your new service’s overview page.</p>
-<p><a href="#R-image-7992dbbff2e830f1c92fcf4a3ac32856" class="lightbox-link"><img alt="service1" class="lazy lightbox figure-image" loading="lazy" src="/static/images/httpbin-service-route.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7992dbbff2e830f1c92fcf4a3ac32856"><img alt="service1" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/httpbin-service-route.png"></a></p>
+<p><a href="#R-image-acee2df12155e976aa73690189e597ad" class="lightbox-link"><img alt="service1" class="lazy lightbox figure-image" loading="lazy" src="/static/images/httpbin-service-route.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-acee2df12155e976aa73690189e597ad"><img alt="service1" class="lazy lightbox lightbox-image" loading="lazy" src="/static/images/httpbin-service-route.png"></a></p>
 <h4 id="consume-the-route">Consume the Route</h4>
 <p>We are to use the same ELB provisioned during the Data Plane deployment:</p>
 <div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>curl -v $DATA_PLANE_URL/httpbin-route/get</code></pre></div>
@@ -330,8 +331,8 @@ Summary:
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1759339074" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759339074" defer></script>
-    <script src="/js/theme.js?1759339074" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1759863295" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1759863295" defer></script>
+    <script src="/js/theme.js?1759863295" defer></script>
   </body>
 </html>
