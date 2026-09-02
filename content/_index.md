@@ -46,4 +46,3 @@ In this workshop, you will:
 * Addressing API and AI Gateway use cases (90 minutes)
 * Observability (30 minutes)
 * Next Steps and Cleanup (5 min)
-* asd
