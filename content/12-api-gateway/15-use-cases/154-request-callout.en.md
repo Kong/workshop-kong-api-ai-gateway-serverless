@@ -29,7 +29,7 @@ Take the plugins declaration and enable the **Request Callout** plugin to the Ro
 cat > request-callout.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
     - httpbin-service-route
@@ -132,7 +132,7 @@ Notice that new ``User-Email`` header is injected.
 Reset the Control Plane to ensure that the plugins do not interfere with any other modules in the workshop for demo purposes and each workshop module code continues to function independently.
 
 ```
-deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT -f
 ```
 
 In real world scenario, you can enable as many plugins as you like depending on your use cases.

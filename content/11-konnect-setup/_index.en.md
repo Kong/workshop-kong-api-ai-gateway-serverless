@@ -10,7 +10,7 @@ This chapter will walk you through
 
 Here's a Reference Architecture that will be implemented in this workshop:
 
-![kong](/static/images/ref_arch.png)
+![kong](/static/images/ref_arch_new.png)
 
 * Kong Konnect Control Plane: responsible for managing your APIs
 * Kong Konnect Data Plane: connected to the Control Plane, it is responsible for processing all the incoming requests sent by the consumers.
@@ -37,7 +37,7 @@ To check all these options, click ``+ New Gateway`` inside the ``API Gateway`` m
 
 ### Serverless Proxy URL
 
-Konnect trial creates, by default, a Serverless API Gateway, naming it ``serverless-default``
+Konnect trial creates, by default, a Serverless API Gateway, naming it ``serverless-api-gateway-demo``
 Log in to the Kong Konnect UI. Inside the "API Gateway" page you should see your your Serverless Control Plane:
 
 ![Serverless Control Plane](/static/images/serverless_control_plane.png)

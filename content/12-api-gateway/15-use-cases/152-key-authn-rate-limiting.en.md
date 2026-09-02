@@ -19,7 +19,7 @@ Please, check the [**Key-Auth** plugin](https://docs.konghq.com/hub/kong-inc/key
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route
@@ -76,7 +76,7 @@ In order to consume the Route we need to create a Kong Consumer. Here's its decl
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route
@@ -173,7 +173,7 @@ Create the second ``consumer2``, just like you did with the first one, with the 
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route
@@ -226,7 +226,7 @@ Now let's enhance the plugins declaration enabling the Rate Limiting plugin to e
 cat > key-auth.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route

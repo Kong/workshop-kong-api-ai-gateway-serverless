@@ -7,7 +7,7 @@ weight : 150
 
 ### Kong Gateway Plugin list
 
-Before enabling the **Proxy Caching**, let's check the list of plugins Konnect provides. Inside the ``serverless-default`` Control Plane, click on **Plugins** menu option and **+ New plugin**. You should the following page with all plugins available:
+Before enabling the **Proxy Caching**, let's check the list of plugins Konnect provides. Inside the ``serverless-api-gateway-demo`` Control Plane, click on **Plugins** menu option and **+ New plugin**. You should the following page with all plugins available:
 
 ![proxy_cache](/static/images/plugins.png)
 
@@ -18,7 +18,7 @@ Create another declaration with ``plugins`` option. With this option you can ena
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route
@@ -151,7 +151,7 @@ Now, we are going to define a Rate Limiting policy for our Service. This time, y
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route
@@ -271,7 +271,7 @@ For example, let's apply the Proxy Caching plugin globally.
 cat > httpbin.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - httpbin-service-route
@@ -322,7 +322,7 @@ Summary:
 After testing the configuration, reset the Control Plane:
 
 ```
-deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT -f
 ```
 
 

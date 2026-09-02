@@ -30,7 +30,7 @@ Now, configure both plugins. Keep in mind that the plugins are totally independe
 cat > ai-request-response-tranformer.yaml << 'EOF'
 _format_version: "3.0"
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 _info:
   select_tags:
   - llm
@@ -78,7 +78,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-request-response-tranformer.yaml
 ```
 

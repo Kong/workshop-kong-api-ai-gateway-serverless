@@ -25,7 +25,7 @@ export PAT=<PASTE_THE_CONTENTS_OF_COPIED_PAT>
 ### Test your PAT
 
 ```
-deck gateway ping --konnect-control-plane-name serverless-default --konnect-token $PAT
+deck gateway ping --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT
 ```
 
 You should get a response like this

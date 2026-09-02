@@ -1,6 +1,6 @@
 ---
 title : "Konnect Debugger"
-weight : 212
+weight : 184
 ---
 
 **Konnect Debugger** provides a connected debugging experience and real-time trace-level visibility into API traffic, enabling you to:

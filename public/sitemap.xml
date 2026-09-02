@@ -46,13 +46,7 @@
     <loc>http://localhost:1313/12-api-gateway/123-kong-service-route-deck/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/14-apiops-deck/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/16-ai-gateway/18-use-cases/150-ai-proxy/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/15-developer-portal/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/150-proxy-caching-rate-limiting/index.html</loc>
@@ -61,16 +55,10 @@
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/15-developer-portal/151-api-publication/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/16-ai-gateway/18-use-cases/151-prompt-engineering/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/152-key-authn-rate-limiting/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/15-developer-portal/152-portal-application/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/153-response-transformer/index.html</loc>
@@ -106,16 +94,31 @@
     <loc>http://localhost:1313/16-ai-gateway/17-konnect-ui/172-decorator/index.html</loc>
   </url>
   <url>
+    <loc>http://localhost:1313/18-observability/index.html</loc>
+  </url>
+  <url>
     <loc>http://localhost:1313/16-ai-gateway/18-use-cases/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/20-observability/index.html</loc>
+    <loc>http://localhost:1313/18-observability/21-builtin/211-advanced_analytics/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/20-observability/21-builtin/211-advanced_analytics/index.html</loc>
+    <loc>http://localhost:1313/18-observability/21-builtin/212-ai-advanced-analytics/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/20-observability/21-builtin/212-debugger/index.html</loc>
+    <loc>http://localhost:1313/18-observability/21-builtin/214-debugger/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/19-apiops-deck/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/20-developer-portal/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/20-developer-portal/151-api-publication/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/20-developer-portal/152-portal-application/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/12-api-gateway/15-use-cases/157-openidconnect/1573-kong-identity/index.html</loc>

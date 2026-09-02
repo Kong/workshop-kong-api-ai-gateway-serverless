@@ -1,6 +1,6 @@
 ---
 title : "Konnect Developer Portal"
-weight : 150
+weight : 200
 ---
 
 The Konnect Developer Portal is a customizable website for developers to locate, access, and consume API services. It enables developers to browse and search API documentation, try API operations, and manage their own credentials. The Portal supports both internal and external APIs through flexible deployment options.

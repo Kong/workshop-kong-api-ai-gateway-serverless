@@ -12,7 +12,7 @@ _info:
   select_tags:
   - llm
 _konnect:
-  control_plane_name: serverless-default
+  control_plane_name: serverless-api-gateway-demo
 services:
 - name: ai-proxy-advanced-service
   host: localhost
@@ -53,7 +53,7 @@ EOF
 
 Apply the declaration with decK:
 ```
-deck gateway reset --konnect-control-plane-name serveless-default --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT -f
 deck gateway sync --konnect-token $PAT ai-proxy-advanced.yaml
 ```
 

@@ -12,7 +12,7 @@ Now, let's use **decK** to create Kong Objects. This time, you’ll create and e
 Before start using decK, you should ping Konnect to check if the connecting is up. Note we assume you have the PAT environment variable set. Please, refer to the previous section to learn how to issue a PAT.
 
 ```
-deck gateway ping --konnect-control-plane-name serverless-default --konnect-token $PAT
+deck gateway ping --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT
 ```
 
 
@@ -53,7 +53,7 @@ EOF
 Before submiting the declaration, run the following **deck** command to reset your Control Plane and delete all Kong Objects you might have created previously.
 
 ```
-deck gateway reset --konnect-control-plane-name serverless-default --konnect-token $PAT -f
+deck gateway reset --konnect-control-plane-name serverless-api-gateway-demo --konnect-token $PAT -f
 ```
 
 Now, you can use the following command to sync your Konnect Control Plane with the declaration.
